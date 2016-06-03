@@ -1,0 +1,21 @@
+<%= form_for(@furniture_wood) do |f| %>
+  <% if @furniture_wood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@furniture_wood.errors.count, "error") %> prohibited this furniture_wood from being saved:</h2>
+
+      <ul>
+      <% @furniture_wood.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wood_type %><br>
+    <%= f.text_field :wood_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

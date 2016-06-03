@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Furniture Stains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>stain type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @furniture_stains.each do |furniture_stain| %>
+      <tr>
+        <td><%= furniture_stain.stain_type %></td>
+        <td><%= link_to 'Show', furniture_stain %></td>
+        <td><%= link_to 'Edit', edit_furniture_stain_path(furniture_stain) %></td>
+        <td><%= link_to 'Destroy', furniture_stain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Furniture stain', new_furniture_stain_path %>

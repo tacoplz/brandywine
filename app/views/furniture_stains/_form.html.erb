@@ -1,0 +1,21 @@
+<%= form_for(@furniture_stain) do |f| %>
+  <% if @furniture_stain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@furniture_stain.errors.count, "error") %> prohibited this furniture_stain from being saved:</h2>
+
+      <ul>
+      <% @furniture_stain.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stain_type %><br>
+    <%= f.text_field :stain_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

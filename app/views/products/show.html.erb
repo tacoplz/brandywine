@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @product.image_url %>
+</p>
+
+<p>
+  <strong>Room for furniture:</strong>
+  <%= @product.room_for_furniture %>
+</p>
+
+<p>
+  <strong>Furniture type:</strong>
+  <%= @product.furniture_type %>
+</p>
+
+<p>
+  <strong>Furniture wood:</strong>
+  <%= @product.furniture_wood %>
+</p>
+
+<p>
+  <strong>Furniture stain:</strong>
+  <%= @product.furniture_stain %>
+</p>
+
+<p>
+  <strong>Furniture dimensions:</strong>
+  <%= @product.furniture_dimensions %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

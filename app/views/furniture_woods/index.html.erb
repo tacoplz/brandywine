@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Furniture Woods</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>wood type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @furniture_woods.each do |furniture_wood| %>
+      <tr>
+        <td><%= furniture_wood.wood_type %></td>
+        <td><%= link_to 'Show', furniture_wood %></td>
+        <td><%= link_to 'Edit', edit_furniture_wood_path(furniture_wood) %></td>
+        <td><%= link_to 'Destroy', furniture_wood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Furniture wood', new_furniture_wood_path %>

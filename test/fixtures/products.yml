@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  room_for_furniture: MyString
+  furniture_type: MyString
+  furniture_wood: MyString
+  furniture_stain: MyString
+  furniture_dimensions: MyString
+
+two:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  room_for_furniture: MyString
+  furniture_type: MyString
+  furniture_wood: MyString
+  furniture_stain: MyString
+  furniture_dimensions: MyString
