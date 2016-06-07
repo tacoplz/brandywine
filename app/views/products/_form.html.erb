@@ -33,7 +33,8 @@
   </div>
   <div class="field">
     <%= f.label :furniture_wood %><br>
-    <%= f.text_field :furniture_wood %>
+    <%= f.select :furniture_wood, FurnitureWood.woodtypes,
+                  :prompt => 'Select a wood type'%>
   </div>
   <div class="field">
     <%= f.label :furniture_stain %><br>
