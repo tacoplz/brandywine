@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :furniture_room %><br>
-    <%= f.text_field :furniture_room %>
+    <%= f.select :furniture_room, FurnitureType.roomtypes,
+                      :prompt => 'Select a room'%>
   </div>
   <div class="field">
     <%= f.label :furniture_class %><br>
