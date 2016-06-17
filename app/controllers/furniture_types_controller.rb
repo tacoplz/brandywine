@@ -61,6 +61,22 @@ class FurnitureTypesController < ApplicationController
     end
   end
 
+  #only show relevant furniture types based on selection of furniture room_type
+#=begin SHIT DONT WORK
+  def show_furniture_types
+    if params[:furniture_room_id]
+      @furniture_types = FurnitureType.where(furniture_room_id: params[:furniture_room_id])
+    else
+      @furniture_types = FurnitureType.all
+    end
+
+    respond_with (@furniture_types) do |format|
+      format.json { render json: @furniture_types.to_json(:only => [:furniture_class])}
+    end
+  end
+
+#=end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_furniture_type

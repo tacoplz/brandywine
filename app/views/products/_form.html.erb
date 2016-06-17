@@ -1,3 +1,4 @@
+
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -26,14 +27,12 @@
   <div class="field" id="room_for_furniture">
     <%= f.label :room_for_furniture %><br>
     <%= f.select :room_for_furniture, FurnitureRoom.roomtypes,
-                  :prompt => 'Select a room', :onChange => "showForm()" %>
+                  :prompt => 'Select a room' %>
   </div>
-  <div class="field" id="furniture_type" style="display:none">
+  <div class="field" id="furniture_type" >
     <%= f.label :furniture_type %><br>
-    <%# The following if/else statement is wrong %>
     <%= f.select :furniture_type, FurnitureType.furnituretypes,
                   :prompt => 'Select a furniture type' %>
-    <%# The preceeding if/else statement is wrong %>
   </div>
   <div class="field">
     <%= f.label :furniture_wood %><br>

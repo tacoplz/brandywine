@@ -1,0 +1,28 @@
+  alert("Hello!");
+
+$(document).ready(function () {
+    toggleFields(); //call this first so we start out with the correct visibility depending on the selected form values
+    //this will call our toggleFields function every time the selection value of our product_room_for_furniture field changes
+    $("#product_room_for_furniture").change(function () {
+        toggleFields();
+    });
+
+});
+
+
+function toggleFields() {
+    //for code readability store the value of the div product_room_for_furniture selection as roomSelection
+    var roomSelection = $("#product_room_for_furniture").val();
+    //define var pattern to be any match of a single word character. No selection in the form is 0 characters.
+    var pattern = /\w+/;
+    //use the regular expression .test method to return true if the roomSelection is not blank
+    if (pattern.test(roomSelection))
+
+        //var furnType = $(document).getElementById('product_furniture_type');
+        //var furnTypeVal = furnType.val();
+        //furnTypeVal.find(roomSelection).show();
+
+        $("#furniture_type").show();
+    else
+        $("#furniture_type").hide();
+}

@@ -20,3 +20,15 @@ Product.create!(title: 'Mission Nightstand',
   furniture_wood: 'Oak',
   furniture_stain: 'Honey Oak',
   furniture_dimensions: "15\"Lx15\"Wx36\"T")
+
+  Product.create!(title: 'Mission TV Stand',
+    description:
+      %{<p>
+          Beautifully handcrafted and eloquent, this old fashioned mission TV stand is the perfect resting spot for that AppleTV.
+        </p>},
+    image_url: 'missiontvstand.jpeg',
+    room_for_furniture: 'Living Room',
+    furniture_type: 'TV Stand',
+    furniture_wood: 'Cherry',
+    furniture_stain: 'Cherry',
+    furniture_dimensions: "15\"Lx15\"Wx36\"T")

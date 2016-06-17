@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :furniture_woods
   resources :furniture_rooms
   resources :products
+
+#this (dont work) is so I can have a FurnitureType selector based off of the selection from FurnitureRoom
+post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show_furniture_types
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

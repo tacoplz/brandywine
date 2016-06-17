@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602175529) do
+ActiveRecord::Schema.define(version: 20160615014513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,12 @@ ActiveRecord::Schema.define(version: 20160602175529) do
   create_table "furniture_types", force: :cascade do |t|
     t.string   "furniture_room"
     t.string   "furniture_class"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "furniture_room_id"
   end
+
+  add_index "furniture_types", ["furniture_room_id"], name: "index_furniture_types_on_furniture_room_id", using: :btree
 
   create_table "furniture_woods", force: :cascade do |t|
     t.string   "wood_type"
@@ -54,4 +57,5 @@ ActiveRecord::Schema.define(version: 20160602175529) do
     t.datetime "updated_at",           null: false
   end
 
+  add_foreign_key "furniture_types", "furniture_rooms"
 end
