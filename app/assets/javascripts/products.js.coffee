@@ -22,7 +22,7 @@ populate_furniture_types = ->
       data: data
       success: (furniture_types) ->
         _html = '<option value="">Select the furniture type:</option>'
-        _html += '<option value='+furniture_type.furniture_class+'>'+furniture_type.furniture_class+'</option>' for furniture_type in furniture_types
+        _html += '<option value="'+furniture_type.furniture_class+'">'+furniture_type.furniture_class+'</option>' for furniture_type in furniture_types
         $furniture_types_select.html _html
         $furniture_types_select.removeAttr "disabled"
       error: ->

@@ -1,3 +1,11 @@
+<head>
+<% if protect_against_forgery? %>
+  <script>
+    window._auth_token_name = "<%= request_forgery_protection_token %>";
+    window._auth_token = "<%= form_authenticity_token %>";
+  </script>
+<% end %>
+</head>
 
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
@@ -26,7 +34,7 @@
   </div>
   <div class="field" id="room_for_furniture">
     <%= f.label :room_for_furniture %><br>
-    <%= f.select :room_for_furniture, FurnitureRoom.roomtypes,
+    <%= f.select :room_for_furniture, FurnitureRoom.furnroomid,
                   :prompt => 'Select a room' %>
   </div>
   <div class="field" id="furniture_type" >

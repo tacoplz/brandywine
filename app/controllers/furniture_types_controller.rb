@@ -71,7 +71,7 @@ class FurnitureTypesController < ApplicationController
     end
 
     respond_with (@furniture_types) do |format|
-      format.json { render json: @furniture_types.to_json(:only => [:furniture_class])}
+      format.json { render json: @furniture_types.to_json(:only => [:id, :furniture_room_id, :furniture_class])}
     end
   end
 
