@@ -1,4 +1,4 @@
-alert("balls");
+
 
 $(document).ready ->
     if $("#product_room_for_furniture")
@@ -10,10 +10,12 @@ populate_furniture_types = ->
   $furniture_types_select = $("select#product_furniture_type")
   $furniture_types_select.attr "disabled", "disabled"
   furniture_room_id = $("select#product_room_for_furniture").val()
+  console.log(furniture_room_id)
   if furniture_room_id is ""
     $furniture_types_select.html "<option value=\"\">(select the furniture room first)</option>"
   else
     $furniture_types_select.html "<option value=\"\">(loading furniture types...)</option>"
+    alert(furniture_room_id)
     data = {furniture_room_id: furniture_room_id}
     data[window._auth_token_name] = window._auth_token
     $.ajax "/show_furniture_types",
