@@ -34,9 +34,7 @@
   </div>
   <div class="field" id="room_for_furniture">
     <%= f.label :room_for_furniture %><br>
-    <%= f.select :room_for_furniture, options_for_select(FurnitureRoom.all.map { |room| [ room.room_type, room.id, {"data-roomid"=>room.id} ] }) %>
-    <%#= f.select :room_for_furniture, FurnitureRoom.furnroomid,
-                  :prompt => 'Select a room' %>
+    <%= f.select :room_for_furniture, options_for_select(FurnitureRoom.all.map { |room| [ room.room_type, room.room_type, {"data-roomid"=>room.id} ] }) %>
   </div>
   <div class="field" id="furniture_type" >
     <%= f.label :furniture_type %><br>
