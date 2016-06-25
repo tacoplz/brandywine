@@ -23,12 +23,13 @@ populate_furniture_types = function() {
   room_for_furniture as a legible string instead of an arbitrary int (if was an int i would need to convert
   back to the room it represented everytime i wanted to display it) */
   furniture_room_id = $("select#product_room_for_furniture>option:selected").attr("data-roomid");
+  furniture_room_val = $("select#product_room_for_furniture").val();
   /* furniture_room_id is matched up against the foriegn key added to the furniture_types db table.
   The foriegn key is what references the furniture_rooms db table items to the the furniture_types.
   The method show_furniture_types was written in the furniture_types_controller to find the furniture_room_id
   that corresponds to each furniture type */
   console.log(furniture_room_id);
-  if (furniture_room_id === "") {
+  if (furniture_room_val === "") {
     return $furniture_types_select.html("<option value=\"\">(select the furniture room first)</option>");
   } else {
     $furniture_types_select.html("<option value=\"\">(loading furniture types...)</option>");
