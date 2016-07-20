@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20160615014513) do
   end
 
   create_table "furniture_types", force: :cascade do |t|
-    t.string   "furniture_room"
+    t.string   "furniture_room_for_class"
     t.string   "furniture_class"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "furniture_room_id"
   end
 

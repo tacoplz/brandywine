@@ -1,6 +1,6 @@
 class FurnitureRoom < ActiveRecord::Base
 
-has_many :furniture_types
+has_many :furniture_types, :dependent => :destroy
 
   def self.roomtypes
     #this method maps the data in the furniture_rooms db table and adds the custom html field data-roomid

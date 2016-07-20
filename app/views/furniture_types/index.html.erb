@@ -5,17 +5,19 @@
 <table>
   <thead>
     <tr>
-      <th>furniture room</th>
+      <th>furniture room for class</th>
       <th>furniture class</th>
-      <th colspan="3"></th>
+      <th>furniture room id</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @furniture_types.each do |furniture_type| %>
       <tr>
-        <td><%= furniture_type.furniture_room %></td>
+        <td><%= furniture_type.furniture_room_for_class %></td>
         <td><%= furniture_type.furniture_class %></td>
+        <td><%= furniture_type.furniture_room_id %></td>
         <td><%= link_to 'Show', furniture_type %></td>
         <td><%= link_to 'Edit', edit_furniture_type_path(furniture_type) %></td>
         <td><%= link_to 'Destroy', furniture_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

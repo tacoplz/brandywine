@@ -12,10 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :furniture_room %><br>
-    <%= f.select :furniture_room, FurnitureType.roomtypes,
+    <%= f.label :furniture_room_for_class %><br>
+    <%#= f.text_field :furniture_room_for_class %>
+    <%= f.select :furniture_room_for_class, FurnitureRoom.roomtypes,
                       :prompt => 'Select a room'%>
+
+    <%# try to set :furniture_room_id as a hidden field using the :room-id of selected room %>
+    <%#= f.hidden_field :furniture_room_id, :value=>params[:roomid] %>
+
+    <%#= f.collection_select(:furniture_room_for_class, FurnitureRoom.roomtypes, :value, {include_blank: true}) %>
+    <%#= f.select :furniture_room, FurnitureRoom.pluck(:room_type, :id)%>
   </div>
+
   <div class="field">
     <%= f.label :furniture_class %><br>
     <%= f.text_field :furniture_class %>

@@ -61,6 +61,7 @@ class FurnitureTypesController < ApplicationController
     end
   end
 
+  #the following is for populating the furniture type select in products.js
   #only show relevant furniture types based on selection of furniture room_type
   def show_furniture_types
     if params[:furniture_room_id]
@@ -76,12 +77,15 @@ class FurnitureTypesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    #the following is for populating the furniture type select in products.js
     def set_furniture_type
       @furniture_type = FurnitureType.find(params[:id])
     end
 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def furniture_type_params
-      params.require(:furniture_type).permit(:furniture_room, :furniture_class)
+      params.require(:furniture_type).permit(:furniture_class, :furniture_room_for_class, :furniture_room_id)
     end
 end

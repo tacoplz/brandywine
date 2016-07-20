@@ -1,11 +1,8 @@
 class FurnitureType < ActiveRecord::Base
 
-belongs_to :furniture_room #foriegn key funiture_room_id
+belongs_to :furniture_room, foreign_key: 'funiture_room_id'
 
-  def self.roomtypes
-    FurnitureRoom.all.map {|room| room.room_type}
-  end
-
+#probably a problem in this method because im defining FurnitureType.roomtypes to actually be list of FurnitureRoom.room_type
   def self.furnituretypes
     FurnitureType.all.map { |type| type.furniture_class}
   end
