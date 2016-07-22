@@ -24,7 +24,10 @@ class FurnitureTypesController < ApplicationController
   # POST /furniture_types
   # POST /furniture_types.json
   def create
+
     @furniture_type = FurnitureType.new(furniture_type_params)
+    @room = @furniture_type.furniture_room_for_class
+    @furniture_type.update!(:furniture_room_id => FurnitureRoom.find_by(room_type: @room).id)
 
     respond_to do |format|
       if @furniture_type.save

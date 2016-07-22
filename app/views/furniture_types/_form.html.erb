@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :furniture_room_for_class %><br>
     <%#= f.text_field :furniture_room_for_class %>
-    <%= f.select :furniture_room_for_class, FurnitureRoom.roomtypes,
+    <%= f.select :furniture_room_for_class, FurnitureType.roomtypes,
                       :prompt => 'Select a room'%>
 
     <%# try to set :furniture_room_id as a hidden field using the :room-id of selected room %>

@@ -7,4 +7,8 @@ belongs_to :furniture_room, foreign_key: 'funiture_room_id'
     FurnitureType.all.map { |type| type.furniture_class}
   end
 
+  def self.roomtypes
+      FurnitureRoom.all.map { |room| [ room.room_type, room.room_type, {"data-roomid" => room.id} ] }
+  end
+
 end
