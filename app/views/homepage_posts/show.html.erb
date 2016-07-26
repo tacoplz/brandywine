@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post title:</strong>
+  <%= @homepage_post.post_title %>
+</p>
+
+<p>
+  <strong>Post text:</strong>
+  <%= @homepage_post.post_text %>
+</p>
+
+<p>
+  <strong>Post img url:</strong>
+  <%= @homepage_post.post_img_url %>
+</p>
+
+<%= link_to 'Edit', edit_homepage_post_path(@homepage_post) %> |
+<%= link_to 'Back', homepage_posts_path %>

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  resources :homepage_posts
   resources :furniture_types
   resources :furniture_stains
   resources :furniture_woods
   resources :furniture_rooms
   resources :products
+
+  get "homepage_post/index"
+
+#set the landing page as the index view of HomepagePosts
+root 'homepage_posts#index', as: 'home'
 
 #this (dont work) is so I can have a FurnitureType selector based off of the selection from FurnitureRoom
 post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show_furniture_types

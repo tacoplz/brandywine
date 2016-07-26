@@ -25,8 +25,14 @@ class FurnitureTypesController < ApplicationController
   # POST /furniture_types.json
   def create
 
+    #define the instance variable @furniture_type (which is an instance of self for the object)
+    #as an object of FurnitureType with the accepted params defined in the private section of this file
     @furniture_type = FurnitureType.new(furniture_type_params)
+    #since I could not get furniture_room_id to be passed to the controller upon initial object creation
+    #define the instance variable @room to be the furniture_room_for_class of the recently created object
     @room = @furniture_type.furniture_room_for_class
+    #update! the @furniture_type instance variable to store the furniture_room_id that corresponds for the furniture_room_for_class
+    #use the find_by method on the FurnitureRoom table room_type column to do this
     @furniture_type.update!(:furniture_room_id => FurnitureRoom.find_by(room_type: @room).id)
 
     respond_to do |format|
