@@ -1,0 +1,31 @@
+<h1>Admin Login</h1>
+<div class="brandywine_form">
+  <% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+  <%# unlike the form_for tag, the form_tag creates a regular HTML <form>
+  nside that form, it uses text_field_tag and password_field_tag, two
+  helpers that create HTML <input> tags. %>
+  <%= form_tag do %>
+    <fieldset>
+      <legend>Please Log In</legend>
+      <div>
+        <%= label_tag :name, 'Name:' %>
+        <%#the following and the password_field_tag are helpers that
+        create HTML <input> tags. the first value is the name to give the
+        field and the second is the value with which the field will be
+        populated. Doing this allows us to associate values in the
+        params structure directly with form fields- NO MODEL OBJECT IS
+        REQUIRED. %>
+        <%= text_field_tag :name, params[:name] %>
+      </div>
+      <div>
+        <%= label_tag :password, 'Password:' %>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+      <div>
+        <%= submit_tag "Login" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

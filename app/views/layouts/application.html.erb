@@ -2,41 +2,15 @@
 <html>
 <head>
   <title>Brandywine Furniture</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
+  <%= render 'layouts/html_header' %>
 </head>
 
 <body>
-  <div class="container">
-    <!-- The justified nav menu is meant for single line per list item.
-        multiple lines will require custom code not provided by Bootstrap. -->
-      <h4 class="text-muted">Amish furniture, hand-crafted to suit your unique style.</h4>
-      <nav>
-        <ul class="nav nav-justified">
-          <li><a href="#">Home</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-content" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Furniture Catalog<span class="caret"></span></a>
-              <ul class="dropdown-content">
-                <%# THIS WILL NEED CODED SO THAT EACH ROOM ADDED BY THE ADMIN WILL AUTO ADD TO THIS DROPDOWN %>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-          </li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Plan a Visit</a></li>
-          <li><a href="#">My Furniture List</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <%= yield %>
-
+  <%= yield %>
 </body>
+
 </html>

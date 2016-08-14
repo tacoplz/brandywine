@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authorize, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products

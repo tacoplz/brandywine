@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+
+  #get 'sessions/new'
+
+  #get 'sessions/create'
+
+  #get 'sessions/destroy'
+
+  resources :users
   resources :homepage_posts
   resources :furniture_types
   resources :furniture_stains
@@ -8,10 +17,23 @@ Rails.application.routes.draw do
 
   get "homepage_post/index"
 
+  #admin routes, use sessions to log admin in and out
+  get 'admin' => 'admin#index'
+  #wrap the session route declarations in a block and pass them to the
+  #controller() (this saves us typing and makes the routes easier to
+  #read). Since we did not generate the admin controller using the
+  #rails scaffolding we need to define which actions respond to GET,
+  #POST, DELETE,ect HTTP Requests so we need to define these actions
+  controller :sessions do
+    get 'login' => :new #shorten the URL the user has to enter. Now the user just enters /admin and we map it to admin/index
+    post 'login' => :create #login will take the place of sessions/create so we can remove it from below
+    delete 'logout' => :destroy #logout will now replace sessions/destroy so we can remove it from below
+  end
+
 #set the landing page as the index view of HomepagePosts
 root 'homepage_posts#index', as: 'home'
 
-#this (dont work) is so I can have a FurnitureType selector based off of the selection from FurnitureRoom
+#this is so I can have a FurnitureType selector based off of the selection from FurnitureRoom
 post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show_furniture_types
 
   # The priority is based upon order of creation: first created -> highest priority.

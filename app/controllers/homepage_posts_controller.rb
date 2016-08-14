@@ -1,6 +1,6 @@
 class HomepagePostsController < ApplicationController
+  skip_before_action :authorize, only: [:index, :show]
   before_action :set_homepage_post, only: [:show, :edit, :update, :destroy]
-
   # GET /homepage_posts
   # GET /homepage_posts.json
   def index
