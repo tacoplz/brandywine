@@ -15,6 +15,12 @@
  *= require bootstrap.min
  */
 
+ .btn {
+   float: right;
+   font-weight: bold;
+   color: #777;
+ }
+ 
  body {
    padding: 20px;
  }
@@ -27,12 +33,13 @@
  }
 
  /* Customize the nav-justified links to be fill the entire space of the .navbar */
-
+ /* this is the overall nav-bar styling */
  .nav-justified {
    background-color: #eee;
    border: 1px solid #ccc;
    border-radius: 5px;
  }
+ /* style the .nav-justified and the first child (li) and the child of li (a) */
  .nav-justified > li > a {
    padding-top: 15px;
    padding-bottom: 15px;

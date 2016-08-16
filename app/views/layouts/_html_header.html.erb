@@ -1,6 +1,13 @@
 <head>
+  <div class='btn'>
+  <% if session[:user_id] %>
+      <%= button_to 'Logout', logout_path, method: :delete %>
+  <% else %>
+      <%= button_to 'Login', login_path, method: :get %>
+  <% end %>
+</div>
     <div class="container">
-      <h4 class="text-muted">Amish furniture, hand-crafted to suit your unique style.</h4>
+      <h4 class="text-muted">Amish-made, hardwood furniture, hand-crafted to suit your unique style.</h4>
       <nav>
         <ul class="nav nav-justified">
           <li><a href="#">Home</a></li>
