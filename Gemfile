@@ -35,8 +35,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#gem paperclip used to upload files
-#gem "paperclip", "~5.0.0"
+#gem paperclip used to upload files - installed ruby 2.1.4, was running 2.0.0. upgraded using rbenv
+#IMAGEMAGICK must be INSTALLED see: https://github.com/thoughtbot/paperclip/#installation
+gem "paperclip", "~>5.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
