@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   get 'admin/index'
 
   #get 'sessions/new'
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
   resources :furniture_rooms
   resources :products
 
-  get "homepage_post/index"
+  get 'homepage_post/index'
+
+  get '/system/products/images/' => 'products#show'
 
   #admin routes, use sessions to log admin in and out
   get 'admin' => 'admin#index'

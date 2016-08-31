@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @product.title %>
+  <strong><h3><%= @product.title %></h3></strong>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <%# if you want to see the image url %>
+  <%#= @product.image(:medium) %>
+  <td><%= image_tag @product.image(:medium) %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <strong>Product Description:</strong>
+  <br>
+  <ul><%= @product.description %></ul>
 </p>
 
 <p>
@@ -39,6 +40,8 @@
   <strong>Furniture dimensions:</strong>
   <%= @product.furniture_dimensions %>
 </p>
+
+<%= button_to 'Add to My Furniture List', line_items_path(product_id: @product) %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

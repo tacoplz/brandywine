@@ -29,13 +29,13 @@
     <%= f.text_area :description, rows: 6 %>
   </div>
   <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
   </div>
   <div class="field" id="room_for_furniture">
     <%= f.label :room_for_furniture %><br>
     <%= f.select :room_for_furniture, FurnitureRoom.roomtypes,
-                  :prompt => 'Select a room for furniture' %>    
+                  :prompt => 'Select a room for furniture' %>
     <%#= f.select :room_for_furniture, options_for_select(FurnitureRoom.all.map { |room| [ room.room_type, room.room_type, {"data-roomid"=>room.id} ] }) %>
   </div>
   <div class="field" id="furniture_type" >

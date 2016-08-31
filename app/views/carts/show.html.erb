@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h2>My Furniture List</h2>
+<ul>
+  <% @cart.line_items.each do |item| %>
+    <li><%= image_tag item.product.image(:thumb)%><br><%= link_to item.product.title, item.product %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
