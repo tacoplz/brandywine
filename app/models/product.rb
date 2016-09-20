@@ -9,11 +9,6 @@ class Product < ActiveRecord::Base
   validates_attachment :image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   validates_attachment_file_name :image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
 
-  #attempt to display products by selecting the room_for_furniture
-  def self.show_room_for_furniture(room_for_furniture)
-    Product.where(:room_for_furniture => room_for_furniture)
-  end
-
   private
 
     def ensure_not_referenced_by_any_line_item

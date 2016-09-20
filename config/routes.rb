@@ -14,10 +14,14 @@ Rails.application.routes.draw do
   resources :furniture_types
   resources :furniture_stains
   resources :furniture_woods
-  resources :furniture_rooms
+  resources :furniture_rooms do
+    #attempt to query products#index by furniture_rooms id
+    resources :products
+  end
   resources :products
+
   #attempt to query index by room_for_furniture
-  get '/products/:room_for_furniture(.:format)' => 'products#index'
+  #get '/products/:room_for_furniture(.:format)' => 'products#index'
 
   get 'homepage_post/index'
 

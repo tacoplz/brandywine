@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Furniture Rooms</h1>
+<h1>Browse By Furniture Room</h1>
 
 <table>
   <thead>
     <tr>
-      <th>room type</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -14,14 +13,17 @@
     <% @furniture_rooms.each do |furniture_room| %>
       <tr>
         <td><%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %></td>
-        <td><%= link_to 'Show', furniture_room %></td>
-        <td><%= link_to 'Edit', edit_furniture_room_path(furniture_room) %></td>
-        <td><%= link_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if session[:user_id] %>
+          <td><%= link_to 'Show', furniture_room %></td>
+          <td><%= link_to 'Edit', edit_furniture_room_path(furniture_room) %></td>
+          <td><%= link_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Furniture room', new_furniture_room_path %>
+<% if session[:user_id] %>
+  <%= link_to 'New Furniture room', new_furniture_room_path %>
+<% end %>

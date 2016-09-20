@@ -12,4 +12,7 @@ has_many :furniture_types, :dependent => :destroy
     FurnitureRoom.all.map { |room| [room.room_type, room.id]}
   end
 
+  def self.room_query
+    FurnitureRoom.all.map { |room| [room.id, room.room_type]}
+  end
 end
