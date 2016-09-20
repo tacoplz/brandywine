@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :furniture_woods
   resources :furniture_rooms
   resources :products
+  #attempt to query index by room_for_furniture
+  get '/products/:room_for_furniture(.:format)' => 'products#index'
 
   get 'homepage_post/index'
 

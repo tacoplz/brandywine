@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -63,6 +64,7 @@ h1 {
   margin: .67em 0;
   font-size: 2em;
 }
+
 mark {
   color: #000;
   background: #ff0;
@@ -4956,15 +4958,31 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
+  max-width: 700px;
+  min-height: 300px;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
+  background-image: url(jumbotron-bg.jpg);
   background-color: #eee;
 }
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  text-shadow: 2px 2px 8px #ffffff;
+}
+.jumbotron h2,
+.jumbotron .h2 {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  text-shadow: black 2px 2px 8px;
 }
 .jumbotron p {
   margin-bottom: 15px;

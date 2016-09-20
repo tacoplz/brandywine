@@ -1,26 +1,25 @@
 <center><b><p id="notice"><%= notice %></p></b></center>
-
 <div class="container">
-  <div class="jumbotron">
+  <center><div class="jumbotron">
+    <stlye>
     <h1>Brandywine Furniture</h1>
-    <h2>Quality at a Comfortable Price<h2>
-  </div>
+    <font color= white><h2>Quality at a Comfortable Price<h2></font>
+    </style>
+  </div></center>
 </div>
-
 <h2>Announcements</h2>
 <table>
 
   <tbody>
     <% @homepage_posts.each do |homepage_post| %>
       <tr>
-        <td><h4><%= homepage_post.post_title %></h4></td>
+        <td><h4><%= link_to homepage_post.post_title, homepage_post %></h4></td>
       </tr>
       <tr>
         <td><%= homepage_post.post_text %></td>
         <td><%= homepage_post.post_img_url %></td>
       </tr>
       <tr>
-        <td><%= link_to 'Show', homepage_post %></td>
         <% if session[:user_id] %>
           <td><%= link_to 'Edit', edit_homepage_post_path(homepage_post) %></td>
           <td><%= link_to 'Destroy', homepage_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

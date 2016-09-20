@@ -1,11 +1,12 @@
 <head>
-  <div class='btn'>
+
   <% if session[:user_id] %>
-      <%= button_to 'Logout', logout_path, method: :delete %>
+      <div class='btn'><%= button_to 'Logout', logout_path, method: :delete %></div>
+      <div class='btn'><%= button_to 'Control Panel', admin_path, method: :get %></div>
   <% else %>
-      <%= button_to 'Login', login_path, method: :get %>
+      <div class='btn'><%= button_to 'Login', login_path, method: :get %></div>
   <% end %>
-</div>
+
     <div class="container">
       <h4 class="text-muted">Amish-made, hardwood furniture, hand-crafted to suit your unique style.</h4>
       <nav>
@@ -26,7 +27,8 @@
           </li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Plan a Visit</a></li>
-          <li><%= link_to 'My Furniture List', carts_path %></li>
+          <% #the code below needs fixed to show the cart corresponding to the session id %>
+          <li><%= link_to 'My Furniture List', carts_path() %></li>
         </ul>
       </nav>
     </div>
