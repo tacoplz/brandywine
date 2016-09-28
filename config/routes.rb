@@ -11,11 +11,16 @@ Rails.application.routes.draw do
 
   resources :users
   resources :homepage_posts
-  resources :furniture_types
+  resources :furniture_types do
+    #to query products#index by furniture_type
+    #see products_controller index method and furniture_type index.html.erb
+    resources :products
+  end
   resources :furniture_stains
   resources :furniture_woods
   resources :furniture_rooms do
-    #attempt to query products#index by furniture_rooms id
+    #to query products#index by furniture_room
+    #see products_controller index method and furniture_room index.html.erb
     resources :products
   end
   resources :products
@@ -26,7 +31,8 @@ Rails.application.routes.draw do
   get 'homepage_post/index'
 
   get '/system/products/images/' => 'products#show'
-
+  get '/system/furniture_rooms/images/' => 'furniture_rooms#show'
+  
   #admin routes, use sessions to log admin in and out
   get 'admin' => 'admin#index'
   #wrap the session route declarations in a block and pass them to the

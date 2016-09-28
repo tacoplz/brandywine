@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :room_image %><br>
+    <%= f.file_field :room_image %>
+  </div>
+
+  <div class="field">
     <%= f.label :room_type %><br>
     <%= f.text_field :room_type %>
   </div>

@@ -36,17 +36,20 @@
     <%= f.label :room_for_furniture %><br>
     <%= f.select :room_for_furniture, FurnitureRoom.roomtypes,
                   :prompt => 'Select a room for furniture' %>
+    <%= link_to('Modify', furniture_rooms_path, :title => "Don't see what your looking for?\nAdd a room.") %>
     <%#= f.select :room_for_furniture, options_for_select(FurnitureRoom.all.map { |room| [ room.room_type, room.room_type, {"data-roomid"=>room.id} ] }) %>
   </div>
   <div class="field" id="furniture_type" >
     <%= f.label :furniture_type %><br>
     <%= f.select :furniture_type, FurnitureType.furnituretypes,
                   :prompt => 'Select a furniture type' %>
+  <%= link_to('Modify', furniture_types_path, :title => "Don't see what your looking for?\nAdd a furniture type.") %>
   </div>
   <div class="field">
     <%= f.label :furniture_wood %><br>
     <%= f.select :furniture_wood, FurnitureWood.woodtypes,
                   :prompt => 'Select a wood type'%>
+    <%= link_to('Modify', furniture_woods_path, :title => "Don't see what your looking for?\nAdd a furniture wood.") %>
   </div>
   <div class="field">
     <%= f.label :furniture_stain %><br>

@@ -1,6 +1,6 @@
 class FurnitureType < ActiveRecord::Base
 
-belongs_to :furniture_room, foreign_key: 'funiture_room_id'
+belongs_to :furniture_room, foreign_key: 'furniture_room_id'
 
 #probably a problem in this method because im defining FurnitureType.roomtypes to actually be list of FurnitureRoom.room_type
   def self.furnituretypes

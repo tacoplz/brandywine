@@ -10,7 +10,11 @@ class ProductsController < ApplicationController
     if params[:room_for_furniture]
       @products = Product.where(:room_for_furniture => params[:room_for_furniture])
     end
-    
+    #display products if room_for_furniture is selected as a query param
+    if params[:furniture_type]
+      @products = Product.where(:furniture_type => params[:furniture_type])
+    end
+
   end
 
   # GET /products/1

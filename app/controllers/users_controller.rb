@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  #this is only if I accidentally delete the last user
+  skip_before_action :authorize, only: [:index, :new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
