@@ -15,6 +15,11 @@
   <legend>Enter User Details</legend>
 
   <div class="field">
+    <%= f.label :user_image, 'Add a profile photo:' %><br>
+    <%= f.file_field :user_image %>
+  </div>
+
+  <div class="field">
     <%= f.label :name, 'Name:' %><br>
     <%= f.text_field :name, size: 40 %>
   </div>

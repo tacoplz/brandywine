@@ -25,7 +25,7 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
           </li>
-          <li><a href="#">About Us</a></li>
+          <li><%= link_to 'About Us', about_u_path(1) %></li>
           <li><a href="#">Plan a Visit</a></li>
           <% #the code below needs fixed to show the cart corresponding to the session id %>
           <li><%= link_to 'My Furniture List', carts_path() %></li>

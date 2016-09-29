@@ -3,6 +3,7 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.string :title
       t.text :description
+      #add image for use with paperclip
       t.attachment :image
       t.string :room_for_furniture
       t.string :furniture_type

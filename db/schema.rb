@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927193605) do
+ActiveRecord::Schema.define(version: 20160929012552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "about_us", force: :cascade do |t|
+    t.string   "about_us_image_file_name"
+    t.string   "about_us_image_content_type"
+    t.integer  "about_us_image_file_size"
+    t.datetime "about_us_image_updated_at"
+    t.text     "body"
+    t.string   "phone_number",                limit: 10
+    t.string   "email"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,8 +52,12 @@ ActiveRecord::Schema.define(version: 20160927193605) do
   create_table "furniture_types", force: :cascade do |t|
     t.string   "furniture_room_for_class"
     t.string   "furniture_class"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "furniture_type_image_file_name"
+    t.string   "furniture_type_image_content_type"
+    t.integer  "furniture_type_image_file_size"
+    t.datetime "furniture_type_image_updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "furniture_room_id"
   end
 
@@ -90,8 +106,12 @@ ActiveRecord::Schema.define(version: 20160927193605) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "user_image_file_name"
+    t.string   "user_image_content_type"
+    t.integer  "user_image_file_size"
+    t.datetime "user_image_updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_foreign_key "furniture_types", "furniture_rooms"

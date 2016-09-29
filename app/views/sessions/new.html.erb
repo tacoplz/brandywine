@@ -3,6 +3,11 @@
   <% if flash[:alert] %>
     <p id="notice"><%= flash[:alert] %></p>
   <% end %>
+  <%# This allow us to create the first user %>
+  <% if User.count == 0 %>
+    <legend> Please create first user </legend>
+    <%= link_to "New User", new_user_path %>
+  <% end %>
   <%# unlike the form_for tag, the form_tag creates a regular HTML <form>
   nside that form, it uses text_field_tag and password_field_tag, two
   helpers that create HTML <input> tags. %>

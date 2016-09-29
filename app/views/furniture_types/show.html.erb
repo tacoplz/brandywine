@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%# if you want to see the image url %>
+  <%#= @furniture_room.room_image(:medium) %>
+  <td><%= image_tag @furniture_type.furniture_type_image(:medium) %>
+</p>
+
+<p>
   <strong>furniture room:</strong>
   <%= @furniture_type.furniture_room_for_class %>
 </p>

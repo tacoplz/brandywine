@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  #this is only if I accidentally delete the last user
-  skip_before_action :authorize, only: [:index, :new, :create]
+  #this is only if a first user needs created
+  user_total = User.all
+  if user_total.count == 0
+    skip_before_action :authorize, only: [:index, :new, :create]
+  end
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -76,6 +80,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:user_image, :name, :password, :password_confirmation)
     end
 end

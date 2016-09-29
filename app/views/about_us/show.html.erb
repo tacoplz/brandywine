@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <center><%= image_tag @about_u.about_us_image(:large) %></center>
+</p>
+<p>
+  <center><strong>About Us:</strong></center><br>
+  <%= @about_u.body %>
+</p>
+<p>
+  <b><strong>Phone Number:</strong></b>
+  <%= number_to_phone(@about_u.phone_number) %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @about_u.email %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_about_u_path(@about_u) %>
+<%#= link_to 'Back', about_us_path %>
