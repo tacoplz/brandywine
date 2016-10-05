@@ -140,7 +140,8 @@ Product.create!(title: 'Shaker Nightstand',
 AboutU.delete_all
 image_path = "#{Rails.root}/public/system/about_us/about_us_images/000/000/001/original/amish-672179_960_720.jpg"
 image_file = File.new(image_path)
-AboutU.create!(body: 'Brandywine Furniture has been in business since 1988. We started in a barn. It gave a very rustic feel, and offered low overhead. In 2003, we moved to our current location. It offers a much better environment for the furniture; see our care and feeding of furniture section.
+AboutU.create!(id: 1,
+body: 'Brandywine Furniture has been in business since 1988. We started in a barn. It gave a very rustic feel, and offered low overhead. In 2003, we moved to our current location. It offers a much better environment for the furniture; see our care and feeding of furniture section.
 
 Brandywine Furniture believes that it can provide Quality Amish Furniture at a Comfortable Price. We work with a large variety of Amish Furniture builders in the area to produce quality furniture.',
   phone_number: '3303435842',

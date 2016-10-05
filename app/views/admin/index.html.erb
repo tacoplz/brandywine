@@ -1,7 +1,11 @@
-<h1>Welcome Brandywine Administrator</h1>
+<h2>Welcome Brandywine Administrator</h2>
 
-It's <%=Time.now.strftime("%A, %m/%d/%Y")  %>
-
+It's <%=Time.now.strftime("%A, %m/%d/%Y")  %><br><br>
+<h4>Admin Quick Links</h4>
+<%= button_to 'Make an Announcement', new_homepage_post_path, method: :get %></br>
+<%= button_to 'Delete an Announcement', homepage_posts_path, method: :get %></br>
+<%= button_to 'Update Hours via About Us', edit_about_u_path(1), method: :get %></br>
+<%= button_to 'Add a Product', new_product_path, method: :get %></br>
 
 <h4>Administrator Pages</h4>
 <% if session[:user_id] %>

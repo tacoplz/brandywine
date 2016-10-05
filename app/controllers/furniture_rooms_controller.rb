@@ -2,6 +2,7 @@ class FurnitureRoomsController < ApplicationController
   #only allow non-admin to access the show method for furniture rooms
   skip_before_action :authorize, only: [:index, :show]
   before_action :set_furniture_room, only: [:show, :edit, :update, :destroy]
+  before_action :store_location, only: [:index]
 
   # GET /furniture_rooms
   # GET /furniture_rooms.json

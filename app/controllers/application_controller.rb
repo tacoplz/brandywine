@@ -21,4 +21,17 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, notice: "Please log in"
       end
     end
+    #this stores the users location prior to logging in, it must be called within
+    #each individual controller to save the location. If the user location is not saved
+    #the user will be redirect_to the admin_url (control panel)
+    def store_location
+      session[:return_to] = request.url
+    end
+    #this function allows the user to be redirect_to to store_location (if it is
+    #something that was set in the controller) or will redirect_to the admin url
+    def redirect_back_or_default(default)
+      redirect_to(session[:return_to] || default, alert: "Login Successful, Welcome Back!")
+      session[:return_to] = nil
+    end
+
 end

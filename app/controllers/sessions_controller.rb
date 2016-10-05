@@ -11,7 +11,10 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to admin_url
+      #the redirect_back_or_default method is defined in the application_controller.rb
+      #the method looks for the location of the user prior to logging in. If it finds one
+      #then the user will be redirected to the admin url.
+      redirect_back_or_default admin_url
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end

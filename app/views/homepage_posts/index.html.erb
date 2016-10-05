@@ -9,13 +9,14 @@
     </style>
   </div></center>
 </div>
-<h2>Announcements</h2>
+<center><h2>Announcements</h2></center>
 <table>
 
   <tbody>
     <% @homepage_posts.each do |homepage_post| %>
       <tr>
         <td><h4><%= link_to homepage_post.post_title, homepage_post %></h4></td>
+        <td><h5><%= homepage_post.created_at.strftime("%B %d, %Y") %></h5></td>
       </tr>
       <tr>
         <td><%= homepage_post.post_text %></td>

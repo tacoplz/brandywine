@@ -2,7 +2,6 @@
 room_for_furniture selected and uses it to populate the furniture_types selector.
 It was difficult to figure out how to get jquery to read the custom html attribute
 that was attached to the room_for_furniture select options */
-var populate_furniture_types;
 $(document).ready(function() {
   if ($("#product_room_for_furniture")) {
     populate_furniture_types();
@@ -12,6 +11,8 @@ $(document).ready(function() {
     });
   }
 });
+
+var populate_furniture_types;
 populate_furniture_types = function() {
   var $furniture_types_select, data, furniture_room_id;
   $furniture_types_select = $("select#product_furniture_type");
@@ -28,7 +29,7 @@ populate_furniture_types = function() {
   The foriegn key is what references the furniture_rooms db table items to the the furniture_types.
   The method show_furniture_types was written in the furniture_types_controller to find the furniture_room_id
   that corresponds to each furniture type */
-  console.log(furniture_room_id);
+  /* console.log(furniture_room_id); */
   if (furniture_room_val === "") {
     return $furniture_types_select.html("<option value=\"\">(select the furniture room first)</option>");
   } else {

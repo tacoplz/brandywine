@@ -1,7 +1,7 @@
 class FurnitureTypesController < ApplicationController
   skip_before_action :authorize, only: [:index, :show, :show_furniture_types]
   before_action :set_furniture_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :store_location, only: [:index]
   # GET /furniture_types
   # GET /furniture_types.json
   def index

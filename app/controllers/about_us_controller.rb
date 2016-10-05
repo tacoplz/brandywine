@@ -1,5 +1,7 @@
 class AboutUsController < ApplicationController
   before_action :set_about_u, only: [:show, :edit, :update, :destroy]
+  before_action :store_location
+  skip_before_action :authorize, only: [:show]
 
   # GET /about_us
   # GET /about_us.json

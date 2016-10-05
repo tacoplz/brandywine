@@ -1,6 +1,7 @@
 class FurnitureStainsController < ApplicationController
   before_action :set_furniture_stain, only: [:show, :edit, :update, :destroy]
-
+  #before_action :store_location
+  
   # GET /furniture_stains
   # GET /furniture_stains.json
   def index

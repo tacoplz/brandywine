@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authorize, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :store_location
   # GET /products
   # GET /products.json
   def index
