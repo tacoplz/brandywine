@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Style</th>
       <th>Image</th>
       <th>Room</th>
       <th>Type</th>
@@ -15,9 +16,9 @@
       <th>Dimensions</th>
       <% if session[:user_id] %>
         <th>Options</th>
-        <th colspan="10"></th>
+        <th colspan="11"></th>
       <% else %>
-        <th colspan="9"></th>
+        <th colspan="10"></th>
       <% end %>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <tr>
         <td><%= link_to product.title, product %></td>
         <td><%= simple_format(word_wrap(product.description, line_width: 30)) %></td>
+        <td><%= product.furniture_style %>
         <td><%= image_tag product.image(:thumb)%></td>
         <td><%= product.room_for_furniture %></td>
         <td><%= product.furniture_type %></td>

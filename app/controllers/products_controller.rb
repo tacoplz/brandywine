@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
     if params[:furniture_type]
       @products = Product.where(:furniture_type => params[:furniture_type])
     end
+    #display furniture style if furniture_style is selected as a query param
+    if params[:furniture_style]
+      @products = Product.where(:furniture_style => params[:furniture_style])
+    end
 
   end
 
@@ -80,6 +84,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image, :room_for_furniture, :furniture_type, :furniture_wood, :furniture_stain, :furniture_dimensions)
+      params.require(:product).permit(:title, :description, :furniture_style, :image, :room_for_furniture, :furniture_type, :furniture_wood, :furniture_stain, :furniture_dimensions)
     end
 end

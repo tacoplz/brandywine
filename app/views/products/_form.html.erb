@@ -28,6 +28,12 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, rows: 6 %>
   </div>
+  <div class="field" id="furniture_style">
+    <%= f.label :furniture_style %><br>
+    <%= f.select :furniture_style, FurnitureStyle.furniturestyles,
+                  :prompt => 'Select a furniture style' %>
+    <%= link_to('Modify', furniture_styles_path, :title => "Don't see what your looking for?\nAdd a furniture style.") %>
+  </div>
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image %>

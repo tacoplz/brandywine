@@ -1,0 +1,25 @@
+<%= form_for(@furniture_style) do |f| %>
+  <% if @furniture_style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@furniture_style.errors.count, "error") %> prohibited this furniture_style from being saved:</h2>
+
+      <ul>
+      <% @furniture_style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :furniture_style %><br>
+    <%= f.text_field :furniture_style %>
+  </div>
+  <div class="field">
+    <%= f.label :furniture_style_image %><br>
+    <%= f.file_field :furniture_style_image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

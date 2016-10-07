@@ -1,0 +1,2 @@
+module FurnitureStylesHelper
+end

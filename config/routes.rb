@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :furniture_styles
   resources :blogs
   resources :about_us
   resources :line_items
