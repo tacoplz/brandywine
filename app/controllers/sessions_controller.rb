@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
   #to log the admin out we set the session[:user_id] equal to nil
   def destroy
     session[:user_id] = nil
-    redirect_to homepage_posts_url, notice: "You have been logged out"
+    redirect_back_or_default admin_url
   end
 end

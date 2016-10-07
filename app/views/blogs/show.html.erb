@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+<tr>
+  <td><h3><%= @blog.title %></h3><td>
+  <td><h5><%= @blog.created_at.strftime("%B %d, %Y") %></h5></td>
+</tr>
+
+
+<center><p>
+  <%= image_tag @blog.blog_image(:large) %>
+</p></center><br>
+
+<p>
+  <%= simple_format(@blog.blog_post) %>
+</p>
+
+<% if session[:user_id] %>
+  <%= link_to 'Edit', edit_blog_path(@blog) %> |
+  <%= link_to 'Back', blogs_path %>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs
   resources :about_us
   resources :line_items
   resources :carts

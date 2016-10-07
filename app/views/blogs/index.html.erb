@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Brandywine Furniture Blog Posts</h1>
+
+
+<% @blogs.each do |blog| %>
+    <p>
+      <h3><%=link_to blog.title, blog_path(:id => blog.id) %></h3>
+      <h5><%= blog.created_at.strftime("%B %d, %Y") %></h5>
+    </p>
+    <p>
+      <center><%= image_tag blog.blog_image(:large) %></center>
+    </p><br>
+    <p>
+      <%= simple_format(blog.blog_post) %>
+    </p>
+    <p>
+      <% if session[:user_id] %>
+        <%= link_to 'Show', blog %>
+        <%= link_to 'Edit', edit_blog_path(blog) %>
+        <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </p>
+
+<% end %>
+
+<br>
+
+<% if session[:user_id] %>
+  <%= link_to 'New Blog', new_blog_path %>
+<% end %>

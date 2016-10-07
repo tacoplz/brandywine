@@ -178,3 +178,36 @@ User.create!(name: 'Erin',
     type: MIME::Types.type_for(image_path).first.content_type
   )
 )
+
+Blog.delete_all
+#code to find blog "blog_image" image and set as variables.
+image_path = "#{Rails.root}/public/system/blogs/blog_images/000/000/001/original/amish_farm.jpg"
+image_file = File.new(image_path)
+Blog.create!(id: 1,
+title: 'Visit Amish Country',
+blog_post: '&emsp;&emsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam bibendum ligula at eros maximus accumsan. Fusce ac lacinia metus. Duis malesuada nisi libero, vitae aliquam tortor feugiat ut. Aenean quis faucibus velit. Curabitur sit amet magna tincidunt, commodo ligula sit amet, varius leo. Nullam et iaculis felis, sed interdum sem. Nulla rutrum mauris eget nibh vestibulum, ac aliquam orci lobortis. Nam mollis ligula ac fringilla vehicula. Etiam sed pellentesque felis, sed tristique est. Nunc arcu ipsum, tincidunt sit amet nisi eget, condimentum porta lectus. Nullam posuere eu arcu vitae fringilla. Donec ut velit fermentum massa fringilla elementum. Vivamus sed ornare tortor. Duis ornare odio purus, in sagittis leo consectetur eget. Integer quis nulla nisi. Nunc posuere imperdiet nibh, id sagittis est imperdiet in.
+
+&emsp;&emsp;Morbi egestas convallis bibendum. Mauris auctor scelerisque purus, varius fringilla purus malesuada non. In eu mollis neque, non cursus nisl. Nulla et tellus vel nisl tincidunt pellentesque. Vestibulum ullamcorper neque eros, ut aliquet eros ultrices non. Vivamus blandit a eros eget dictum. Nullam in urna sit amet massa mollis mollis. Nam eget enim ut sem semper convallis. Mauris in ipsum id sem vehicula semper. Nam elit felis, molestie ut arcu in, laoreet porta mauris. Fusce faucibus arcu est, at congue enim viverra vel. Integer id ipsum nec mi dapibus convallis quis fermentum elit. Mauris ut nunc tempor leo lobortis molestie. Donec blandit sit amet eros egestas condimentum. Sed finibus dolor at rhoncus molestie.',
+blog_image: ActionDispatch::Http::UploadedFile.new(
+  filename: File.basename(image_file),
+  tempfile: image_file,
+  #detect the image's mime type with MIME if you can't provide it yourself
+  type: MIME::Types.type_for(image_path).first.content_type
+  )
+)
+
+#code to find blog "blog_image" image and set as variables.
+image_path = "#{Rails.root}/public/system/blogs/blog_images/000/000/002/original/amish_jam.jpg"
+image_file = File.new(image_path)
+Blog.create!(id: 2,
+title: 'Amish Country Jams and Marmalades',
+blog_post: '&emsp;&emsp;Mel tantas deleniti id. Eum labore fabulas intellegat et, in pri debitis accommodare. An homero consul rationibus duo, mei quot nostro ea. Sea dicunt veritus cu, eum ne congue copiosae.
+
+&emsp;&emsp;An has feugiat graecis reprehendunt. Eam ornatus fuisset et, eam ad suscipit appareat perfecto. Cu aperiri efficiendi qui, in sed possit voluptatum. Vel prompta admodum an. Porro propriae placerat per ei.',
+blog_image: ActionDispatch::Http::UploadedFile.new(
+  filename: File.basename(image_file),
+  tempfile: image_file,
+  #detect the image's mime type with MIME if you can't provide it yourself
+  type: MIME::Types.type_for(image_path).first.content_type
+  )
+)

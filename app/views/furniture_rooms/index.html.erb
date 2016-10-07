@@ -3,11 +3,16 @@
 <h1>Browse By Furniture Room</h1>
 
 <table>
+  <% if session[:user_id] %>
   <thead>
     <tr>
-      <th colspan="2"></th>
+      <th>Image</th>
+      <th>Room</th>
+      <th>Options</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
+  <% end %>
 
   <tbody>
     <% @furniture_rooms.each do |furniture_room| %>
@@ -15,9 +20,9 @@
         <td><%= image_tag furniture_room.room_image(:thumb)%></td>
         <td><%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %></td>
         <% if session[:user_id] %>
-          <td><%= link_to 'Show', furniture_room %></td>
-          <td><%= link_to 'Edit', edit_furniture_room_path(furniture_room) %></td>
-          <td><%= link_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', furniture_room %><br>
+          <%= link_to 'Edit', edit_furniture_room_path(furniture_room) %><br>
+          <%= link_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
