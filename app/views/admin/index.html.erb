@@ -1,3 +1,4 @@
+<% if session[:user_role_id] %>
 <h2>Welcome Brandywine Administrator</h2>
 
 It's <%=Time.now.strftime("%A, %m/%d/%Y")  %><br><br>
@@ -8,7 +9,6 @@ It's <%=Time.now.strftime("%A, %m/%d/%Y")  %><br><br>
 <%= button_to 'Add a Product', new_product_path, method: :get %></br>
 
 <h4>Administrator Pages</h4>
-<% if session[:user_id] %>
   <ul>
     <li><%= link_to 'Products', products_path %></li>
     <li><%= link_to 'Furniture Types', furniture_types_path %></li>
@@ -21,5 +21,8 @@ It's <%=Time.now.strftime("%A, %m/%d/%Y")  %><br><br>
 <h4>Manage Site Users</h4>
   <ul>
     <li><%= link_to 'Users', users_path %></li>
+    <li><%= link_to 'User Roles', roles_path %></li>
   </ul>
+<% else %>
+<h1>Permission Denied: Admin Authorization Required</h1>
 <% end %>

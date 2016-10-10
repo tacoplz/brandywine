@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   #this is only if a first user needs created
-  user_total = User.all
-  if user_total.count == 0
-    skip_before_action :authorize, only: [:index, :new, :create]
-  end
+  #user_total = User.all
+  #if user_total.count == 0
+    skip_before_action :authorize, only: [:index, :new, :create, :show]
+  #end
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 
   # GET /users
   # GET /users.json
@@ -31,6 +32,19 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    #if admin, allow them to define user role else set default to user
+    if session[:user_role_id]
+      #since I could not get role_id to be passed to the controller upon initial object creation
+      #define the instance variable @role to be the role_name of the recently created object
+      @role = @user.role_name
+      #update! the @furniture_type instance variable to store the furniture_room_id that corresponds for the furniture_room_for_class
+      #use the find_by method on the FurnitureRoom table room_type column to do this
+      @user.update!(:role_id => Role.find_by(role_name: @role).id)
+    else
+      @user.role_name = "User"
+      @role = @user.role_name
+      @user.update!(:role_name => @role, :role_id => Role.find_by(role_name: @role).id)
+    end
 
     respond_to do |format|
       if @user.save
@@ -46,8 +60,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
     respond_to do |format|
       if @user.update(user_params)
+
+        #update the role_id based on the updated role_name
+        @role = @user.role_name
+        @user.update!(:role_id => Role.find_by(role_name: @role).id)
+
         format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -80,6 +100,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_image, :name, :password, :password_confirmation)
+      params.require(:user).permit(:user_image, :name, :password, :password_confirmation, :role_name, :role_id)
     end
 end

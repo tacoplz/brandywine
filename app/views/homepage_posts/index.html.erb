@@ -23,7 +23,7 @@
         <td><%= homepage_post.post_img_url %></td>
       </tr>
       <tr>
-        <% if session[:user_id] %>
+        <% if session[:user_role_id] %>
           <td><%= link_to 'Edit', edit_homepage_post_path(homepage_post) %></td>
           <td><%= link_to 'Destroy', homepage_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -33,7 +33,7 @@
 </table>
 
 <br>
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'New Homepage post', new_homepage_post_path %>
 <% end %>
 </div>

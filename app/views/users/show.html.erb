@@ -6,8 +6,19 @@
     <%#= @user.user_image(:small) %>
     <td><%= image_tag @user.user_image(:small) %>
   </p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role_name %>
+  </p>
+  <p>
+    <strong>Role Id:</strong>
+    <%= @user.role_id %>
+  </p>
+
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -10,7 +10,7 @@
   <%= image_tag @furniture_style.furniture_style_image(:thumb) %>
 </p>
 
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'Edit', edit_furniture_style_path(@furniture_style) %> |
   <%= link_to 'Back', furniture_styles_path %>
 <% end %>

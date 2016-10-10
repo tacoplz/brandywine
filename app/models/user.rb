@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
+  #relationship between Role model and Users via foreign_key role_id
+  belongs_to :roles, foreign_key: 'role_id'
   has_secure_password
 
   #the following code is used to provide and validate an attachment, this code

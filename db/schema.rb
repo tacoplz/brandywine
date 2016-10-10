@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007012221) do
+ActiveRecord::Schema.define(version: 20161009023954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,12 @@ ActiveRecord::Schema.define(version: 20161007012221) do
     t.string   "furniture_style"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "role_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
@@ -136,9 +142,14 @@ ActiveRecord::Schema.define(version: 20161007012221) do
     t.datetime "user_image_updated_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "role_name"
+    t.integer  "role_id"
   end
+
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "furniture_types", "furniture_rooms"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
+  add_foreign_key "users", "roles"
 end

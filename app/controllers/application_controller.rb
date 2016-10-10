@@ -17,10 +17,18 @@ class ApplicationController < ActionController::Base
 #access but instad redirect to the login_url
   protected
     def authorize
-      unless User.find_by(id: session[:user_id])
-        redirect_to login_url, notice: "Please log in"
+      unless User.find_by(role_id: session[:user_role_id])
+        redirect_to login_url, notice: "Admin login required"
       end
     end
+
+    #require access for authorized users
+    def authorize_user
+      unless User.find_by(id: session[:user_id])
+        redirect_to login_url, notice: "Please Log In"
+      end
+    end
+
     #this stores the users location prior to logging in, it must be called within
     #each individual controller to save the location. If the user location is not saved
     #the user will be redirect_to the admin_url (control panel)

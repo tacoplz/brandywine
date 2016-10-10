@@ -15,7 +15,7 @@
   <%= simple_format(@blog.blog_post) %>
 </p>
 
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'Edit', edit_blog_path(@blog) %> |
   <%= link_to 'Back', blogs_path %>
 <% end %>

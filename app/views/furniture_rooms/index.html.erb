@@ -3,7 +3,7 @@
 <h1>Browse By Furniture Room</h1>
 
 <table>
-  <% if session[:user_id] %>
+  <% if session[:user_role_id] %>
   <thead>
     <tr>
       <th>Image</th>
@@ -19,7 +19,7 @@
       <tr>
         <td><%= image_tag furniture_room.room_image(:thumb)%></td>
         <td><%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %></td>
-        <% if session[:user_id] %>
+        <% if session[:user_role_id] %>
           <td><%= link_to 'Show', furniture_room %><br>
           <%= link_to 'Edit', edit_furniture_room_path(furniture_room) %><br>
           <%= link_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,6 +30,6 @@
 </table>
 
 <br>
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'New Furniture room', new_furniture_room_path %>
 <% end %>

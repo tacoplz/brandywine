@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   resources :furniture_styles
   resources :blogs
   resources :about_us

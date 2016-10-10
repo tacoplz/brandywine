@@ -52,6 +52,11 @@ class FurnitureTypesController < ApplicationController
   def update
     respond_to do |format|
       if @furniture_type.update(furniture_type_params)
+        
+        #update the furniture_room_id foreign_key based on the updated furniture_room_for_class
+        @room = @furniture_type.furniture_room_for_class
+        @furniture_type.update!(:furniture_room_id => FurnitureRoom.find_by(room_type: @room).id)
+
         format.html { redirect_to @furniture_type, notice: 'Furniture type was successfully updated.' }
         format.json { render :show, status: :ok, location: @furniture_type }
       else

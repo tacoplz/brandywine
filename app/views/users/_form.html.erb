@@ -31,6 +31,14 @@
     <%= f.label :password_confirmation, 'Confirm:' %><br>
     <%= f.password_field :password_confirmation, size: 40 %>
   </div>
+  <% if session[:user_role_id] %>
+    <div class="field" id="role">
+      <%= f.label :role_name %><br>
+      <%= f.select :role_name, Role.userroles,
+                    :prompt => 'Select  a user role' %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

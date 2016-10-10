@@ -15,7 +15,7 @@
       <%= simple_format(blog.blog_post) %>
     </p>
     <p>
-      <% if session[:user_id] %>
+      <% if session[:user_role_id] %>
         <%= link_to 'Show', blog %>
         <%= link_to 'Edit', edit_blog_path(blog) %>
         <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -26,6 +26,6 @@
 
 <br>
 
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'New Blog', new_blog_path %>
 <% end %>

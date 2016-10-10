@@ -2,7 +2,7 @@
 
 <h1>Listing Furniture Styles</h1>
 
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <table>
     <thead>
       <tr>
@@ -18,7 +18,7 @@
         <tr>
           <td><%= image_tag furniture_style.furniture_style_image(:thumb) %></td>
           <td><%= link_to furniture_style.furniture_style, products_path(:furniture_style => furniture_style.furniture_style) %></td>
-          <% if session[:user_id] %>
+          <% if session[:user_role_id] %>
             <td><%= link_to 'Show', furniture_style %><br>
             <%= link_to 'Edit', edit_furniture_style_path(furniture_style) %><br>
             <%= link_to 'Destroy', furniture_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,6 +30,6 @@
 
 <br>
 
-<% if session[:user_id] %>
+<% if session[:user_role_id] %>
   <%= link_to 'New Furniture style', new_furniture_style_path %>
 <% end %>
