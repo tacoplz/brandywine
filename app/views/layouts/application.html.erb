@@ -4,7 +4,14 @@
   <title>Brandywine Furniture</title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% if false %>
+      This app uses a POST HTTP method to call the furniture_types based upon the furniture_room chosen when adding
+    a new product. The asset pipeline (specifically the //= require tree in application.js) loads this call based on
+    the products.js file everytime a page is loaded. This code looks only at the assets specific to that controller
+    to be loaded (the params[:controller] portion) the functionality and the precompiling done in assets.rb was written
+    by the developer (me).
+  <% end %>
+  <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/html_header' %>
 </head>

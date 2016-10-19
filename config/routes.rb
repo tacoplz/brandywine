@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   get '/system/products/images/' => 'products#show'
   get '/system/furniture_rooms/images/' => 'furniture_rooms#show'
-  
+
   #admin routes, use sessions to log admin in and out
   get 'admin' => 'admin#index'
   #wrap the session route declarations in a block and pass them to the

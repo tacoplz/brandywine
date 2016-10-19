@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   before_action :store_location
-  skip_before_action :authorize, only: [:create, :show]
+  skip_before_action :authorize, only: [:index, :create, :show, :new, :destroy]
 
   # GET /carts
   # GET /carts.json
@@ -31,6 +31,12 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
+        #add the user_id to cart table if user is logged in prior to starting thier cart
+        #if session[:user_id]
+        #  @session = session[:user_id]
+        #  @cart.update!(:user_id => User.find_by(id: @session).id)
+        #end
+
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
@@ -43,6 +49,14 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+
+    #add the user_id to cart table if user logs in or signs up after starting
+    #their cart. The user must click update cart to do this.
+    #if session[:user_id]
+    #  @session = session[:user_id]
+    #  @cart.update!(:user_id => User.find_by(id: @session).id)
+    #end
+
     respond_to do |format|
       if @cart.update(cart_params)
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
@@ -64,14 +78,21 @@ class CartsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
+      #add the user_id to cart table if user is logged in prior to starting their cart
+      #if session[:user_id]
+      #  @session = session[:user_id]
+      #  @cart.update!(:user_id => User.find_by(id: @session))
+      #end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.fetch(:cart, {})
+      params.fetch(:cart, {}).permit(:user_id)
     end
 end

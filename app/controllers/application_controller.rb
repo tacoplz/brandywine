@@ -42,4 +42,18 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+    private
+
+    #this is to set the current cart to the cart matching the session of the user
+=begin
+    def current_cart
+      Cart.find(session[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      cart = Cart.create
+      session[:user_id] = cart.id
+      cart
+    end
+    helper_method :current_cart
+=end
+
 end

@@ -8,7 +8,9 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+    #if session[:user_role_id]
+      @line_items = LineItem.all
+    #end
   end
 
   # GET /line_items/1
@@ -30,6 +32,13 @@ class LineItemsController < ApplicationController
   def create
     #define product to be the product added to the cart
     product = Product.find(params[:product_id])
+
+    #DELETE THIS? add the user_id to cart table if user logs in or signs up after starting their cart
+    #if session[:user_id]
+    #  @session = session[:user_id]
+    #  @cart.update!(:user_id => User.find_by(id: session[:user_id]).id)
+    #end
+
     @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|

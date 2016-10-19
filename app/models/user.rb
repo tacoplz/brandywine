@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   #relationship between Role model and Users via foreign_key role_id
   belongs_to :roles, foreign_key: 'role_id'
+  has_one :cart, dependent: :destroy
   has_secure_password
 
   #the following code is used to provide and validate an attachment, this code
@@ -13,8 +14,8 @@ class User < ActiveRecord::Base
 
   private
     def ensure_an_admin_remains
-      if User.count.zero?
-        raise "Can't delete last user"
+      if User.where(:role_name => "Admin").count.zero?
+        raise "Can't delete last Admin User"
       end
     end
 

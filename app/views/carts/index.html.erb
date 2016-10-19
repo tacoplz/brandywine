@@ -5,13 +5,18 @@
 <table>
   <thead>
     <tr>
+      <td>User</td>
     </tr>
   </thead>
 
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <td><%= link_to 'Show', cart %></td>
+        <% if cart.user_id %>
+        <td><b><%=link_to "#{User.find(cart.user_id).name}", cart %></b></td>
+        <% else %>
+        <td>&emsp;</td> 
+        <% end %>
         <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

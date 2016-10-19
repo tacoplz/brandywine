@@ -21,7 +21,16 @@ class SessionsController < ApplicationController
         redirect_back_or_default admin_url
       elsif role == 'User'
         session[:user_id] = user.id
-        redirect_back_or_default user_path(id: user.id)
+        #if there is a cart made by the session, add the user_id to the cart on login
+        if Cart.find_by(user_id: user.id)
+          @cart = Cart.where(user_id: user.id)
+        elsif Cart.find(session[:cart_id]) && Cart.find(session[:cart_id]).user_id == nil
+          @cart = Cart.find(session[:cart_id])
+          @cart.update!(:user_id => user.id)
+        else
+          Cart.create(:user_id => user.id)
+        end
+        redirect_to user_path(id: session[:user_id])
       end
     else
       redirect_to login_url, alert: "Invalid user/password combination"
