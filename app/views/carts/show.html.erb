@@ -7,5 +7,7 @@
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Edit', edit_cart_path(@cart) %> |
+  <%= link_to 'Back', carts_path %>
+<% end %>

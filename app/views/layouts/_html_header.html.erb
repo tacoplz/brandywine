@@ -31,8 +31,17 @@
           </li>
           <li><%= link_to 'About Us', about_u_path(1) %></li>
           <li><%= link_to 'Blog', blogs_path %></li>
-          <% #the code below needs fixed to show the cart corresponding to the session id %>
-          <li><%= link_to 'My Furniture List', carts_path %></li>
+          <% #the code below needs fixed to show the cart corresponding to the session id but if the session id is overridden by the user logged in, it should show the users cart%>
+          <% if session[:user_id] %>
+            <li><%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %></li>
+          <% elsif session[:user_role_id] %>
+            <li><%= link_to 'User Furniture Lists', carts_path %></li>
+          <% elsif session[:cart_id] %>
+            <li><%= link_to 'My Furniture List', cart_path(Cart.find(session[:cart_id])) %></li>
+          <% else %>
+            <li><%= link_to 'My Furniture List', homepage_posts_path %></li>
+          <% end %>
+
         </ul>
       </nav>
     </div>

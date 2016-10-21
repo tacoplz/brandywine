@@ -58,6 +58,7 @@
   async defer></script>
   </body>
 </html>
-
+<% if session[:user_role_id] %>
 <%= link_to 'Edit', edit_about_u_path(@about_u) %>
 <%#= link_to 'Back', about_us_path %>
+<% end %>

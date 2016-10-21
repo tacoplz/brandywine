@@ -21,5 +21,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require turbolinks-compatibility
+
+//require tree was not utilized (taken out of this file- note the lack of an "=" below)
+//because I dont want the site to load products.js on every page click. see assets.rb
+//and application.html.erb for more info. 
 // require_tree .
+
 //= require bootstrap.min

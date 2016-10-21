@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    flash[:error] = params[:error] || "Sorry, we couldn't find that page"
   end
 
   # GET /users/new
