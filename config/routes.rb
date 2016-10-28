@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   #get '/products/:room_for_furniture(.:format)' => 'products#index'
 
   get 'homepage_post/index'
+  get 'empty', to: 'carts#empty'
 
   get '/system/products/images/' => 'products#show'
   get '/system/furniture_rooms/images/' => 'furniture_rooms#show'

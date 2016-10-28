@@ -1,13 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h2>My Furniture List</h2>
-<ul>
-  <% @cart.line_items.each do |item| %>
-    <li><%= image_tag item.product.image(:thumb)%><br><%= link_to item.product.title, item.product %></li>
-  <% end %>
-</ul>
-
-<% if session[:user_role_id] %>
-  <%= link_to 'Edit', edit_cart_path(@cart) %> |
-  <%= link_to 'Back', carts_path %>
+<% if session[:user_id] %>
+  <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}'s"%> Furniture List</h2>
+  <ul>
+    <% @cart.line_items.each do |item| %>
+      <li><%= image_tag item.product.image(:thumb)%></li>
+      <%= link_to item.product.title, item.product %>
+      <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <% end %>
+  </ul>
+  <% elsif session[:user_role_id] %>
+    <% if User.find_by(id: @cart.user_id) %>
+      <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}s"%> Furniture List</h2>
+    <% else %>
+      <h2>Guest Furniture List</h2>
+    <% end %>
+    <ul>
+      <% @cart.line_items.each do |item| %>
+      <li><%= image_tag item.product.image(:thumb)%>
+        <%= link_to item.product.title, item.product %></li>
+        <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+    </ul>
+    <%= link_to 'Edit', edit_cart_path(@cart) %> |
+    <%= link_to 'Back', carts_path %>
+  <% else %>
+    <h5>Welcome, please sign in or sign up to save this list.</h5>
+  <ul>
+    <% @cart.line_items.each do |item| %>
+      <li><%= image_tag item.product.image(:thumb)%>
+      <%= link_to item.product.title, item.product %></li>
+      <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <% end %>
+  </ul>
 <% end %>

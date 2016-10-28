@@ -13,9 +13,9 @@
     <% @carts.each do |cart| %>
       <tr>
         <% if cart.user_id %>
-        <td><b><%=link_to "#{User.find(cart.user_id).name}", cart %></b></td>
+        <td><b><%=link_to "#{User.find(cart.user_id).name}", cart_path(Cart.find_by(user_id: cart.user_id)) %></b></td>
         <% else %>
-        <td>&emsp;</td> 
+        <td><%= link_to "GUEST", cart_path(Cart.find_by(id: cart.id)) %></td>
         <% end %>
         <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>

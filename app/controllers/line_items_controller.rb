@@ -3,7 +3,7 @@ class LineItemsController < ApplicationController
   #set_cart sets the value of @cart to the value of the current cart
   before_action :set_cart, only:  [:create] #private method in CurrentCart concern to only create cart
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:create, :show]
+  skip_before_action :authorize, only: [:create, :show, :destroy]
 
   # GET /line_items
   # GET /line_items.json
@@ -30,6 +30,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    cart = Cart.find_by(user_id: session[:user_id])
     #define product to be the product added to the cart
     product = Product.find(params[:product_id])
 
@@ -43,7 +44,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart, notice: 'Product was successfully added to list.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -71,7 +72,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to cart_path, notice: 'Product successfully removed from list.' }
       format.json { head :no_content }
     end
   end

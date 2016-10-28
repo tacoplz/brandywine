@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   before_action :store_location
-  skip_before_action :authorize, only: [:create, :new, :show, :destroy]
+  skip_before_action :authorize, only: [:create, :new, :show, :destroy, :empty, :update]
   #before_action :authorize_user, only: [:show]
   # GET /carts
   # GET /carts.json
@@ -22,6 +22,9 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
+  end
+
+  def empty
   end
 
   # POST /carts
@@ -83,7 +86,11 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params[:id])
+      if session[:user_id]
+        @cart = Cart.find_by(user_id: session[:user_id])
+      else
+        @cart = Cart.find(params[:id])
+      end
       #add the user_id to cart table if user is logged in prior to starting their cart
       #if session[:user_id]
       #  @session = session[:user_id]

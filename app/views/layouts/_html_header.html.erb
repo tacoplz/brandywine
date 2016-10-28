@@ -23,10 +23,6 @@
                 <li><%= link_to 'Browse by Furniture Type', furniture_types_path %></li>
                 <li><%= link_to 'Browse by Furniture Style', furniture_styles_path %></li>
                 <li><%= link_to 'Browse All Furniture', products_path %></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li><br>
               </ul>
           </li>
           <li><%= link_to 'About Us', about_u_path(1) %></li>
@@ -35,11 +31,15 @@
           <% if session[:user_id] %>
             <li><%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %></li>
           <% elsif session[:user_role_id] %>
-            <li><%= link_to 'User Furniture Lists', carts_path %></li>
+            <li><%= link_to 'User Lists', carts_path %></li>
           <% elsif session[:cart_id] %>
-            <li><%= link_to 'My Furniture List', cart_path(Cart.find(session[:cart_id])) %></li>
+            <% if Cart.find_by(id: session[:cart_id]) %>
+              <li><%= link_to 'My Furniture List', cart_path(Cart.find(session[:cart_id])) %></li>
+            <% else %>
+              <li><%= link_to 'My Furniture List', empty_url %></li>
+            <% end %>
           <% else %>
-            <li><%= link_to 'My Furniture List', homepage_posts_path %></li>
+            <li><%= link_to 'My Furniture List', empty_url %></li>
           <% end %>
 
         </ul>

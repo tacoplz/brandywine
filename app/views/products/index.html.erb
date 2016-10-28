@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Style</th>
       <th>Image</th>
       <th>Room</th>
@@ -16,9 +15,9 @@
       <th>Dimensions</th>
       <% if session[:user_role_id] %>
         <th>Options</th>
-        <th colspan="11"></th>
-      <% else %>
         <th colspan="10"></th>
+      <% else %>
+        <th colspan="9"></th>
       <% end %>
     </tr>
   </thead>
@@ -26,8 +25,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.title, product %></td>
-        <td><%= simple_format(word_wrap(product.description, line_width: 30)) %></td>
+        <td><%= button_to product.title, product, method: :get %></td>
         <td><%= product.furniture_style %>
         <td><%= image_tag product.image(:thumb)%></td>
         <td><%= product.room_for_furniture %></td>
@@ -40,12 +38,21 @@
           <%= link_to 'Edit', edit_product_path(product) %><br>
           <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
-          <% cart = Cart.find(session[:cart_id]) %>
-          <% if Cart.find(session[:cart_id]) && LineItem.find_by(cart_id: cart.id, product_id: product.id) && session[:user_id]%>
-            <td>Item In <%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %></td>
-            <% else %>
-            <td><%= button_to 'Add to My Furniture List', line_items_path(product_id: product.id) %></td>
+          <% if Cart.find_by(id: session[:cart_id]) %>
+            <%# cart = Cart.find_by(id: session[:cart_id]) %>
+            <% if Cart.find_by(user_id: session[:user_id]) %>
+              <% cart = Cart.find_by(user_id: session[:user_id]) %>
+            <%# else %>
+              <%# cart = Cart.find_by(id: session[:cart_id])%>
             <% end %>
+              <% if LineItem.find_by(cart_id: cart.id, product_id: product.id) %>
+                <td>Item In <%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %></td>
+              <% else %>
+                <td><%= button_to 'Add to My Furniture List', line_items_path(cart_id: cart.id, product_id: product.id) %></td>
+              <% end %>
+          <% else %>
+            <td><%= button_to 'Add to My Furniture List', line_items_path(product_id: product.id) %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

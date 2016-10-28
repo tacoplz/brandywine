@@ -18,8 +18,8 @@
   <tbody>
     <% @furniture_types.each do |furniture_type| %>
       <tr>
-        <td><%= image_tag furniture_type.furniture_type_image(:thumb)%></td>
-        <td><%= link_to "#{furniture_type.furniture_class}s", products_path(:furniture_type => furniture_type.furniture_class) %></td>
+        <td><%= image_tag furniture_type.furniture_type_image(:thumb)%>
+        <br><%= button_to "#{furniture_type.furniture_class}s", products_path(:furniture_type => furniture_type.furniture_class), method: :get %></td>
         <% if session[:user_role_id] %>
           <td><%= furniture_type.furniture_room_for_class %></td>
           <td><%= link_to 'Show', furniture_type %><br><%= link_to 'Edit', edit_furniture_type_path(furniture_type) %><br><%= link_to 'Destroy', furniture_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
