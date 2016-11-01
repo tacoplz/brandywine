@@ -30,7 +30,10 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    cart = Cart.find_by(user_id: session[:user_id])
+    if session[:user_id]
+      cart = Cart.find_by(user_id: session[:user_id])
+
+    end
     #define product to be the product added to the cart
     product = Product.find(params[:product_id])
 
@@ -39,16 +42,21 @@ class LineItemsController < ApplicationController
     #  @session = session[:user_id]
     #  @cart.update!(:user_id => User.find_by(id: session[:user_id]).id)
     #end
+    if LineItem.find_by(product_id: product, cart_id: @cart.id)
+      respond_to do |format|
+        format.html { redirect_to cart_path(cart.id), notice: 'Product already in list.' }
+      end
+    else
+      @line_item = @cart.line_items.build(product: product)
 
-    @line_item = @cart.line_items.build(product: product)
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Product was successfully added to list.' }
-        format.json { render :show, status: :created, location: @line_item }
-      else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to @line_item.cart, notice: 'Product was successfully added to list.' }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -72,7 +80,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_path, notice: 'Product successfully removed from list.' }
+      format.html { redirect_to cart_path(Cart.find_by(id: @line_item.cart_id)), notice: 'Product successfully removed from list.' }
       format.json { head :no_content }
     end
   end

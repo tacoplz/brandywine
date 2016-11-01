@@ -7,18 +7,33 @@
     <td><%= image_tag @user.user_image(:small) %>
   </p>
   <p>
-    <strong>Name:</strong>
+    <strong>Username:</strong>
     <%= @user.name %>
+  </p>
+  <p>
+    <strong>Customer Name:</strong>
+    <%= @user.first_name @user.last_name %>
+  </p>
+  <p>
+    <strong>Customer Contact Info:</strong>
+    Phone Number: <%= @user.phone_number %>
+    Email: <%= @user.email %>
+    Address: <%= @user.address @user.apt_number @user.city @user.state @user.zip_code %>
   </p>
   <p>
     <strong>Role:</strong>
     <%= @user.role_name %>
-  </p>
-  <p>
     <strong>Role Id:</strong>
     <%= @user.role_id %>
   </p>
-
+  <p>
+    <strong>Review Brandywine Furniture:</strong>
+    <%= @user.user_review %>
+  </p>
+  <p>
+    <strong>How you heard about Brandywine Furniture:</strong>
+    <%= @user.referral %>
+  </p>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

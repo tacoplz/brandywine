@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
         else
           Cart.create(:user_id => user.id)
         end
-        redirect_to user_path(id: session[:user_id])
+        redirect_to homepage_posts_path, notice: "Welcome back, #{User.find_by(id: user.id).name.capitalize}!"
       end
     else
       redirect_to login_url, alert: "Invalid user/password combination"

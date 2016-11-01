@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #this is only if a first user needs created
   #user_total = User.all
   #if user_total.count == 0
-    skip_before_action :authorize, only: [:index, :new, :create, :show]
+    skip_before_action :authorize, only: [:new, :create, :show]
   #end
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -49,7 +49,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully created." }
+        #write module to call create method from sessions controller to login the user
+        format.html { redirect_to homepage_posts_path, notice: "User #{@user.name} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -101,6 +102,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_image, :name, :password, :password_confirmation, :role_name, :role_id)
+      params.require(:user).permit(:user_image, :name, :password, :password_confirmation, :role_name, :role_id, :first_name, :last_name, :referral, :user_review, :phone_number, :email, :address, :apt_number, :city, :state, :zip_code)
     end
 end

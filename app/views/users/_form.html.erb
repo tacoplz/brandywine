@@ -18,9 +18,52 @@
     <%= f.label :user_image, 'Add a profile photo:' %><br>
     <%= f.file_field :user_image %>
   </div>
-
   <div class="field">
-    <%= f.label :name, 'Name:' %><br>
+    <%= f.label :first_name, 'First name:' %><br>
+    <%= f.text_field :first_name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name, 'Last name:' %><br>
+    <%= f.text_field :last_name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number, 'Phone Number:' %><br>
+    <%= f.text_field :phone_number, size: 10 %>
+  </div>
+  <div class="field">
+    <%= f.label :email, 'Email:' %><br>
+    <%= f.text_field :email, size: 80 %>
+  </div>
+  <div class="field">
+    <%= f.label :address, 'Address:' %><br>
+    <%= f.text_field :address, size: 160 %>
+  </div>
+  <div class="field">
+    <%= f.label :apt_number, 'Apt/Unit Number:' %><br>
+    <%= f.text_field :address, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :city, 'City:' %><br>
+    <%= f.text_field :city, size: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :state, 'State:' %><br>
+    <%= f.text_field :state, size: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code, 'Postal Code:' %><br>
+    <%= f.text_field :zip_code, size: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :referral, 'How did you hear about us:' %><br>
+    <%= f.text_field :referral, size: 80 %>
+  </div>
+  <div class="field">
+    <%= f.label :user_review, 'Review Us:' %><br>
+    <%= f.text_field :user_review, size: 200 %>
+  </div>
+  <div class="field">
+    <%= f.label :name, 'Username:' %><br>
     <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field">
