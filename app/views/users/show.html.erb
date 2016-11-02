@@ -12,13 +12,16 @@
   </p>
   <p>
     <strong>Customer Name:</strong>
-    <%= @user.first_name @user.last_name %>
+    <%= @user.first_name %> <%= @user.last_name %>
   </p>
   <p>
     <strong>Customer Contact Info:</strong>
-    Phone Number: <%= @user.phone_number %>
-    Email: <%= @user.email %>
-    Address: <%= @user.address @user.apt_number @user.city @user.state @user.zip_code %>
+    <p>
+    &emsp;<b>Phone Number:</b> <%= @user.phone_number %><br>
+    &emsp;<b>Email:</b> <%= @user.email %><br>
+    &emsp;<b>Address:</b> <%= @user.address %> <% if @user.apt_number != '' %>APT: <%= @user.apt_number %><% end %><br>
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <%= @user.city%>, <%= @user.state %> <%= @user.zip_code %>
+    </p>
   </p>
   <p>
     <strong>Role:</strong>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #this is only if a first user needs created
   #user_total = User.all
   #if user_total.count == 0
-    skip_before_action :authorize, only: [:new, :create, :show]
+  skip_before_action :authorize, only: [:new, :create, :show, :update]
   #end
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -43,14 +43,15 @@ class UsersController < ApplicationController
       @user.update!(:role_id => Role.find_by(role_name: @role).id)
     else
       @user.role_name = "User"
-      @role = @user.role_name
-      @user.update!(:role_name => @role, :role_id => Role.find_by(role_name: @role).id)
+      #@role = @user.role_name
+      @user.role_id = 2
+      #@user.update!(:role_name => @role, :role_id => Role.find_by(role_name: @role).id)
     end
 
     respond_to do |format|
       if @user.save
         #write module to call create method from sessions controller to login the user
-        format.html { redirect_to homepage_posts_path, notice: "User #{@user.name} was successfully created." }
+        format.html { redirect_to user_path(@user.id), notice: "User #{@user.name} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

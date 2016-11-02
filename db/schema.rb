@@ -149,15 +149,15 @@ ActiveRecord::Schema.define(version: 20161031191306) do
     t.integer  "role_id"
     t.text     "first_name"
     t.text     "last_name"
-    t.text     "referral"
-    t.text     "user_review"
-    t.integer  "phone_number"
+    t.string   "referral"
+    t.string   "user_review"
+    t.text     "phone_number"
     t.text     "email"
     t.text     "address"
-    t.integer  "apt_number"
+    t.text     "apt_number"
     t.text     "city"
     t.text     "state"
-    t.integer  "zip_code"
+    t.text     "zip_code"
   end
 
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
