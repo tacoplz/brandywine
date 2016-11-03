@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   #get 'sessions/create'
 
   #get 'sessions/destroy'
+  #account activation mailer via account_activations controller
+  resources :account_activations, only: [:edit]
 
   resources :users
   resources :homepage_posts

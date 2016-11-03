@@ -1,9 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  furniture_room: MyString
-  furniture_class: MyString
-
-two:
-  furniture_room: MyString
-  furniture_class: MyString

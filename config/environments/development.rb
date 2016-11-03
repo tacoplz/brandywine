@@ -13,8 +13,13 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Do care if the mailer can send
+  config.action_mailer.raise_delivery_errors = true
+  # Set up test mailer
+  config.action_mailer.delivery_method = :test
+  host = 'localhost:3000' # Don't use this literally; use your local dev host instead
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,16 +45,16 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Config mail delivery
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:        "smtp.bizmail.yahoo.com",
-    port:           587,
-    domain:         "http://thebrandywinefurniture.com/",
-    authentication: "plain",
-    user_name:      "brandywinefurniture",
-    password:       "fireball1967",
-    enable_starttls_auto: true
-  }
+#  config.action_mailer.delivery_method = :smtp
+#  config.action_mailer.smtp_settings = {
+#    address:        "smtp.bizmail.yahoo.com",
+#    port:           587,
+#    domain:         "http://thebrandywinefurniture.com/",
+#    authentication: "plain",
+#    user_name:      "brandywinefurniture",
+#    password:       "fireball1967",
+#    enable_starttls_auto: true
+#  }
 
   #the following defines the location paperclip saves images
   Paperclip.options[:command_path] = "/usr/local/bin/"

@@ -1,3 +1,16 @@
-UserNotifier#welcome
+Dear <%= @user.first_name %>,
 
-<%= @greeting %>, find me in app/views/user_notifier/welcome.text.erb
+  Thanks for signing up for an account with Brandywine Furniture. Please
+click the link below to activate your account. To best assist you we have
+created a furniture list feature to easily choose your favorite furniture
+types, styles, and stains to help you find quality stylish furniture that
+completes your home.
+
+  Please remember to update your account with your phone number so that we
+can quickly contact you to provide more personal assistance. While you're
+there please leave us a review and let us know who introduced you to us.
+
+Thanks,
+Erin at Brandywine furniture
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

@@ -5,10 +5,9 @@ class UserNotifier < ApplicationMailer
   #
   #   en.user_notifier.welcome.subject
   #
-  def welcome
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def welcome(user)
+    @user = user
+    mail to: user.email, subject: "Welcome, please activate your account"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -16,9 +15,8 @@ class UserNotifier < ApplicationMailer
   #
   #   en.user_notifier.lost_password.subject
   #
-  def lost_password
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def lost_password(user)
+    @user = user
+    mail to: user.email, subject: "Lost Password"
   end
 end

@@ -169,7 +169,14 @@ User.delete_all
 image_path = "#{Rails.root}/public/system/users/user_images/000/000/001/original/Erin.jpg"
 image_file = File.new(image_path)
 User.create!(name: 'Erin',
+  first_name: 'Erin',
+  last_name: 'Stephan',
   password_digest: '$2a$10$q/vxYRcXfSK5e4PUhFzZ8uCfnv1Rl.aJGhdLfruY63mCaCOcfN6zK',
+  email: 'brandywinefurniture@yahoo.com',
+  activated: true,
+  activated_at: Time.zone.now,
+  role_name: 'Admin',
+  role_id: 1,
   #set the image as an asset (uploaded file) to how paperclip gem works
   user_image: ActionDispatch::Http::UploadedFile.new(
     filename: File.basename(image_file),
@@ -178,6 +185,22 @@ User.create!(name: 'Erin',
     type: MIME::Types.type_for(image_path).first.content_type
   )
 )
+User.create!(name: 'Bob',
+  first_name: 'Bob',
+  last_name: 'Bob',
+  password_digest: '$2a$10$lgIYBSH7ylr6drN8BDLll.dwd6avYMRfIqDeEe2i0mw9LYKkDQtme',
+  email: 'cs106607@gmail.com',
+  activated: true,
+  activated_at: Time.zone.now,
+  role_name: 'User',
+  role_id: 2
+)
+
+Roles.delete_all
+Role.create!(id: 1,
+  role_name: 'Admin')
+Role.create!(id: 2,
+  role_name: 'User')
 
 Blog.delete_all
 #code to find blog "blog_image" image and set as variables.

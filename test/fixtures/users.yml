@@ -7,3 +7,11 @@ one:
 two:
   name: susannah
   password_digest: <%= BCrypt::Password.create('secret') %>
+
+bob:
+  name: Bob
+  first_name: Bob
+  email: bob@example.com
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>

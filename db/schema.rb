@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031191306) do
+ActiveRecord::Schema.define(version: 20161102235934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(version: 20161031191306) do
     t.string   "user_image_content_type"
     t.integer  "user_image_file_size"
     t.datetime "user_image_updated_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "role_name"
     t.integer  "role_id"
     t.text     "first_name"
@@ -158,6 +158,9 @@ ActiveRecord::Schema.define(version: 20161031191306) do
     t.text     "city"
     t.text     "state"
     t.text     "zip_code"
+    t.string   "activation_digest"
+    t.boolean  "activated",               default: false
+    t.datetime "activated_at"
   end
 
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree

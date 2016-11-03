@@ -1,5 +1,20 @@
-<h1>UserNotifier#welcome</h1>
+<p>Dear <%= @user.first_name %>,</p>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_notifier/welcome.html.erb
+&emsp;Thanks for signing up for an account with Brandywine Furniture. Please
+click the link below to <%= link_to "activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %> your account. To best assist you we have
+created a furniture list feature to easily choose your favorite furniture
+types, styles, and stains to help you find quality stylish furniture that
+completes your home.<br>
+<br>
+&emsp;Please remember to update your account with your phone number so that we
+can quickly contact you to provide more personal assistance. While you're
+there please leave us a review and let us know who introduced you to us.<br>
+<br>
+Thanks,<br>
+Erin at Brandywine furniture
 </p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
