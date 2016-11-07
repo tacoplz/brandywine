@@ -11,7 +11,19 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     #assign role_name for user
     role = user.role_name
-    if user and user.authenticate(params[:password])
+
+    #do I need to use this?
+    #this needs to go somewhere where it will only be called and applied if the user is authenticated?
+    #user.remember
+    #cookies.permanent.signed[:user_id] = user.id
+    #cookies.permanent[:remember_token] = user.remember_token
+
+    if user && user.authenticate(params[:password]) && user.activated == true
+      #Hartl book used this https://www.railstutorial.org/book/account_activation- see Chap 11 - Listing 11.28
+      #user.authenticated?(:remember, cookies[:remember_token])
+
+      #remember user using definition in sessions_helper.rb
+      ####remember user
       #try to break out user roles
       if role == 'Admin'
         session[:user_role_id] = user.role_id
@@ -24,7 +36,7 @@ class SessionsController < ApplicationController
         #if there is a cart made by the session, add the user_id to the cart on login
         if Cart.find_by(user_id: user.id)
           @cart = Cart.where(user_id: user.id)
-        elsif Cart.find(session[:cart_id]) && Cart.find(session[:cart_id]).user_id == nil
+        elsif Cart.find_by(id: session[:cart_id]) && Cart.find(session[:cart_id]).user_id == nil
           @cart = Cart.find(session[:cart_id])
           @cart.update!(:user_id => user.id)
         else
@@ -32,9 +44,18 @@ class SessionsController < ApplicationController
         end
         redirect_to homepage_posts_path, notice: "Welcome back, #{User.find_by(id: user.id).name.capitalize}!"
       end
+    elsif user && user.authenticate(params[:password])
+      redirect_to login_url, alert: "Please activate account via email"
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end
+  end
+
+  #where the fuck do i put this
+  def remember(user)
+    user.remember
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
   end
 
   def destroy
@@ -43,4 +64,7 @@ class SessionsController < ApplicationController
     session[:user_role_id] = nil || session[:user_id] = nil
     redirect_back_or_default homepage_posts_path
   end
+
+
+
 end

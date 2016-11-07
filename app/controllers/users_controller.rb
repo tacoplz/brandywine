@@ -50,9 +50,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        #when a user signs up and is saved to the db, send the welcome/account_activation mail
+        UserNotifier.welcome(@user).deliver_now
         #write module to call create method from sessions controller to login the user
-        format.html { redirect_to user_path(@user.id), notice: "User #{@user.name} was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to homepage_posts_path, notice: "Thanks for signing up, #{@user.first_name}!\nPlease check your email to activate your account." }
+        #format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

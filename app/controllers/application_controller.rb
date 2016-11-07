@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+
     private
 
     #this is to set the current cart to the cart matching the session of the user
