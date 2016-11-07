@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  #the below password resets were auto created by rails generate
+  #get 'password_resets/new'
+  #get 'password_resets/edit'
+
   resources :roles
   resources :furniture_styles
   resources :blogs

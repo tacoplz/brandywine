@@ -11,10 +11,11 @@ class UserNotifierPreview < ActionMailer::Preview
   end
 
   # Preview this email at
-  # http://localhost:3000/rails/mailers/user_mailer/password_reset
+  # http://localhost:3000/rails/mailers/user_notifier/lost_password
   def lost_password
     user = User.find(7)
-    UserNotifier.lost_password
+    user.reset_token = User.new_token
+    UserNotifier.lost_password(user)
   end
 
 end
