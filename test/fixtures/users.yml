@@ -11,7 +11,7 @@ two:
 bob:
   name: Bob
   first_name: Bob
-  email: bob@example.com
+  email: cs106607@ohio.edu
   password_digest: <%= BCrypt::Password.create('secret') %>
   activated: true
   activated_at: <%= Time.zone.now %>

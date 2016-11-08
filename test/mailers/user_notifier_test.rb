@@ -15,6 +15,7 @@ class UserNotifierTest < ActionMailer::TestCase
 
   test "lost_password" do
     user = users(:bob)
+    user.reset_token = User.new_token
     mail = UserNotifier.lost_password(user)
     assert_equal "Lost Password", mail.subject
     assert_equal [user.email], mail.to

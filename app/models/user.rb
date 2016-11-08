@@ -75,6 +75,11 @@ class User < ActiveRecord::Base
     UserNotifier.lost_password(self).deliver_now
   end
 
+  # returns true if password reset has expired
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
