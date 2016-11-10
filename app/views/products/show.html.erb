@@ -7,7 +7,7 @@
 <p>
   <%# if you want to see the image url %>
   <%#= @product.image(:medium) %>
-  <td><%= image_tag @product.image(:medium) %>
+  <td><%= image_tag @product.image(:large) %>
 </p>
 
 <p>
@@ -51,11 +51,12 @@
   <% if LineItem.find_by(cart_id: cart.id, product_id: @product.id) && session[:user_id]%>
     Item In <%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %>
   <% end %>
+<% elsif session[:user_role_id] %>
 <% else %>
   <%= button_to 'Add to My Furniture List', line_items_path(product_id: @product) %>
 <% end %>
 
 <% if session[:user_role_id] %>
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Product Index', products_path %>
+  <%#= link_to 'Product Index', products_path, class: 'btn' %>
+  <%= link_to 'Edit', edit_product_path(@product), class: 'btn' %>
 <% end %>

@@ -1,12 +1,15 @@
 class FurnitureRoom < ActiveRecord::Base
 
-has_many :furniture_types, :dependent => :destroy
+  has_many :furniture_types, :dependent => :destroy
 
-#the following code is used to provide and validate an attachment, this code
-#relys on the paperclip gem
- has_attached_file :room_image, styles: { thumb: "100x100>", small: "150x150#", medium: "200x200>", large: "300x300>" }
- validates_attachment :room_image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
- validates_attachment_file_name :room_image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
+  validates :room_type,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
+
+  #the following code is used to provide and validate an attachment, this code
+  #relys on the paperclip gem
+  has_attached_file :room_image, styles: { small: "150x150#" }
+  validates_attachment :room_image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  validates_attachment_file_name :room_image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
+  validates_with AttachmentSizeValidator, attributes: :room_image, less_than: 200.kilobytes
 
   def self.roomtypes
     #this method maps the data in the furniture_rooms db table and adds the custom html field data-roomid

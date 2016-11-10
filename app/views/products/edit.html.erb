@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<% if session[:role_id] %>
+  <%#= link_to 'Show', @product, class: 'btn' %>
+  <%#= link_to 'Back', products_path, class: 'btn' %>
+<% end %>

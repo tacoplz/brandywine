@@ -22,50 +22,56 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 6 %>
+    <%= f.text_area :description, rows: 6, class: 'form-control'%>
   </div>
-  <div class="field" id="furniture_style">
+  <div class="form-group" id="furniture_style">
     <%= f.label :furniture_style %><br>
     <%= f.select :furniture_style, FurnitureStyle.furniturestyles,
-                  :prompt => 'Select a furniture style' %>
+                  {:prompt => 'Select a furniture style'}, {class: 'form-control'} %>
     <%= link_to('Modify', furniture_styles_path, :title => "Don't see what your looking for?\nAdd a furniture style.") %>
   </div>
+
   <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
+    <label>
+      <%= f.label "Upload Photo" %><br>
+      <span class="btn btn-default">
+        <%= f.file_field :image %>
+      </span>
+    </labe>
   </div>
-  <div class="field" id="room_for_furniture">
+
+  <div class="form-group" id="room_for_furniture">
     <%= f.label :room_for_furniture %><br>
     <%= f.select :room_for_furniture, FurnitureRoom.roomtypes,
-                  :prompt => 'Select a room for furniture' %>
+                  {:prompt => 'Select a room for furniture'}, {class: 'form-control'} %>
     <%= link_to('Modify', furniture_rooms_path, :title => "Don't see what your looking for?\nAdd a room.") %>
     <%#= f.select :room_for_furniture, options_for_select(FurnitureRoom.all.map { |room| [ room.room_type, room.room_type, {"data-roomid"=>room.id} ] }) %>
   </div>
-  <div class="field" id="furniture_type" >
+  <div class="form-group" id="furniture_type" >
     <%= f.label :furniture_type %><br>
     <%= f.select :furniture_type, FurnitureType.furnituretypes,
-                  :prompt => 'Select a furniture type' %>
+                  {:prompt => 'Select a furniture type'}, {class: 'form-control'} %>
   <%= link_to('Modify', furniture_types_path, :title => "Don't see what your looking for?\nAdd a furniture type.") %>
   </div>
-  <div class="field">
+  <div class="form-group", id="furniture_wood" >
     <%= f.label :furniture_wood %><br>
     <%= f.select :furniture_wood, FurnitureWood.woodtypes,
-                  :prompt => 'Select a wood type'%>
+                  {:prompt => 'Select a wood type' }, {class: 'form-control'} %>
     <%= link_to('Modify', furniture_woods_path, :title => "Don't see what your looking for?\nAdd a furniture wood.") %>
   </div>
   <div class="field">
     <%= f.label :furniture_stain %><br>
-    <%= f.text_field :furniture_stain %>
+    <%= f.text_field :furniture_stain, class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :furniture_dimensions %><br>
-    <%= f.text_field :furniture_dimensions %>
+    <%= f.text_field :furniture_dimensions, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Product", class: 'btn' %>
   </div>
 <% end %>

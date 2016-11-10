@@ -24,9 +24,24 @@ class ApplicationController < ActionController::Base
 
     #require access for authorized users
     def authorize_user
-      unless User.find_by(id: session[:user_id])
-        redirect_to login_url, notice: "Please Log In"
+      @user = User.find(params[:id])
+      unless @user == User.find_by(id: session[:user_id]) || User.find_by(role_id: session[:user_role_id])
+        redirect_to login_url, notice: "Permission Denied.\nA different user login is required to access this page."
       end
+    end
+    def authorize_cart_user
+      if session[:user_id] || session[:user_role_id]
+        @user = Cart.find_by(id: params[:id]).user_id
+        unless @user == User.find_by(id: session[:user_id]).id || User.find_by(role_id: session[:user_role_id])
+          redirect_to login_url, notice: "Permission Denied.\nA different user login is required to access this page."
+        end
+      elsif session[:cart_id]
+        @usercart = session[:cart_id]
+        unless @usercart == Cart.find_by(id: params[:id]).id
+          redirect_to login_url, notice: "Permission Denied. A different user login is required to access this page."
+        end
+      end
+    rescue
     end
 
     #this stores the users location prior to logging in, it must be called within

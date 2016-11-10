@@ -12,6 +12,7 @@ $(document).ready(function() {
   }
 });
 
+
 var populate_furniture_types;
 populate_furniture_types = function() {
   var $furniture_types_select, data, furniture_room_id;

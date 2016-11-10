@@ -2,16 +2,16 @@ class UsersController < ApplicationController
   #this is only if a first user needs created
   #user_total = User.all
   #if user_total.count == 0
-  skip_before_action :authorize, only: [:new, :create, :show, :update]
+  skip_before_action :authorize, only: [:new, :edit, :create, :show, :update]
   #end
-
+  before_action :authorize_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    @users = User.order(:last_name, :first_name)
   end
 
   # GET /users/1
@@ -95,6 +95,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def user_reviews
+    @users = User.all
   end
 
   private

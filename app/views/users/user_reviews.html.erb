@@ -1,0 +1,12 @@
+<h1>User Reviews</h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+
+    <% @users.each do |user| %>
+      <% unless (user.user_review).blank? %>
+        <b><%= user.name %></b><br>
+        <%= user.user_review %><br>
+      <% end %>
+    <% end %>

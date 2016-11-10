@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<body>
 <p>
   <p>
     <%# if you want to see the image url %>
@@ -10,34 +10,38 @@
     <strong>Username:</strong>
     <%= @user.name %>
   </p>
-  <p>
-    <strong>Customer Name:</strong>
-    <%= @user.first_name %> <%= @user.last_name %>
-  </p>
-  <p>
-    <strong>Customer Contact Info:</strong>
+  <% if session[:user_role_id] || @user.id == session[:user_id] %>
     <p>
-    &emsp;<b>Phone Number:</b> <%= @user.phone_number %><br>
-    &emsp;<b>Email:</b> <%= @user.email %><br>
-    &emsp;<b>Address:</b> <%= @user.address %> <% if @user.apt_number != '' %>APT: <%= @user.apt_number %><% end %><br>
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <%= @user.city%>, <%= @user.state %> <%= @user.zip_code %>
+      <strong>Customer Name:</strong>
+      <%= @user.first_name %> <%= @user.last_name %>
     </p>
-  </p>
-  <p>
-    <strong>Role:</strong>
-    <%= @user.role_name %>
-    <strong>Role Id:</strong>
-    <%= @user.role_id %>
-  </p>
+    <p>
+      <strong>Customer Contact Info:</strong>
+      <p>
+        &emsp;<b>Phone Number:</b> <%= @user.phone_number %><br>
+        &emsp;<b>Email:</b> <%= @user.email %><br>
+        &emsp;<b>Address:</b> <%= @user.address %> <% if @user.apt_number != '' %>APT: <%= @user.apt_number %><% end %><br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <%= @user.city%>, <%= @user.state %> <%= @user.zip_code %>
+      </p>
+    </p>
+    <p>
+      <strong>Role:</strong>
+      <%= @user.role_name %>
+      <strong>Role Id:</strong>
+      <%= @user.role_id %>
+    </p>
+    <p>
+      <strong>How you heard about Brandywine Furniture:</strong>
+      <%= @user.referral %>
+    </p>
+  </p><br>
+  <div class="adminbutton" >
+    <%= link_to 'Edit Info', edit_user_path(@user), class: 'btn' %>
+    <%#= link_to 'Back', users_path, class: 'btn' %>
+  </div>
+<% end %>
   <p>
     <strong>Review Brandywine Furniture:</strong>
     <%= @user.user_review %>
   </p>
-  <p>
-    <strong>How you heard about Brandywine Furniture:</strong>
-    <%= @user.referral %>
-  </p>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</body>

@@ -1,10 +1,11 @@
 <head>
 
   <% if session[:user_role_id] %>
-    <div class='btn'><%= button_to 'Logout', logout_path, method: :delete %></div>
-    <div class='btn'><%= button_to 'Control Panel', admin_path, method: :get %></div>
+    <div ><%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary active' %>
+    <%= button_to 'Control Panel', admin_path, method: :get, class: 'btn btn-secondary active' %></div>
   <% elsif session[:user_id] %>
-    <div class='btn'><%= button_to 'Logout', logout_path, method: :delete %></div>
+    <div><%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary active' %>
+      <%= button_to "#{User.find(session[:user_id]).first_name.capitalize}'s Profile", user_path(session[:user_id]), method: :get, class: 'btn btn-secondary active' %></div>
   <% else %>
     <div class='btn'><%= button_to 'Sign Up', new_user_path, method: :get %></div>
     <div class='btn'><%= button_to 'Login', login_path, method: :get %></div>

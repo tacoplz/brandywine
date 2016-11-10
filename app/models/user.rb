@@ -34,10 +34,12 @@ class User < ActiveRecord::Base
 
   #the following code is used to provide and validate an attachment, this code
   #relys on the paperclip gem
-   has_attached_file :user_image, styles: { thumb: "100x100>", small: "150x150#", medium: "200x200>", large: "300x300>" }
+   has_attached_file :user_image, styles: { thumb: "100x100#", small: "150x150#" }, :default_url => "missing_profile_pic.png"
    validates_attachment :user_image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
    validates_attachment_file_name :user_image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
-  after_destroy :ensure_an_admin_remains
+   validates_with AttachmentSizeValidator, attributes: :user_image, less_than: 200.kilobytes
+
+   after_destroy :ensure_an_admin_remains
 
   # Returns the hash digest of the given string.
   def self.digest(string)

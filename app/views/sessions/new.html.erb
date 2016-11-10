@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<center><b><p id="notice"><%= notice %></p></b></center>
 <h1>Login</h1>
 <div class="brandywine_form">
   <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p>
+    <center><b><p id="notice"><%= flash[:alert] %></p></b></center>
   <% end %>
   <%# This allow us to create the first user %>
   <% if User.count == 0 %>
@@ -26,13 +25,13 @@
         REQUIRED. %>
         <%= text_field_tag :name, params[:name] %>
       </div>
-      <div>
+
         <%= label_tag :password, 'Password:' %>
         <%= password_field_tag :password, params[:password] %>
         <%= link_to "(forgot password?)", new_password_reset_path %>
       </div>
-      <div>
-        <%= submit_tag "Login" %>
+      <div class= loginbutton>
+        <%= submit_tag "Login", class: 'btn' %>
       </div>
     </fieldset>
   <% end %>
