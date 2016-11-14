@@ -15,10 +15,12 @@
   <fieldset>
   <legend>Enter User Details</legend>
 
+  <%= image_tag @user.user_image(:small) %>
   <div class="field">
     <%= f.label :user_image, 'Add a profile photo:' %><br>
     <%= f.file_field :user_image %>
   </div>
+
   <div class="field">
     <%= f.label :first_name, 'First name:' %><br>
     <%= f.text_field :first_name, class: 'form-control' %>
@@ -43,15 +45,21 @@
     <%= f.label :name, 'Username:' %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password, 'Password:' %><br>
-    <%= f.password_field :password, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirm Password:' %><br>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-  </div>
-  <% if session[:user_id] %>
+
+<% if session[:user_id] == nil || session[:user_role_id] %>
+
+    <div class="field">
+      <%= f.label :password, 'Password:' %><br>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, 'Confirm Password:' %><br>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+
+<% end %>
+
+  <% if session[:user_id] || session[:user_role_id] %>
   <h1>Please Update Additional User Details</h1>
     <div class="field">
       <%= f.label :address, 'Address:' %><br>
@@ -88,7 +96,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Create User", class: 'btn' %>
+    <%= f.submit "Submit", class: 'btn' %>
   </div>
 
   </fieldset>

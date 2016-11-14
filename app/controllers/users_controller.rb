@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #this is only if a first user needs created
   #user_total = User.all
   #if user_total.count == 0
-  skip_before_action :authorize, only: [:new, :edit, :create, :show, :update]
+  skip_before_action :authorize, only: [:new, :edit, :create, :show, :update, :user_reviews]
   #end
   before_action :authorize_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
         @role = @user.role_name
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
 
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
+        format.html { redirect_to user_path, notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -99,6 +99,14 @@ class UsersController < ApplicationController
 
   def user_reviews
     @users = User.all
+  end
+
+  def destroy_user_review
+    @user = User.find_by(id: params[:id])
+    user = @user.id
+    User.update(user, :user_review => params[:user_review])
+    @user.save
+    redirect_to user_reviews_path, notice: "User review was successfully deleted."
   end
 
   private

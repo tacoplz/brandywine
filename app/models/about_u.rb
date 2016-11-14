@@ -11,6 +11,6 @@ class AboutU < ActiveRecord::Base
   has_attached_file :about_us_image, styles: { large: "600x600", banner: "800x400#" }
   validates_attachment :about_us_image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   validates_attachment_file_name :about_us_image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
-  validates_with AttachmentSizeValidator, attributes: :about_us_image, less_than: 400.kilobytes
+  validates_with AttachmentSizeValidator, attributes: :about_us_image, less_than: 400.kilobytes, :unless => Proc.new {|m| m[:about_us_image].nil?}
 
 end

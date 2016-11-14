@@ -9,13 +9,12 @@
     </style>
   </div></center>
 </div>
-<center><h2>Announcements</h2></center>
-<table>
+<center><table>
 
   <tbody>
     <% @homepage_posts.each do |homepage_post| %>
       <tr>
-        <td><h4><%= link_to homepage_post.post_title, homepage_post %></h4></td>
+        <td><h3><%= link_to homepage_post.post_title, homepage_post %></h3></td>
         <td><h5><%= homepage_post.created_at.strftime("%B %d, %Y") %></h5></td>
       </tr>
       <tr>
@@ -24,16 +23,16 @@
       </tr>
       <tr>
         <% if session[:user_role_id] %>
-          <td><%= link_to 'Edit', edit_homepage_post_path(homepage_post) %></td>
-          <td><%= link_to 'Destroy', homepage_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_homepage_post_path(homepage_post), class: 'btn btn-secondary active' %></td>
+          <td><%= link_to 'Delete', homepage_post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary active' %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
-</table>
+</table></center>
 
 <br>
 <% if session[:user_role_id] %>
-  <%= link_to 'New Homepage post', new_homepage_post_path %>
+  <%= link_to 'New Announcement', new_homepage_post_path, class: 'btn btn-secondary active' %>
 <% end %>
 </div>

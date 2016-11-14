@@ -1,12 +1,22 @@
-<h1>User Reviews</h1>
+<h1>Customer Reviews</h1>
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
 
-
-    <% @users.each do |user| %>
-      <% unless (user.user_review).blank? %>
-        <b><%= user.name %></b><br>
-        <%= user.user_review %><br>
-      <% end %>
+<div>
+<% if session[:user_id] %>
+  <%= link_to 'Add Review', edit_user_path(:user_id), class: 'btn btn-secondary active' %>
+<% end %>
+</div>
+<div>
+<% @users.each do |user| %>
+  <table>
+    <tbody>
+    <% unless (user.user_review).blank? %>
+      <td><tr><b><%= user.first_name %> <%= user.last_name %></b>&emsp;&emsp;&emsp;<%= user.created_at.strftime("%B %d, %Y") %></tr><br>
+      <tr>&emsp;<%= user.user_review %></tr></td>
     <% end %>
+  </tbody>
+  </table>
+<% end %>
+</div>

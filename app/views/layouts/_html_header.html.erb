@@ -7,8 +7,8 @@
     <div><%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary active' %>
       <%= button_to "#{User.find(session[:user_id]).first_name.capitalize}'s Profile", user_path(session[:user_id]), method: :get, class: 'btn btn-secondary active' %></div>
   <% else %>
-    <div class='btn'><%= button_to 'Sign Up', new_user_path, method: :get %></div>
-    <div class='btn'><%= button_to 'Login', login_path, method: :get %></div>
+    <div><%= button_to 'Sign Up', new_user_path, method: :get, class: 'btn btn-secondary active' %>
+    <%= button_to 'Login', login_path, method: :get, class: 'btn btn-secondary active' %></div>
   <% end %>
 
     <div class="container">
@@ -26,7 +26,14 @@
                 <li><%= link_to 'Browse All Furniture', products_path %></li>
               </ul>
           </li>
-          <li><%= link_to 'About Us', about_u_path(1) %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-content" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Us<span class="caret"></span></a>
+              <ul class="dropdown-content">
+                <%# THIS WILL NEED CODED SO THAT EACH ROOM ADDED BY THE ADMIN WILL AUTO ADD TO THIS DROPDOWN %>
+                <li><%= link_to 'About Us', about_u_path(1) %></li>
+                <li><%= link_to 'Customer Reviews', user_reviews_path %></li>
+              </ul>
+          </li>
           <li><%= link_to 'Blog', blogs_path %></li>
           <% #the code below needs fixed to show the cart corresponding to the session id but if the session id is overridden by the user logged in, it should show the users cart%>
           <% if session[:user_id] %>

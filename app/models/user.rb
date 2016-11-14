@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :state, format: { with: /[a-zA-Z]+/ }, length: { maximum: 20 }
   validates :zip_code, format: { with: /\d+/ }, length: { is: 5 }
   #validate password makes sure the password has at least 1 alpabetical character, 1 number, and one special symbol.
-  validates :password, format: { with: /\A.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*\z/, message: "must contain at least one letter (a - z), number (0 - 9), and symbol (@ # $ % ^ & + =)"}, length: {within: 6..20, message: "too short, minimum 6 characters"}# the regex uses look ahead assertions
+  validates :password, format: { with: /\A.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*\z/, message: "must contain at least one letter (a - z), number (0 - 9), and symbol (@ # $ % ^ & + =)"}, length: {within: 6..20, message: "too short, minimum 6 characters"}, on: :update, allow_blank: true# the regex uses look ahead assertions
   # validates password_confirmation does not require the presence of a password to prevent the password errors from displaying twice. Confirmation must still match password before user is created
   validates :password_confirmation, presence: false
 
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
    has_attached_file :user_image, styles: { thumb: "100x100#", small: "150x150#" }, :default_url => "missing_profile_pic.png"
    validates_attachment :user_image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
    validates_attachment_file_name :user_image, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
-   validates_with AttachmentSizeValidator, attributes: :user_image, less_than: 200.kilobytes
+   validates_with AttachmentSizeValidator, attributes: :user_image, less_than: 200.kilobytes, :unless => Proc.new {|m| m[:user_image].nil?}
 
    after_destroy :ensure_an_admin_remains
 
@@ -76,7 +76,10 @@ class User < ActiveRecord::Base
   def send_password_reset_email
     UserNotifier.lost_password(self).deliver_now
   end
-
+  #Remove User Review
+  #def self.destroy_user_review(user_id)
+  #  User.find(user_id).update_attribute(:user_review, '')
+  #end
   # returns true if password reset has expired
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
