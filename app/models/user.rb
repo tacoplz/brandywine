@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
   validates :phone_number, numericality: { only_integer: true, message: "must be entered without punctuation or spaces" },
     length: { is: 10, message: "must be a 10-digit number" }, allow_blank: true
   validates :email,  presence: true, format: { with: /.+\@.+\.[a-zA-Z]+/ }, uniqueness: { message: "has already been used to create an account"}
-  validates :address, format: { with: /\w+/ }, length: { maximum: 100 }
+  validates :address, format: { with: /\w+/ }, length: { maximum: 100 }, allow_blank: true
   validates :apt_number, format: { with: /\w+/ }, length: { maximum: 8 }, allow_blank: true
-  validates :city, format: { with: /[a-zA-Z]+/ }, length: { maximum: 20 }
-  validates :state, format: { with: /[a-zA-Z]+/ }, length: { maximum: 20 }
-  validates :zip_code, format: { with: /\d+/ }, length: { is: 5 }
+  validates :city, format: { with: /[a-zA-Z]+/ }, length: { maximum: 20 }, allow_blank: true
+  validates :state, format: { with: /[a-zA-Z]+/ }, length: { maximum: 20 }, allow_blank: true
+  validates :zip_code, format: { with: /\d+/ }, length: { is: 5 }, allow_blank: true
   #validate password makes sure the password has at least 1 alpabetical character, 1 number, and one special symbol.
   validates :password, format: { with: /\A.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*\z/, message: "must contain at least one letter (a - z), number (0 - 9), and symbol (@ # $ % ^ & + =)"}, length: {within: 6..20, message: "too short, minimum 6 characters"}, on: :update, allow_blank: true# the regex uses look ahead assertions
   # validates password_confirmation does not require the presence of a password to prevent the password errors from displaying twice. Confirmation must still match password before user is created
