@@ -4,12 +4,12 @@ class Product < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :title,  presence: true, format: { with: /\A[\s\w,.-:]*\z/ }, length: { maximum: 50 }
-  validates :description,  presence: true, format: { with: /\A[\s\w+,.-:;$%()#?!~="']*\z/ }, length: { maximum: 1000 }
+  validates :description,  presence: true, format: { with: /\A[\s\w+,.-:;$%&()#?!~="']*\z/ }, length: { maximum: 1000 }
   validates :room_for_furniture,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
   validates :furniture_type,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
   validates :furniture_wood,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
-  validates :furniture_stain,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
-  validates :furniture_dimensions, presence: true, format: { with: /\A[\s\w+,.-:;$%*()]*\z/ }, length: { maximum: 100 }
+  validates :furniture_stain,  presence: true, format: { with: /\A[\s\w-]*\z/ }, length: { maximum: 50 }
+  validates :furniture_dimensions, format: { with: /\A[\s\w+,.-:;$%*&()]*\z/ }, length: { maximum: 100 }, allow_blank: true
   validates :furniture_style,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
 
   #the following code is used to provide and validate an attachment, this code

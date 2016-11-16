@@ -2,7 +2,7 @@ class AboutU < ActiveRecord::Base
 
   validates :phone_number, numericality: { only_integer: true, message: "must be entered without punctuation or spaces" },
     length: { is: 10, message: "must be a 10-digit number" }, presence: true
-  validates :body,  presence: true, format: { with: /\A[\s\w+,.-:;$%()#?!~="']*\z/ }, length: { maximum: 3000 }
+  validates :body,  presence: true, format: { with: /\A[\s\w+,.-:;&$%()#?!~="']*\z/ }, length: { maximum: 3000 }
   validates :email,  presence: true, format: { with: /.+\@.+\.[a-zA-Z]+/ }
   validates :address, presence: true, format: { with: /\A[\s\w+,.]*\z/ }, length: { maximum: 100 }
   validates :hours, presence: true, format: { with: /\A[\s\w:-]*\z/ }, length: { maximum: 200 }

@@ -2,7 +2,7 @@ class FurnitureType < ActiveRecord::Base
 
   belongs_to :furniture_room, foreign_key: 'furniture_room_id'
 
-  validates :furniture_class,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
+  validates :furniture_class,  presence: true, format: { with: /\A[\s\w&()-]*\z/ }, length: { maximum: 50 }
   validates :furniture_room_for_class,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
   validates :furniture_room_id,  presence: true, format: { with: /\A[\d]*\z/ }, length: { maximum: 5 }
 

@@ -2,7 +2,7 @@ class FurnitureRoom < ActiveRecord::Base
 
   has_many :furniture_types, :dependent => :destroy
 
-  validates :room_type,  presence: true, format: { with: /\A[\s\w]*\z/ }, length: { maximum: 50 }
+  validates :room_type,  presence: true, format: { with: /\A[\s\w&-@()]*\z/ }, length: { maximum: 50 }
 
   #the following code is used to provide and validate an attachment, this code
   #relys on the paperclip gem

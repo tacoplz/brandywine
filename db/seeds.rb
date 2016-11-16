@@ -80,14 +80,12 @@ Product.delete_all
 image_path = "#{Rails.root}/public/system/products/images/000/000/001/original/missionnightstand.jpeg"
 image_file = File.new(image_path)
 Product.create!(title: 'Mission Nightstand',
-  description:
-    %{<p>
-        Set your iPhone on this to charge the shit out of that fucker.
-      </p>},
+  description: 'Set your iPhone on this to charge the shit out of that fucker.',
   room_for_furniture: 'Bedroom',
   furniture_type: 'Nightstand',
   furniture_wood: 'Oak',
   furniture_stain: 'S-2',
+  furniture_style: 'Mission',
   #set the image as an asset (uploaded file) to how paperclip gem works
   image: ActionDispatch::Http::UploadedFile.new(
     filename: File.basename(image_file),
@@ -100,14 +98,12 @@ Product.create!(title: 'Mission Nightstand',
 image_path = "#{Rails.root}/public/system/products/images/000/000/002/original/mission_coffee_table.jpg"
 image_file = File.new(image_path)
 Product.create!(title: 'Mission Coffee Table',
-  description:
-    %{<p>
-        Set your beer here while you watch football and try to forget about the disappointment you've become.
-      </p>},
+  description: 'Set your beer here while you watch football and try to forget about the disappointment you\'ve become.',
   room_for_furniture: 'Living Room',
   furniture_type: 'Coffee Table',
   furniture_wood: 'Oak',
   furniture_stain: 'S-2',
+  furniture_style: 'Mission',
   #set the image as an asset (uploaded file) to how paperclip gem works
   image: ActionDispatch::Http::UploadedFile.new(
     filename: File.basename(image_file),
@@ -120,14 +116,12 @@ Product.create!(title: 'Mission Coffee Table',
 image_path = "#{Rails.root}/public/system/products/images/000/000/003/original/shaker_nightstand.jpg"
 image_file = File.new(image_path)
 Product.create!(title: 'Shaker Nightstand',
-  description:
-    %{<p>
-        Mover and shaker nightstand.
-      </p>},
+  description: 'Mover and shaker nightstand.',
   room_for_furniture: 'Bedroom',
   furniture_type: 'Nightstand',
   furniture_wood: 'Oak',
   furniture_stain: 'Honey Oak',
+  furniture_style: 'Shaker',
   #set the image as an asset (uploaded file) to how paperclip gem works
   image: ActionDispatch::Http::UploadedFile.new(
     filename: File.basename(image_file),
@@ -141,9 +135,7 @@ AboutU.delete_all
 image_path = "#{Rails.root}/public/system/about_us/about_us_images/000/000/001/original/amish-672179_960_720.jpg"
 image_file = File.new(image_path)
 AboutU.create!(id: 1,
-body: 'Brandywine Furniture has been in business since 1988. We started in a barn. It gave a very rustic feel, and offered low overhead. In 2003, we moved to our current location. It offers a much better environment for the furniture; see our care and feeding of furniture section.
-
-Brandywine Furniture believes that it can provide Quality Amish Furniture at a Comfortable Price. We work with a large variety of Amish Furniture builders in the area to produce quality furniture.',
+body: 'Brandywine Furniture has been in business since 1988. We started in a barn. It gave a very rustic feel, and offered low overhead. In 2003, we moved to our current location. It offers a much better environment for the furniture; see our care and feeding of furniture section. Brandywine Furniture believes that it can provide Quality Amish Furniture at a Comfortable Price. We work with a large variety of Amish Furniture builders in the area to produce quality furniture.',
   phone_number: '3303435842',
   email: 'brandywinefurniture@yahoo.com',
   address: '2456 Pyle Rd Dover, Oh 44622',
@@ -208,9 +200,7 @@ image_path = "#{Rails.root}/public/system/blogs/blog_images/000/000/001/original
 image_file = File.new(image_path)
 Blog.create!(id: 1,
 title: 'Visit Amish Country',
-blog_post: '&emsp;&emsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam bibendum ligula at eros maximus accumsan. Fusce ac lacinia metus. Duis malesuada nisi libero, vitae aliquam tortor feugiat ut. Aenean quis faucibus velit. Curabitur sit amet magna tincidunt, commodo ligula sit amet, varius leo. Nullam et iaculis felis, sed interdum sem. Nulla rutrum mauris eget nibh vestibulum, ac aliquam orci lobortis. Nam mollis ligula ac fringilla vehicula. Etiam sed pellentesque felis, sed tristique est. Nunc arcu ipsum, tincidunt sit amet nisi eget, condimentum porta lectus. Nullam posuere eu arcu vitae fringilla. Donec ut velit fermentum massa fringilla elementum. Vivamus sed ornare tortor. Duis ornare odio purus, in sagittis leo consectetur eget. Integer quis nulla nisi. Nunc posuere imperdiet nibh, id sagittis est imperdiet in.
-
-&emsp;&emsp;Morbi egestas convallis bibendum. Mauris auctor scelerisque purus, varius fringilla purus malesuada non. In eu mollis neque, non cursus nisl. Nulla et tellus vel nisl tincidunt pellentesque. Vestibulum ullamcorper neque eros, ut aliquet eros ultrices non. Vivamus blandit a eros eget dictum. Nullam in urna sit amet massa mollis mollis. Nam eget enim ut sem semper convallis. Mauris in ipsum id sem vehicula semper. Nam elit felis, molestie ut arcu in, laoreet porta mauris. Fusce faucibus arcu est, at congue enim viverra vel. Integer id ipsum nec mi dapibus convallis quis fermentum elit. Mauris ut nunc tempor leo lobortis molestie. Donec blandit sit amet eros egestas condimentum. Sed finibus dolor at rhoncus molestie.',
+blog_post: '&emsp;&emsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam bibendum ligula at eros maximus accumsan. Fusce ac lacinia metus. Duis malesuada nisi libero, vitae aliquam tortor feugiat ut. Aenean quis faucibus velit. Curabitur sit amet magna tincidunt, commodo ligula sit amet, varius leo. Nullam et iaculis felis, sed interdum sem. Nulla rutrum mauris eget nibh vestibulum, ac aliquam orci lobortis. Nam mollis ligula ac fringilla vehicula. Etiam sed pellentesque felis, sed tristique est. Nunc arcu ipsum, tincidunt sit amet nisi eget, condimentum porta lectus. Nullam posuere eu arcu vitae fringilla. Donec ut velit fermentum massa fringilla elementum. Vivamus sed ornare tortor. Duis ornare odio purus, in sagittis leo consectetur eget. Integer quis nulla nisi. Nunc posuere imperdiet nibh, id sagittis est imperdiet in. &emsp;&emsp;Morbi egestas convallis bibendum. Mauris auctor scelerisque purus, varius fringilla purus malesuada non. In eu mollis neque, non cursus nisl. Nulla et tellus vel nisl tincidunt pellentesque. Vestibulum ullamcorper neque eros, ut aliquet eros ultrices non. Vivamus blandit a eros eget dictum. Nullam in urna sit amet massa mollis mollis. Nam eget enim ut sem semper convallis. Mauris in ipsum id sem vehicula semper. Nam elit felis, molestie ut arcu in, laoreet porta mauris. Fusce faucibus arcu est, at congue enim viverra vel. Integer id ipsum nec mi dapibus convallis quis fermentum elit. Mauris ut nunc tempor leo lobortis molestie. Donec blandit sit amet eros egestas condimentum. Sed finibus dolor at rhoncus molestie.',
 blog_image: ActionDispatch::Http::UploadedFile.new(
   filename: File.basename(image_file),
   tempfile: image_file,

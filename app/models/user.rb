@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
     message: "Please only use letters in last name" }, length: { minimum: 2 }
   validates :referral, length: { maximum: 50,
-    too_long: "%{count} characters is the maximum allowed" }
+    too_long: "%{count} characters is the maximum allowed" }, allow_blank: true
   validates :user_review, length: { maximum: 200,
-    too_long: "%{count} characters is the maximum allowed" }
+    too_long: "%{count} characters is the maximum allowed" }, allow_blank: true
   validates :phone_number, numericality: { only_integer: true, message: "must be entered without punctuation or spaces" },
     length: { is: 10, message: "must be a 10-digit number" }, allow_blank: true
   validates :email,  presence: true, format: { with: /.+\@.+\.[a-zA-Z]+/ }, uniqueness: { message: "has already been used to create an account"}
