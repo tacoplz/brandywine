@@ -157,7 +157,7 @@ HomepagePost.delete_all
 HomepagePost.create!(post_title: 'Closed for the season',
   post_text: 'Peace out bitches. Closed January and February. Shows available by appointment only.')
 
-Roles.delete_all
+Role.delete_all
 Role.create!(id: 1,
   role_name: 'Admin')
 Role.create!(id: 2,
