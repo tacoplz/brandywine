@@ -185,13 +185,14 @@ HomepagePost.delete_all
 HomepagePost.create!(post_title: 'Closed for the season',
   post_text: 'Peace out bitches. Closed January and February. Shows available by appointment only.')
 
+User.delete_all
 Role.delete_all
 Role.create!(id: 1,
   role_name: 'Admin')
 Role.create!(id: 2,
   role_name: 'User')
 
-User.delete_all
+
 image_path = "#{Rails.root}/public/system/users/user_images/000/000/001/original/Erin.jpg"
 image_file = File.new(image_path)
 User.create!(name: 'Erin',
