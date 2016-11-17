@@ -23,11 +23,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:        "smtp.bizmail.yahoo.com",
     port:           587,
-    domain:         "http://thebrandywinefurniture.com/",
-    authentication: :plain,
     user_name:      "brandywinefurniture",
     password:       "",
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    authentication: :plain
   }
 
 
