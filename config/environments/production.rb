@@ -9,7 +9,6 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => 'email-smtp.us-west-2.amazonaws.com',
     :port           => '587',
-    :authentication => :plain,
     :user_name      => ,
     :password       => ,
     :authentication => :login,
