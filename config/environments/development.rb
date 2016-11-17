@@ -52,7 +52,7 @@ Rails.application.configure do
 #    domain:         "http://thebrandywinefurniture.com/",
 #    authentication: "plain",
 #    user_name:      "brandywinefurniture",
-#    password:       "fireball1967",
+#    password:       "",
 #    enable_starttls_auto: true
 #  }
 
