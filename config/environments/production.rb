@@ -11,6 +11,7 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name      => ,
     :password       => ,
+    :authentication => :login,
     :enable_starttls_auto => true
   }
 
