@@ -42,6 +42,7 @@ FurnitureRoom.create!(id: 2,
 FurnitureStyle.delete_all
 #code to find furniture_style "mission" image and set as variables.
 image_path = "#{Rails.root}/public/system/furniture_styles/furniture_style_images/000/000/001/original/mission.jpg"
+image_file = File.new(image_path)
 FurnitureStyle.create!(
   furniture_style: 'Mission',
   #set the image as an asset (uploaded file) to how paperclip gem works
