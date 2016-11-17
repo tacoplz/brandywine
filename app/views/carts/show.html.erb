@@ -28,7 +28,7 @@
     <h5>Welcome, please sign in or sign up to save this list.</h5>
   <ul>
     <% @cart.line_items.each do |item| %>
-      <li><%= image_tag item.product.image(:thumb)%>
+      <li><%= image_tag item.product.image(:small)%>
       <%= link_to item.product.title, item.product %></li>
       <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
     <% end %>
