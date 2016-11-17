@@ -6,7 +6,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
   config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
+  #ActionMailer::Base.smtp_settings = {
     :address        => 'email-smtp.us-west-2.amazonaws.com',
     :port           => '587',
     :user_name      => ,
