@@ -4,16 +4,28 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
-  config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.smtp_settings = {
+  #host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
+  #config.action_mailer.default_url_options = { host: host }
   #ActionMailer::Base.smtp_settings = {
-    :address        => 'email-smtp.us-west-2.amazonaws.com',
-    :port           => '587',
-    :user_name      => ,
-    :password       => ,
-    :authentication => :login,
-    :enable_starttls_auto => true
+  #  :address        => 'email-smtp.us-west-2.amazonaws.com',
+  #  :port           => '587',
+  #  :user_name      => ,
+  #  :password       => ,
+  #  :authentication => :login,
+  #  :enable_starttls_auto => true
+  #}
+  #Config mail delivery
+  host = 'gmail.com'
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:        "smtp.bizmail.yahoo.com",
+    port:           587,
+    domain:         "http://thebrandywinefurniture.com/",
+    authentication: :plain,
+    user_name:      "brandywinefurniture",
+    password:       "",
+    enable_starttls_auto: true
   }
 
 
