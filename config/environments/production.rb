@@ -10,8 +10,8 @@ Rails.application.configure do
   #ActionMailer::Base.smtp_settings = {
   config.action_mailer.smtp_settings = {
     :address        => 'email-smtp.us-west-2.amazonaws.com',
-    :domain         => 'example.com',
     :port           => '465',
+    :domain         => 'example.com',
     :user_name      => ,
     :password       => ,
     :authentication => :login,
