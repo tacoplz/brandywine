@@ -4,6 +4,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+
+#the below code snippits initializes smtp and tls. This is required to send any emails using the stmp config below
   require 'net/smtp'
 
     module Net
@@ -12,17 +14,23 @@ Rails.application.configure do
           true
         end
       end
+    end
 
-
+  #the below code sets the delivery method to smtp
   config.action_mailer.delivery_method = :smtp
-  #host = 'config.action_mailer.default_url_options = {
+
+  #set the host to the dns of the instance
   host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
   config.action_mailer.default_url_options = { host: host }
-  #ActionMailer::Base.smtp_settings = {
+  #configure the actionmailer smtp settings
+  #note: when working in sandbox make sure the receipiant email and sender email address have been verified
   config.action_mailer.smtp_settings = {
+    #since the instance is hosted in the west (oregon) must use the stmp host for west region
     :address        => 'email-smtp.us-west-2.amazonaws.com',
+    #tls sends email on port 465. Make sure this port is available for outbound on amazon security groups and vpc ACLs
     :port           => '465',
     :domain         => 'example.com',
+    #this is the amazon SES username and password that is generated in the SES management console
     :user_name      => ,
     :password       => ,
     :authentication => :login,
