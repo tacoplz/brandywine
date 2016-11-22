@@ -31,26 +31,12 @@ Rails.application.configure do
     :port           => '465',
     :domain         => 'example.com',
     #this is the amazon SES username and password that is generated in the SES management console
+    #store the values on the server in .bashrc -> $echo 'export SES_SMTP_USERNAME=someusername' >> ~/.bashrc
     :user_name      => ENV["SES_SMTP_USERNAME"],
     :password       => ENV["SES_SMTP_PASSWORD"],
     :authentication => :login,
     :enable_starttls_auto => true
   }
-
-=begin
-#  Config mail delivery
-  host = 'yahoo.com'
-  config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:        "smtp.bizmail.yahoo.com",
-    port:           587,
-    user_name:      "brandywinefurniture",
-    password:       "",
-    enable_starttls_auto: true,
-    authentication: :plain
-  }
-=end
 
   # Code is not reloaded between requests.
   config.cache_classes = true
