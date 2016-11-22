@@ -88,6 +88,9 @@ test:
 #
 production:
   <<: *default
-  database: brandywine_production
-  username: brandywine
+  adapter: postgresql
+  encoding: unicode
+  database: brandywine
+  pool: 5
+  username: postgres
   password: <%= ENV['BRANDYWINE_DATABASE_PASSWORD'] %>
