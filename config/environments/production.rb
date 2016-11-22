@@ -31,8 +31,8 @@ Rails.application.configure do
     :port           => '465',
     :domain         => 'example.com',
     #this is the amazon SES username and password that is generated in the SES management console
-    :user_name      => ,
-    :password       => ,
+    :user_name      => ENV["SES_SMTP_USERNAME"],
+    :password       => ENV["SES_SMTP_PASSWORD"],
     :authentication => :login,
     :enable_starttls_auto => true
   }
