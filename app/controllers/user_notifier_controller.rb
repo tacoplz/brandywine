@@ -11,7 +11,8 @@ class UserNotifierController < ApplicationController
     render text: 'mail sent'
   end
 
-  def bounce json = JSON.parse(request.raw_post)
+  def bounce
+    json = JSON.parse(request.raw_post)
     logger.info "bounce callback from AWS with #{json}"
     aws_needs_url_confirmed = json['SubscribeURL']
     if aws_needs_url_confirmed
