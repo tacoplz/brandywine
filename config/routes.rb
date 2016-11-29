@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get 'user_reviews', to: 'users#user_reviews'
   get '/system/products/images/' => 'products#show'
   get '/system/furniture_rooms/images/' => 'furniture_rooms#show'
-  
+
   #admin routes, use sessions to log admin in and out
   get 'admin' => 'admin#index'
   #wrap the session route declarations in a block and pass them to the
@@ -64,6 +64,14 @@ root 'homepage_posts#index', as: 'home'
 
 #this is so I can have a FurnitureType selector based off of the selection from FurnitureRoom
 post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show_furniture_types
+
+#set up routes to handle bounce requests and complaints
+  #this should only need done for the UserNotifierController
+  #see the corresponding methods in the controller
+  get 'mail_it' => 'user_notifier#mail_it'
+  post 'aws_sns/bounce' => 'user_notifier#bounce'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
