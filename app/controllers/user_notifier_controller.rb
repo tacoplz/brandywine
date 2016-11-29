@@ -2,6 +2,9 @@ class UserNotifierController < ApplicationController
   skip_before_action :authorize
   skip_before_action :authorize_user
   skip_before_action :authorize_cart_user
+  
+  skip_before_action :protect_from_forgery
+  protect_from_forgery with: :null_session
 
   def mail_it
     logger.info "mail_it called with #{params}"
@@ -12,7 +15,7 @@ class UserNotifierController < ApplicationController
   end
 
   def bounce
-    json = JSON.parse(request.raw_post)
+    json ||= JSON.parse(request.raw_post)
     logger.info "bounce callback from AWS with #{json}"
     aws_needs_url_confirmed = json['SubscribeURL']
     if aws_needs_url_confirmed
