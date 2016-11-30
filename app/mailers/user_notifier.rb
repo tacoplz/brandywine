@@ -19,4 +19,12 @@ class UserNotifier < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Lost Password"
   end
+
+#mail it for SNS notification process
+  def mail_it(email, body_text)
+    @email = email
+    @body_text = body_text
+    mail(to: email, subject: 'Simple test of AWS SES')
+  end
+
 end
