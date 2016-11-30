@@ -10,7 +10,7 @@ class UserNotifierController < ApplicationController
     logger.info "mail_it called with #{params}"
     @email = params[:email]
     #this only works for the welcome email. Probably need to write another method for lost_password
-    UserNotifier.mail_it(@email).deliver
+    UserNotifier.mail_it(@email, 'original text').deliver
     render text: 'mail sent'
   end
 
