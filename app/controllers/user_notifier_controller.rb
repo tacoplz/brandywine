@@ -27,7 +27,7 @@ class UserNotifierController < ApplicationController
       http.get(uri.request_uri)
     else
       logger.info "AWS has sent us the following bounce notifications(s): #{json}"
-      UserNotifier.mail_it('cs106607@ohio.edu', json).deliver
+      UserNotifierController.mail_it('cs106607@ohio.edu', json).deliver
       json['bounce']['bouncedRecipients'].each do |recipient|
         logger.info "AWS SES received a bounce on an email send attempt to #{recipient['emailAddress']}"
       end
