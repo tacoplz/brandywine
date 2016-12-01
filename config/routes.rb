@@ -68,11 +68,10 @@ post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show
 #set up routes to handle bounce requests and complaints
   #this should only need done for the UserNotifierController
   #see the corresponding methods in the controller
-  resources :user_notifier
-  get 'mail_it' => 'user_notifier#mail_it'
-  post 'aws_sns/bounce' => 'user_notifier#bounce'
-
-
+  controller :user_notifier do
+    get 'mail_it' => 'user_notifier#mail_it'
+    post 'aws_sns/bounce' => 'user_notifier#bounce'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
