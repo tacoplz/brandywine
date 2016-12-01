@@ -12,6 +12,7 @@ class UserNotifierController < ApplicationController
     #this only works for the welcome email. Probably need to write another method for lost_password
     UserNotifier.mail_it(@email, 'original text').deliver
     render text: 'mail sent'
+    UserNotifierController.bounce()
   end
 
   def bounce
