@@ -45,7 +45,11 @@ class SessionsController < ApplicationController
         redirect_to homepage_posts_path, notice: "Welcome back, #{User.find_by(id: user.id).name.capitalize}!"
       end
     elsif user && user.authenticate(params[:password])
-      redirect_to login_url, alert: "Please activate account via email"
+      #this line of code limits the site to 50,000 users. And assigns a special session_id to allow
+      #the user to update only the password of the account in case they actually entered the wrong email
+      session[:update_email] = (user.id*50000)
+      #redirect_to edit user email path 
+      redirect_to edit_user_path(user.id), alert: "Please activate account via email. If you have not recieved an email, you may have entered it incorrectly, please update it below"
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end
