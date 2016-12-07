@@ -73,7 +73,7 @@ class UsersController < ApplicationController
         @role = @user.role_name
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
         if session[:update_email]
-          params[:id] = @user.id
+          @user = User.find_by(id: session[:update_email]/50000)
           UserNotifier.welcome(@user).deliver_now
         end
         format.html { redirect_to user_path, notice: "User #{@user.name} was successfully updated." }
