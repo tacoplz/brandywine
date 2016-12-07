@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   #the following code is used to activate user tokens to verify a users email when created, may not need a few of these methods
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
+  before_save   :downcase_username
   before_create :create_activation_digest
   #the below method replaced the before_create version above to allow
   #the unactivated user to update the email address but everytime a user
@@ -103,6 +104,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def downcase_username
+    unless self.name == nil
+      self.name = name.downcase
+    end
+  end
 
 
     # Creates and assigns the activation token and digest.
