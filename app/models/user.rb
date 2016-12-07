@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   before_save   :downcase_email
   before_create :create_activation_digest
 
+#this is an attempt to asssign id to the update method to update user email
+  if session[:update_email]
+    before_action :create_activation_digest, only: [:update]
+  end
+
   #validation for user data
   validates :name, presence: true, uniqueness: {message: 'Username already taken'}, length: { minimum: 3, message: "Username too short, minimum 3 characters" }
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
