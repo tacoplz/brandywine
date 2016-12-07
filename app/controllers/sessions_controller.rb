@@ -12,19 +12,13 @@ class SessionsController < ApplicationController
     #assign role_name for user
     role = user.role_name
 
-    #do I need to use this?
-    #this needs to go somewhere where it will only be called and applied if the user is authenticated?
-    #user.remember
-    #cookies.permanent.signed[:user_id] = user.id
-    #cookies.permanent[:remember_token] = user.remember_token
-
     if user && user.authenticate(params[:password]) && user.activated == true
+      #if the user tried to login before activating their account, the update_email
+      #session will cause them to only be able to update their email when they update their account
+      #here upon logging we clear all update_email sessions because we can be sure
+      #they do not need to have the session set for any reason
       session[:update_email] = nil
-      #Hartl book used this https://www.railstutorial.org/book/account_activation- see Chap 11 - Listing 11.28
-      #user.authenticated?(:remember, cookies[:remember_token])
 
-      #remember user using definition in sessions_helper.rb
-      ####remember user
       #try to break out user roles
       if role == 'Admin'
         session[:user_role_id] = user.role_id

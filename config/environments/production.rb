@@ -20,7 +20,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   #set the host to the dns of the instance
-  host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
+  #host = 'ec2-54-201-124-144.us-west-2.compute.amazonaws.com'
+  host = 'thebrandywinefurniture.net'
   config.action_mailer.default_url_options = { host: host }
   #configure the actionmailer smtp settings
   #note: when working in sandbox make sure the receipiant email and sender email address have been verified
@@ -29,7 +30,7 @@ Rails.application.configure do
     :address        => 'email-smtp.us-west-2.amazonaws.com',
     #tls sends email on port 465. Make sure this port is available for outbound on amazon security groups and vpc ACLs
     :port           => '465',
-    :domain         => 'example.com',
+    :domain         => 'thebrandywinefurniture.net',
     #this is the amazon SES username and password that is generated in the SES management console
     #store the values on the server in .bashrc -> $echo 'export SES_SMTP_USERNAME=someusername' >> ~/.bashrc
     :user_name      => ENV["SES_SMTP_USERNAME"],

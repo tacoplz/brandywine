@@ -71,6 +71,7 @@ class UsersController < ApplicationController
         #update the role_id based on the updated role_name
         @role = @user.role_name
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
+        
         #send activation token if need to update email to activate
         if session[:update_email]
           #creates activation token and digest from the activation token for
