@@ -2,8 +2,11 @@ class User < ActiveRecord::Base
   #the following code is used to activate user tokens to verify a users email when created, may not need a few of these methods
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
-  #before_create :create_activation_digest
-  before_save :create_activation_digest
+  before_create :create_activation_digest
+  #the below method replaced the before_create version above to allow
+  #the unactivated user to update the email address but everytime a user
+  #is updated it creates a new digest. not very efficient that way.
+  #before_save :create_activation_digest
 
   #validation for user data
   validates :name, presence: true, uniqueness: {message: 'Username already taken'}, length: { minimum: 3, message: "Username too short, minimum 3 characters" }
