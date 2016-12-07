@@ -48,8 +48,8 @@ class SessionsController < ApplicationController
       #this line of code limits the site to 50,000 users. And assigns a special session_id to allow
       #the user to update only the password of the account in case they actually entered the wrong email
       session[:update_email] = (user.id*50000)
-      #redirect_to edit user email path 
-      redirect_to edit_user_path(user.id), alert: "Please activate account via email. If you have not recieved an email, you may have entered it incorrectly, please update it below"
+      #redirect_to edit user email path
+      redirect_to edit_user_path(user.id), notice: "Please activate account via email. If you have not recieved an email, you may have entered it incorrectly, please update it below"
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end
