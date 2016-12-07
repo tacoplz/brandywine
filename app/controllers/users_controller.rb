@@ -72,12 +72,11 @@ class UsersController < ApplicationController
         #update the role_id based on the updated role_name
         @role = @user.role_name
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
-        if session[:update_email]
-          @user = User.find_by(id: session[:update_email]/50000)
-          UserNotifier.welcome(@user).deliver_now
-        end
         format.html { redirect_to user_path, notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
+      if session[:update_email]
+        UserNotifier.welcome(@user).deliver_now
+      end
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
