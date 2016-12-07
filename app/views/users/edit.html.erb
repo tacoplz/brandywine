@@ -1,7 +1,14 @@
 <br><center><b><p id="notice"><%= notice %></p></b></center>
-<h1>Editing User</h1>
-
-<%= render 'form' %>
+<% if session[:update_email] %>
+  <h1>Update Email Address</h1>
+  <div class="field">
+    <%= f.label :email, 'Email:' %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+<% else %>
+  <h1>Editing User</h1>
+  <%= render 'form' %>
+<% end %>
 
 <%#= link_to 'Show', @user %>
 <%#= link_to 'Back', users_path %>
