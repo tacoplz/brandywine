@@ -73,8 +73,11 @@ class UsersController < ApplicationController
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
         #send activation token if need to update email to activate
         if session[:update_email]
+          #creates activation token and digest from the activation token for
+          #use only when a user is updating the activation email address.
           @user.activation_token  = activation_token = User.new_token
           @user.activation_digest = User.digest(activation_token)
+          #delivers an activation email to the new email address
           UserNotifier.welcome(@user).deliver_now
         end
         format.html { redirect_to user_path, notice: "User #{@user.name} was successfully updated." }

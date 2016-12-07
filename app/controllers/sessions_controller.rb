@@ -53,6 +53,7 @@ class SessionsController < ApplicationController
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end
+    session[:update_email] = nil
   end
 
   #where the fuck do i put this

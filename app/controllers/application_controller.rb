@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
     #require access for authorized users
     def authorize_user
       @user = User.find(params[:id])
+
       #User.find_by(id: (session[:update_email]/50000)) works with the code on line 50 of the sessions controller
       #this is done to allow the user to update the email in the case that they do not receive a confirmation email
       unless @user == User.find_by(id: session[:user_id]) || User.find_by(role_id: session[:user_role_id]) || User.find_by(id: (session[:update_email]/50000))
