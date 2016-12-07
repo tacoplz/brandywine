@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
     #cookies.permanent[:remember_token] = user.remember_token
 
     if user && user.authenticate(params[:password]) && user.activated == true
+      session[:update_email] = nil
       #Hartl book used this https://www.railstutorial.org/book/account_activation- see Chap 11 - Listing 11.28
       #user.authenticated?(:remember, cookies[:remember_token])
 
@@ -53,7 +54,6 @@ class SessionsController < ApplicationController
     else
       redirect_to login_url, alert: "Invalid user/password combination"
     end
-    session[:update_email] = nil
   end
 
   #where the fuck do i put this
