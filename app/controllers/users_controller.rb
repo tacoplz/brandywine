@@ -6,9 +6,6 @@ class UsersController < ApplicationController
   #end
   before_action :authorize_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
-  #this is an attempt to asssign id to the update method to update user email
-    before_action :create_activation_digest, only: [:update]
 
   # GET /users
   # GET /users.json
