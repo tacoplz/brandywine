@@ -73,7 +73,7 @@ class UsersController < ApplicationController
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
         #send activation token if need to update email to activate
         if session[:update_email]
-          @user.activation_token  = User.new_token
+          @user.activation_token  = activation_token = User.new_token
           @user.activation_digest = User.digest(activation_token)
           UserNotifier.welcome(@user).deliver_now
         end
