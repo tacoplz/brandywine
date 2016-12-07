@@ -73,7 +73,7 @@ class UsersController < ApplicationController
         @role = @user.role_name
         @user.update!(:role_id => Role.find_by(role_name: @role).id)
         if session[:update_email] == (@user.id)*50000
-          UserNotifier.welcome(@user).deliver_now
+          UserNotifier.welcome(User.find_by(id: @user.id)).deliver_now
         end
         format.html { redirect_to user_path, notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
