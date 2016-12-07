@@ -79,9 +79,6 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    if session[:update_email]
-      UserNotifier.welcome(@user).deliver_now
-    end
   end
 
   # DELETE /users/1
