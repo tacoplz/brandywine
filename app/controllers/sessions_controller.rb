@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
   #using the key :user_role_id
   #this uses a form not directly associated with a model object, see sessions/new.html.erb for more info
   def create
-    @user = user
-    user = User.find_by(name: params[:name].downcase)
+    user = User.find_by(name: params[:name])
     #assign role_name for user
     role = user.role_name
 
