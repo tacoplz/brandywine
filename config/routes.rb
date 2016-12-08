@@ -71,6 +71,7 @@ post 'show_furniture_types' => 'furniture_types#show_furniture_types', as: :show
   controller :user_notifier do
     get 'mail_it' => 'user_notifier#mail_it'
     post 'aws_sns/bounce' => 'user_notifier#bounce'
+    post 'aws_sns/bounce' => 'user_notifier#complaint'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

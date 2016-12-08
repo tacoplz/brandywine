@@ -35,4 +35,24 @@ class UserNotifierController < ApplicationController
     render nothing: true, status: 200
   end
 
+  def complaint
+    json = JSON.parse(request.raw_post)
+    logger.info "complaint callback from AWS with #{json}"
+    aws_needs_url_confirmed = json['SubscribeURL']
+    if aws_needs_url_confirmed
+      logger.info "AWS is requesting confirmation of the complaint handler URL"
+      uri = URI.parse(aws_needs_url_confirmed)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.get(uri.request_uri)
+    else
+      logger.info "AWS has sent us the following complaint notification(s): #{json}"
+      SimpleMailer.mail_it('cs106607@ohio.edu', json).deliver
+      json['complainedRecipients'].each do |recipient|
+        logger.info "AWS SES received a complaint on an email sent to #{recipient['emailAddress']}"
+      end
+    end
+    render nothing: true, status: 200
+  end
 end
