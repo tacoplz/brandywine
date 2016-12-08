@@ -48,7 +48,7 @@ class UserNotifierController < ApplicationController
       http.get(uri.request_uri)
     else
       logger.info "AWS has sent us the following complaint notification(s): #{json}"
-      SimpleMailer.mail_it('cs106607@ohio.edu', json).deliver
+      UserNotifier.mail_it('cs106607@ohio.edu', json).deliver
       json['complainedRecipients'].each do |recipient|
         logger.info "AWS SES received a complaint on an email sent to #{recipient['emailAddress']}"
       end
