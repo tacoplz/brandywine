@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "brandywinefurniture@yahoo.com"
+  default from: "no-reply@thebrandywinefurniture.net"
   layout 'mailer'
 end
