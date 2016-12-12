@@ -1,5 +1,5 @@
 class UserNotifier < ApplicationMailer
-  default from: "brandywinefurniture@yahoo.com"
+  default from: "no-reply@thebrandywinefurniture.net"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
