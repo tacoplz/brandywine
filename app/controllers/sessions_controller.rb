@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
   #this uses a form not directly associated with a model object, see sessions/new.html.erb for more info
   def create
     user = User.find_by(name: params[:name].downcase)
-    #assign role_name for user
-    role = user.role_name
+
 
     if user && user.authenticate(params[:password]) && user.activated == true
       #if the user tried to login before activating their account, the update_email
@@ -18,7 +17,8 @@ class SessionsController < ApplicationController
       #here upon logging we clear all update_email sessions because we can be sure
       #they do not need to have the session set for any reason
       session[:update_email] = nil
-
+      #assign role_name for user
+      role = user.role_name
       #try to break out user roles
       if role == 'Admin'
         session[:user_role_id] = user.role_id

@@ -29,7 +29,7 @@ development:
   #enter the following in the command line on OSX operating sys
   # $ echo 'export BRANDYWINE_DEV_PSQL_PASSWORD=somepassword' >> ~/.bashrc
   # $ source ~/.bashrc
-  password: <%= ENV['BRANDYWINE_DEV_PSQL_PASSWORD'] %>
+  password: fireball
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
