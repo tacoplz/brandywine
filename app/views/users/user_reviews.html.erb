@@ -15,6 +15,9 @@
     <% unless (user.user_review).blank? %>
       <td><tr><b><%= user.first_name %> <%= user.last_name %></b>&emsp;&emsp;&emsp;<%= user.created_at.strftime("%B %d, %Y") %></tr><br>
       <tr>&emsp;<%= user.user_review %></tr></td>
+      <% if session[:user_role_id] %>
+        <td><tr><%= link_to 'Edit', add_user_review_path(:id => user.id), class: 'btn btn-secondary active' %></tr></td>
+      <% end %>
     <% end %>
   </tbody>
   </table>

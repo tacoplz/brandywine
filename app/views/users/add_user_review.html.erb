@@ -1,4 +1,9 @@
-<h1>Add a review</h1>
+<% if session[:user_id] %>
+  <h1>Add a review</h1>
+<% else %>
+  <h1>Delete/edit review</h1>
+  <h5>Directions: Delete/edit text and click submit to update review</h5>
+<% end %>
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :user_review, 'Review:' %><br>
@@ -7,4 +12,4 @@
   <div class="actions">
     <%= f.submit "Submit", class: 'btn' %>
   </div>
-<% end %> 
+<% end %>
