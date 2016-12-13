@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   #this is only if a first user needs created
   #user_total = User.all
   #if user_total.count == 0
-  skip_before_action :authorize, only: [:new, :edit, :create, :show, :update, :user_reviews]
+  skip_before_action :authorize, only: [:new, :edit, :create, :show, :update, :user_reviews, :add_user_review]
   #end
   before_action :authorize_user, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_user_review]
 
   # GET /users
   # GET /users.json
@@ -108,6 +108,9 @@ class UsersController < ApplicationController
 
   def user_reviews
     @users = User.all
+  end
+
+  def add_user_review
   end
 
   def destroy_user_review

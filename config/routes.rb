@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   get 'homepage_post/index'
   get 'empty', to: 'carts#empty'
   get 'user_reviews', to: 'users#user_reviews'
+  
+  get 'add_user_review', to: 'users#add_user_review'
+
   get '/system/products/images/' => 'products#show'
   get '/system/furniture_rooms/images/' => 'furniture_rooms#show'
 
