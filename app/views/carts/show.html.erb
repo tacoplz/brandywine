@@ -1,10 +1,11 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <% if session[:user_id] %>
   <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}'s"%> Furniture List</h2>
   <ul>
     <% @cart.line_items.each do |item| %>
-      <li><%= image_tag item.product.image(:small)%></li>
+      <li><%= image_tag(item.product.image(:small), class: "img-responsive img-rounded")%></li>
       <%= link_to item.product.title, item.product %>
       <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
     <% end %>
@@ -17,7 +18,7 @@
     <% end %>
     <ul>
       <% @cart.line_items.each do |item| %>
-      <li><%= image_tag item.product.image(:small)%>
+      <li><%= image_tag(item.product.image(:small), class: "img-responsive img-rounded")%>
         <%= link_to item.product.title, item.product %></li>
         <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
       <% end %>
@@ -28,9 +29,10 @@
     <h5>Welcome, please sign in or sign up to save this list.</h5>
   <ul>
     <% @cart.line_items.each do |item| %>
-      <li><%= image_tag item.product.image(:small)%>
+      <li><%= image_tag(item.product.image(:small), class: "img-responsive img-rounded")%>
       <%= link_to item.product.title, item.product %></li>
       <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
     <% end %>
   </ul>
 <% end %>
+</div>

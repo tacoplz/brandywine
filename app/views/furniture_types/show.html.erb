@@ -1,9 +1,10 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
   <%# if you want to see the image url %>
   <%#= @furniture_room.room_image(:medium) %>
-  <td><%= image_tag @furniture_type.furniture_type_image(:medium) %>
+  <td><%= image_tag(@furniture_type.furniture_type_image(:medium), class: "img-responsive img-rounded" %>
 </p>
 
 <p>
@@ -23,3 +24,4 @@
 
 <%= link_to 'Edit', edit_furniture_type_path(@furniture_type) %> |
 <%= link_to 'Back', furniture_types_path %>
+</div>

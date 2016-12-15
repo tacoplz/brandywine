@@ -1,3 +1,4 @@
+<div class="container">
 <% if session[:user_role_id] %>
 <h2>Welcome Brandywine Administrator</h2>
 
@@ -26,3 +27,4 @@ It's <%=Time.now.strftime("%A, %m/%d/%Y")  %><br><br>
 <% else %>
 <h1>Permission Denied: Admin Authorization Required</h1>
 <% end %>
+</div>

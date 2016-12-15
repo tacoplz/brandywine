@@ -1,10 +1,11 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 <body>
 <p>
   <p>
     <%# if you want to see the image url %>
     <%#= @user.user_image(:small) %>
-    <td><%= image_tag @user.user_image(:small) %>
+    <td><%= image_tag(@user.user_image(:small), class: "img-responsive img-rounded") %>
   </p>
   <p>
     <strong>Username:</strong>
@@ -45,3 +46,4 @@
     <%= @user.user_review %>
   </p>
 </body>
+</div>

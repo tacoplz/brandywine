@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Browse By Furniture Room</h1>
@@ -17,7 +18,7 @@
   <tbody>
     <% @furniture_rooms.each do |furniture_room| %>
       <tr>
-        <td><%= image_tag furniture_room.room_image(:small)%>
+        <td><%= image_tag(furniture_room.room_image(:small), class: "img-responsive img-rounded")%>
         <br><%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %><br></td>
         <% if session[:user_role_id] %>
           <td><%= link_to 'Show', furniture_room %><br>
@@ -33,3 +34,4 @@
 <% if session[:user_role_id] %>
   <%= link_to 'New Furniture room', new_furniture_room_path %>
 <% end %>
+</div>

@@ -1,3 +1,4 @@
+<div class="container">
 <center><b><p id="notice"><%= notice %></p></b></center>
 
 <p>
@@ -8,7 +9,7 @@
   <%= simple_format(@about_u.hours) %></center>
 </p>
 <p>
-  <center><strong>About Us:</strong></center><br>
+  <center><strong>About Us:</strong></center>
   <%= simple_format(@about_u.body) %>
 </p>
 <p>
@@ -24,7 +25,7 @@
   <strong>Address:</strong>
   <%= link_to "#{@about_u.address}", "http://maps.google.com/?q=#{@about_u.address}" %>
 </p>
-
+</div>
 <!DOCTYPE html>
   <head>
     <title>Simple Map</title>

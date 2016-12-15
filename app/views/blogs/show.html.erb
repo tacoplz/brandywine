@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 
@@ -8,7 +9,7 @@
 
 
 <center><p>
-  <%= image_tag @blog.blog_image(:large) %>
+  <%= image_tag(@blog.blog_image(:large), class: "img-responsive img-rounded") %>
 </p></center><br>
 
 <p>
@@ -19,3 +20,4 @@
   <%= link_to 'Edit', edit_blog_path(@blog) %> |
   <%= link_to 'Back', blogs_path %>
 <% end %>
+</div>

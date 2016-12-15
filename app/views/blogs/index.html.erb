@@ -1,4 +1,4 @@
-
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Brandywine Furniture Blog Posts</h1>
@@ -9,7 +9,7 @@
       <h5><%= blog.created_at.strftime("%B %d, %Y") %></h5>
     </p>
     <p>
-      <center><%= image_tag blog.blog_image(:large) %></center>
+      <center><%= image_tag(blog.blog_image(:large), class: "img-responsive img-rounded") %></center>
     </p><br>
     <p>
       <%= simple_format(blog.blog_post) %>
@@ -29,3 +29,4 @@
 <% if session[:user_role_id] %>
   <%= link_to 'New Blog', new_blog_path %>
 <% end %>
+</div>

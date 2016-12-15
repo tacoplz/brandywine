@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Products</h1>
@@ -27,7 +28,7 @@
       <tr>
         <td><%= button_to product.title, product, method: :get %></td>
         <td><%= product.furniture_style %>
-        <td><%= image_tag product.image(:small)%></td>
+        <td><%= image_tag(product.image(:small), class: "img-responsive img-rounded")%></td>
         <td><%= product.room_for_furniture %></td>
         <td><%= product.furniture_type %></td>
         <td><%= product.furniture_wood %></td>
@@ -63,3 +64,4 @@
 <% if session[:user_role_id] %>
   <%= link_to 'New Product', new_product_path %>
 <% end %>
+</div>

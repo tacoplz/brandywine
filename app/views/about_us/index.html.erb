@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>About Us Entry</h1>
@@ -16,7 +17,7 @@
   <tbody>
     <% @about_us.each do |about_u| %>
       <tr>
-        <td><%= image_tag(about_u.about_us_image(:thumb), class="img-responsive" %></td>
+        <td><%= image_tag(about_u.about_us_image(:thumb), class="img-responsive img-responsive") %></td>
         <td><%= about_u.body %></td>
         <td><%= about_u.phone_number %></td>
         <td><%= about_u.email %></td>
@@ -32,3 +33,4 @@
 <% if @about_us.all == 0 %>
 <%= link_to 'New About Us', new_about_u_path %>
 <% end %>
+</div>

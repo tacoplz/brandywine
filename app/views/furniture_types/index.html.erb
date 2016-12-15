@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Furniture Types</h1>
@@ -18,7 +19,7 @@
   <tbody>
     <% @furniture_types.each do |furniture_type| %>
       <tr>
-        <td><%= image_tag furniture_type.furniture_type_image(:small)%>
+        <td><%= image_tag(furniture_type.furniture_type_image(:small), class: "img-responsive img-rounded")%>
         <br><%= link_to furniture_type.furniture_class+'s', products_path(:furniture_type => furniture_type.furniture_class) %></td>
         <% if session[:user_role_id] %>
           <td><%= furniture_type.furniture_room_for_class %></td>
@@ -33,3 +34,4 @@
 <% if session[:user_role_id] %>
   <%= link_to 'New Furniture type', new_furniture_type_path %>
 <% end %>
+</div>
