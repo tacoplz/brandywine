@@ -7,7 +7,7 @@
 <p>
   <%# if you want to see the image url %>
   <%#= @product.image(:medium) %>
-  <td><%= image_tag @product.image(:large) %>
+  <td><%= image_tag(@product.image(:large), class: "img-responsive img-rounded") %>
 </p>
 
 <p>
