@@ -1,5 +1,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<div class="container col-xs-push-6 col-md-push-4"
   <% if session[:user_role_id] %>
     <div ><%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary active' %>
     <%= button_to 'Control Panel', admin_path, method: :get, class: 'btn btn-secondary active' %></div>
@@ -10,6 +11,7 @@
     <div><%= button_to 'Sign Up', new_user_path, method: :get, class: 'btn btn-secondary active' %>
     <%= button_to 'Login', login_path, method: :get, class: 'btn btn-secondary active' %></div>
   <% end %>
+</div>
 
     <div class="container">
       <h4 class="text-muted">Amish-made, hardwood furniture, hand-crafted to suit your unique style.</h4>
