@@ -17,9 +17,9 @@
 
   <tbody>
     <% @furniture_rooms.each do |furniture_room| %>
-      <div class="item  col-xs-4">
-        <%= link_to image_tag(furniture_room.room_image(:small), class: "img-responsive img-rounded"),  products_path(:room_for_furniture => furniture_room.room_type)%>
-        <center><%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %></center><br>
+        <div class = "item col-xs-6">
+        <center><%= link_to image_tag(furniture_room.room_image(:small), class: "img-thumbnail img-responsive img-rounded"),  products_path(:room_for_furniture => furniture_room.room_type)%><br>
+        <%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %></center><br>
         <% if session[:user_role_id] %>
           <td><%= link_to 'Show', furniture_room %><br>
           <%= link_to 'Edit', edit_furniture_room_path(furniture_room) %><br>
