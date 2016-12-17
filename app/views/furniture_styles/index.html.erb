@@ -17,7 +17,7 @@
     <tbody>
       <% @furniture_styles.each do |furniture_style| %>
         <tr>
-          <td><%= image_tag(furniture_style.furniture_style_image(:small), class: "img-responsive img-rounded") %></td>
+          <td><%= link_to image_tag(furniture_style.furniture_style_image(:small), class: "img-responsive img-rounded"), products_path(:furniture_style => furniture_style.furniture_style)  %></td>
           <td><%= link_to furniture_style.furniture_style, products_path(:furniture_style => furniture_style.furniture_style) %></td>
           <% if session[:user_role_id] %>
             <td><%= link_to 'Show', furniture_style %><br>
