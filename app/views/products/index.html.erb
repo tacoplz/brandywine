@@ -5,7 +5,7 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2">
+      <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
         <br><center><%= link_to image_tag(product.image(:small), class: "img-thumbnail img-responsive img-rounded"), product%>
         <%= button_to product.title, product, method: :get %></center><br>
         <div class='container'>

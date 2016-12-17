@@ -11,3 +11,8 @@
 .panel-default {
   background:#edeff2;
 }
+
+.class-pad {
+  margin: 5px;
+  padding: 1px;
+}
