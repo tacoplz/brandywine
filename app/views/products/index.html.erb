@@ -3,6 +3,10 @@
 
 <h2>Browse Furniture</h2>
 
+<% if session[:user_role_id] %>
+  <%= button_to 'New Product', new_product_path, method: :get %>
+<% end %>
+
   <tbody>
     <% @products.each do |product| %>
       <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
@@ -16,10 +20,10 @@
         Stain: <%= product.furniture_stain %><br>
         Dimensions: <%= product.furniture_dimensions %><br><br>
       </div>
+      <center>
         <% if session[:user_role_id]%>
-          <td><%= link_to 'Show', product %><br>
-          <%= link_to 'Edit', edit_product_path(product) %><br>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= button_to 'Edit', edit_product_path(product), method: :get %><br>
+          <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
           <% if Cart.find_by(user_id: session[:user_id]) %>
             <%# cart = Cart.find_by(id: session[:cart_id]) %>
@@ -28,7 +32,7 @@
           <% else %>
             <% cart = Cart.find_by(id: session[:cart_id])%>
           <% end %>
-            <div class="add-item"><center><% if LineItem.find_by(cart_id: cart, product_id: product.id) %>
+            <div class="add-item"><% if LineItem.find_by(cart_id: cart, product_id: product.id) %>
             <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %>
           <% else %>
             <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart, product_id: product.id) %>
@@ -43,7 +47,5 @@
 </table>
 
 <br>
-<% if session[:user_role_id] %>
-  <%= link_to 'New Product', new_product_path %>
-<% end %>
+
 </div>

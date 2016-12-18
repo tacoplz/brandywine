@@ -2,28 +2,20 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Furniture Styles</h1>
-
 <% if session[:user_role_id] %>
-  <table>
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Style</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+  <%= button_to 'New Furniture style', new_furniture_style_path, method: :get %>
 <% end %>
 
     <tbody>
       <% @furniture_styles.each do |furniture_style| %>
-        <div class = "item col-xs-6">
+        <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
           <center><%= link_to image_tag(furniture_style.furniture_style_image(:small), class: "img-thumbnail img-responsive img-rounded"), products_path(:furniture_style => furniture_style.furniture_style)  %><br>
-          <%= link_to furniture_style.furniture_style, products_path(:furniture_style => furniture_style.furniture_style) %></center>
+          <%= link_to furniture_style.furniture_style, products_path(:furniture_style => furniture_style.furniture_style) %><br>
           <% if session[:user_role_id] %>
-            <td><%= link_to 'Show', furniture_style %><br>
-            <%= link_to 'Edit', edit_furniture_style_path(furniture_style) %><br>
-            <%= link_to 'Destroy', furniture_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
+            <%#= link_to 'Show', furniture_style %>
+            <%= button_to 'Edit', edit_furniture_style_path(furniture_style), method: :get %><br>
+            <%= button_to 'Destroy', furniture_style, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %></center>
         </div>
       <% end %>
     </tbody>
@@ -31,7 +23,4 @@
 
 <br>
 
-<% if session[:user_role_id] %>
-  <%= link_to 'New Furniture style', new_furniture_style_path %>
-<% end %>
 </div>
