@@ -17,5 +17,5 @@ Rails.application.config.assets.version = '1.0'
 #the code in application.html.erb calls for each javascript_include_tag to be loaded for the params[:controller]
 #the functionality in application.html.erb and below was written by the developer (me).
 %w( about_us account_activations admin application blogs carts furniture_rooms furniture_stains furniture_styles furniture_types furniture_woods homepage_posts line_items password_resets products roles sessions users ).each do |controller|
-  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.coffee"]
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css", "#{controller}.coffee"]
 end
