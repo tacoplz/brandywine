@@ -41,9 +41,9 @@
             <li><%= link_to 'My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %></li>
           <% elsif session[:user_role_id] %>
             <li><%= link_to 'User Lists', carts_path %></li>
-          <% elsif session[:cart_id] %>
+          <% elsif session[:cart_id]  %>
             <% if Cart.find_by(id: session[:cart_id]) %>
-              <li><%= link_to 'My Furniture List', cart_path(Cart.find(session[:cart_id])) %></li>
+              <li><%= link_to 'My Furniture List', cart_path(Cart.find_by(id: session[:cart_id])) %></li>
             <% else %>
               <li><%= link_to 'My Furniture List', empty_url %></li>
             <% end %>

@@ -24,23 +24,28 @@
         <% if session[:user_role_id]%>
           <%= button_to 'Edit', edit_product_path(product), method: :get %><br>
           <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% else %>
-          <% if Cart.find_by(user_id: session[:user_id]) %>
+        <% elsif session[:user_id] %>
             <%# cart = Cart.find_by(id: session[:cart_id]) %>
             <%# if Cart.find_by(user_id: session[:user_id]) %>
-            <% cart = Cart.find_by(user_id: session[:user_id]) %>
+          <% cart = Cart.find_by(user_id: session[:user_id]) %>
+          <% if LineItem.find_by(cart_id: cart.id, product_id: product.id) %>
+            <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])), method: :get %>
           <% else %>
-            <% cart = Cart.find_by(id: session[:cart_id])%>
-          <% end %>
-            <div class="add-item"><% if LineItem.find_by(cart_id: cart, product_id: product.id) %>
-            <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])) %>
+            <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart.id, product_id: product.id) %>
+          <% end %></center>
+        <% elsif session[:cart_id] %>
+          <% cart = Cart.find_by(id: session[:cart_id])%>
+          <% if LineItem.find_by(cart_id: cart.id, product_id: product.id) %>
+            <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(id: session[:cart_id])), method: :get %>
           <% else %>
-            <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart, product_id: product.id) %>
-          <% end %></div></center>
+            <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart.id, product_id: product.id) %>
+          <% end %></center>
+        <% end %>
+
           <%# else %>
             <%#= button_to 'Add to My Furniture List', line_items_path(product_id: product.id) %>
           <%# end %>
-        <% end %>
+
       </div>
     <% end %>
   </tbody>
