@@ -4,7 +4,9 @@
 <h1>Browse By Furniture Room</h1>
 
 <% if session[:user_role_id] %>
-  <%= button_to 'New Furniture room', new_furniture_room_path, method: :get %>
+  <div class="container">
+    <%= button_to 'New Furniture room', new_furniture_room_path, method: :get, class: "btn" %>
+  </div>
 <% end %>
 
   <tbody>
@@ -13,8 +15,8 @@
         <center><%= link_to image_tag(furniture_room.room_image(:small), class: "img-thumbnail img-responsive img-rounded"),  products_path(:room_for_furniture => furniture_room.room_type)%><br>
         <%= link_to furniture_room.room_type, products_path(:room_for_furniture => furniture_room.room_type) %><br>
         <% if session[:user_role_id] %>
-          <%= button_to 'Edit', edit_furniture_room_path(furniture_room), method: :get %><br>
-          <%= button_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' } %></center>
+          <%= button_to 'Destroy', furniture_room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"%>
+          <%= button_to 'Edit', edit_furniture_room_path(furniture_room), method: :get, class: "btn" %></center>
         <% end %>
       </div>
     <% end %>

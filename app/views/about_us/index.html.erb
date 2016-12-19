@@ -1,20 +1,13 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
-<h1>About Us Entry</h1>
+<h1>About Us Index</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>About Us Image</th>
-      <th>Body</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <tbody>
     <% @about_us.each do |about_u| %>
       <tr>
         <td><%= image_tag(about_u.about_us_image(:thumb), class="img-responsive img-responsive") %></td>

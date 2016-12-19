@@ -1,8 +1,15 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
-<h1>Brandywine Furniture Blog Posts</h1>
-
+<div class="container">
+  <% if session[:user_role_id] %>
+    <%= button_to 'New Blog', new_blog_path, method: :get, class: "btn" %>
+  <% end %>
+</div>
 <% @blogs.each do |blog| %>
     <p>
       <h3><%=link_to blog.title, blog_path(:id => blog.id) %></h3>
@@ -16,17 +23,10 @@
     </p>
     <p>
       <% if session[:user_role_id] %>
-        <%= link_to 'Show', blog %>
-        <%= link_to 'Edit', edit_blog_path(blog) %>
-        <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= button_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+        <%= button_to 'Edit', edit_blog_path(blog), method: :get, class: "btn btn-secondary" %><br>
       <% end %>
     </p>
 
-<% end %>
-
-<br>
-
-<% if session[:user_role_id] %>
-  <%= link_to 'New Blog', new_blog_path %>
 <% end %>
 </div>

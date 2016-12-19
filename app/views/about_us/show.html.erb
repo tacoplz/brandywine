@@ -1,34 +1,51 @@
 <div class="container">
-<center><b><p id="notice"><%= notice %></p></b></center>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
+<% if session[:user_role_id] %>
+  <br>
+  <%= button_to 'Edit', edit_about_u_path(@about_u), method: :get %>
+  <%#= link_to 'Back', about_us_path %>
+<% end %>
+<br>
+<div class="container panel panel-default">
+    <div class="panel-heading" >
+    <center><strong>Current Hours:</strong><br></center>
+    </div>
+    <div class="panel-body">
+    <center><%= simple_format(@about_u.hours) %></center>
+  </div>
+</div>
 <p>
   <center><%= image_tag(@about_u.about_us_image(:banner), class: "img-responsive img-rounded" )%></center>
 </p>
-<p>
-  <center><strong>Current Hours:</strong><br>
-  <%= simple_format(@about_u.hours) %></center>
-</p>
-<p>
-  <center><strong>About Us:</strong></center>
-  <%= simple_format(@about_u.body) %>
-</p>
-<p>
+<div class="container panel panel-default">
+  <div class="panel-heading">
+    <center><strong>About Us:</strong></center>
+  </div>
+  <div class="panel-body">
+    <%= simple_format(@about_u.body) %>
+  </div>
+</div>
+<div class="container panel panel-default">
+  <div class="panel-heading">
+    <center><strong>Contact Us:</strong></center>
+  </div>
+  <div class="panel-body">
   <b><strong>Phone Number:</strong></b>
-  <%= number_to_phone(@about_u.phone_number) %>
-</p>
-<p>
+  <%= number_to_phone(@about_u.phone_number) %><br>
   <strong>Email:</strong>
-  <%= @about_u.email %>
-</p>
-
-<p>
+  <%= @about_u.email %><br>
   <strong>Address:</strong>
   <%= link_to "#{@about_u.address}", "http://maps.google.com/?q=#{@about_u.address}" %>
-</p>
+  </div>
+</div>
 </div>
 <!DOCTYPE html>
   <head>
-    <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -59,7 +76,4 @@
   async defer></script>
   </body>
 </html>
-<% if session[:user_role_id] %>
-<%= link_to 'Edit', edit_about_u_path(@about_u) %>
-<%#= link_to 'Back', about_us_path %>
-<% end %>
+<br>

@@ -1,10 +1,14 @@
 <div class="container">
-<% if session[:user_id] %>
-  <h1>Add a review</h1>
-<% else %>
-  <h1>Delete/edit review</h1>
-  <h5>Directions: Delete/edit text and click submit to update review</h5>
+  <% if session[:user_id]%>
+    <h1>Customer Reviews</h1>
+    <h5>Please leave us a review!</h5>
+  <% elsif session[:user_role_id] %>
+    <h1>Delete/edit review</h1>
+    <h5>Directions: Delete/edit text and click submit to update review</h5>
+  <% else %>
+    <h1>Customer Reviews</h1>
 <% end %>
+
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :user_review, 'Review:' %><br>

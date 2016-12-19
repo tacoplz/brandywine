@@ -1,5 +1,9 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 
 <tr>
@@ -17,7 +21,6 @@
 </p>
 
 <% if session[:user_role_id] %>
-  <%= link_to 'Edit', edit_blog_path(@blog) %> |
-  <%= link_to 'Back', blogs_path %>
+  <%= button_to 'Edit', edit_blog_path(@blog), method: :get, class: "btn" %>
 <% end %>
 </div>

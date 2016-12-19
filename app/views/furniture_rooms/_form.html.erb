@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= f.label :room_image %><br>
-    <%= f.file_field :room_image %>
+    <%= f.file_field :room_image, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :room_type %><br>
-    <%= f.text_field :room_type %>
+    <%= f.text_field :room_type, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>

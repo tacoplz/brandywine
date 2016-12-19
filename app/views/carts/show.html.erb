@@ -1,5 +1,9 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="bg-success">
+    <center><b><p id="notice"><%= notice %></p></b></center>
+  </div>
+<% end %>
 
 <% if session[:user_id] %>
   <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}'s"%> Furniture List</h2>
@@ -49,6 +53,8 @@
       <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
     <% end %>
   </ul>
+  <div class = "text-muted">
     <%= "ListID: #{@cart.id}" %>
+  </div>
 <% end %>
 </div>
