@@ -7,13 +7,13 @@
 
 <% if session[:user_role_id] %>
   <br>
-  <%= button_to 'Edit', edit_about_u_path(@about_u), method: :get %>
-  <%#= link_to 'Back', about_us_path %>
+  <%= button_to 'Edit', edit_about_u_path(@about_u), method: :get, class: 'btn' %><br><br>
 <% end %>
 <br>
 <div class="container panel panel-default">
     <div class="panel-heading" >
-    <center><strong>Current Hours:</strong><br></center>
+    <center><strong>Hours*:</strong><br></center>
+    <center>*Please check the <b><%= link_to('announcements', homepage_posts_path) %></b> for seasonal, holiday, or family closures before planning a trip.</center>
     </div>
     <div class="panel-body">
     <center><%= simple_format(@about_u.hours) %></center>

@@ -2,6 +2,7 @@
 <h1>New Furniture Room</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', furniture_rooms_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Cancel', furniture_rooms_path %>
+<% end %>
 </div>

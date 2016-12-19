@@ -1,5 +1,9 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 <h1>Furniture Lists</h1>
 

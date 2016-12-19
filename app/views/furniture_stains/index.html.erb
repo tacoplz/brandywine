@@ -1,15 +1,10 @@
-<div class="container">
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="bg-success">
+    <center><b><p id="notice"><%= notice %></p></b></center>
+  </div>
+<% end %>
 
 <h1>Listing Furniture Stains</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>stain type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @furniture_stains.each do |furniture_stain| %>

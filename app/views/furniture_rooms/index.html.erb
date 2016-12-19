@@ -1,13 +1,14 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
-
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
+  <% if session[:user_role_id] %>
+      <br>
+      <%= button_to 'New Furniture room', new_furniture_room_path, method: :get, class: "btn" %><br>
+  <% end %>
 <h1>Browse By Furniture Room</h1>
-
-<% if session[:user_role_id] %>
-  <div class="container">
-    <%= button_to 'New Furniture room', new_furniture_room_path, method: :get, class: "btn" %>
-  </div>
-<% end %>
 
   <tbody>
     <% @furniture_rooms.each do |furniture_room| %>

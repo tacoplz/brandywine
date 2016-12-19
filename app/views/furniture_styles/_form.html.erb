@@ -14,11 +14,11 @@
 
   <div class="field">
     <%= f.label :furniture_style %><br>
-    <%= f.text_field :furniture_style %>
+    <%= f.text_field :furniture_style, style: "width: 80%;", class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :furniture_style_image %><br>
-    <%= f.file_field :furniture_style_image %>
+    <%= f.file_field :furniture_style_image, style: "width: 80%;", class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>

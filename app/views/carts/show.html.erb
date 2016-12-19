@@ -5,15 +5,15 @@
   </div>
 <% end %>
 
-<% if session[:user_id] %>
-  <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}'s"%> Furniture List</h2>
-  <ul>
-    <% @cart.line_items.each do |item| %>
-      <li><%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%></li>
-      <%= link_to item.product.title, item.product %>
-      <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
-    <% end %>
-  </ul>
+  <% if session[:user_id] %>
+    <h2><%= "#{User.find_by(id: @cart.user_id).name.capitalize}'s"%> Furniture List</h2>
+    <ul>
+      <% @cart.line_items.each do |item| %>
+        <li><%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%></li>
+        <%= link_to item.product.title, item.product %>
+        <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+    </ul>
   <% elsif session[:user_role_id] %>
     <% if User.find_by(id: @cart.user_id) %>
       <% user_here = User.find_by(id: @cart.user_id) %>
@@ -23,7 +23,7 @@
       <% if user_here.first_name && user_here.last_name %>
         <h5><%= "Customer Name: #{user_here.first_name.capitalize} #{user_here.last_name.capitalize}" %></h5>
       <% end %>
-    </div>
+      </div>
     <div class = "panel-body">
       <% if user_here.phone_number && user_here.email %>
         <h5>
@@ -31,15 +31,15 @@
         <%= "Email: #{user_here.email}" %></h5>
       <% end %>
     </div>
-  </div>
-    <% else %>
-      <h2>Guest Furniture List</h2>
-    <% end %>
+    </div>
+      <% else %>
+        <h2>Guest Furniture List</h2>
+      <% end %>
     <ul>
       <% @cart.line_items.each do |item| %>
-      <li><%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%>
-        <%= link_to item.product.title, item.product %></li>
-        <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <li><%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%></li>
+        <%= link_to item.product.title, item.product %>
+        <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
       <% end %>
     </ul>
     <%= link_to 'Edit', edit_cart_path(@cart) %> |
@@ -48,9 +48,9 @@
     <h5>Welcome guest, please sign in or sign up to save this list.</h5>
   <ul>
     <% @cart.line_items.each do |item| %>
-      <li><%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%>
-      <%= link_to item.product.title, item.product %></li>
-      <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <%= image_tag(item.product.image(:small), class: "img-thumbnail img-responsive img-rounded")%>
+      <%= link_to item.product.title, item.product %>
+      <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %><br>
     <% end %>
   </ul>
   <div class = "text-muted">

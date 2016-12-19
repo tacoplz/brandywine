@@ -7,6 +7,7 @@
 
 <div class="container">
   <% if session[:user_role_id] %>
+  <br>
     <%= button_to 'New Blog', new_blog_path, method: :get, class: "btn" %>
   <% end %>
 </div>

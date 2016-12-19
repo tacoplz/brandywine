@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="bg-success">
+    <center><b><p id="notice"><%= notice %></p></b></center>
+  </div>
+<% end %>
 
 <p>
   <strong>Furniture style:</strong>
@@ -11,6 +15,5 @@
 </p>
 
 <% if session[:user_role_id] %>
-  <%= link_to 'Edit', edit_furniture_style_path(@furniture_style) %> |
-  <%= link_to 'Back', furniture_styles_path %>
+  <%= button_to 'Edit', edit_furniture_style_path(@furniture_style), method: :get, class: "btn" %>
 <% end %>

@@ -1,5 +1,14 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
+
+<% if session[:user_role_id] %>
+  <br>
+  <%= button_to 'Edit', edit_furniture_room_path(@furniture_room), method: :get, class: "btn" %><br><br>
+<% end %>
 
 <p>
   <%# if you want to see the image url %>
@@ -11,6 +20,4 @@
   <%= @furniture_room.room_type %>
 </p>
 
-<%= link_to 'Edit', edit_furniture_room_path(@furniture_room) %> |
-<%= link_to 'Back', furniture_rooms_path %>
 </div>
