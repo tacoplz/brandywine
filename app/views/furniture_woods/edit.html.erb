@@ -3,6 +3,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @furniture_wood %> |
-<%= link_to 'Back', furniture_woods_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Back', furniture_woods_path %>
+<% end %>
 </div>

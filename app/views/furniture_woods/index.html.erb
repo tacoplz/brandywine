@@ -1,29 +1,21 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
+  <% if session[:user_role_id] %>
+  <br>
+    <%= button_to 'New Furniture wood', new_furniture_wood_path, method: :get, class: "btn" %><br>
+  <% end %>
+<h1>Furniture Woods</h1>
 
-<h1>Listing Furniture Woods</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>wood type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @furniture_woods.each do |furniture_wood| %>
-      <tr>
-        <td><%= furniture_wood.wood_type %></td>
-        <td><%= link_to 'Show', furniture_wood %></td>
-        <td><%= link_to 'Edit', edit_furniture_wood_path(furniture_wood) %></td>
-        <td><%= link_to 'Destroy', furniture_wood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
+        <center><b><%= furniture_wood.wood_type %></b></center><br>
+        <%= button_to 'Destroy', furniture_wood, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+        <%= button_to 'Edit', edit_furniture_wood_path(furniture_wood), method: :get, class: "btn" %>
+        <br></div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Furniture wood', new_furniture_wood_path %>
 </div>

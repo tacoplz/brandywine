@@ -10,10 +10,10 @@
   <%= button_to 'Edit', edit_about_u_path(@about_u), method: :get, class: 'btn' %><br><br>
 <% end %>
 <br>
-<div class="container panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading" >
     <center><strong>Hours*:</strong><br></center>
-    <center>*Please check the <b><%= link_to('announcements', homepage_posts_path) %></b> for seasonal, holiday, or family closures before planning a trip.</center>
+    <center>*Please check the <b><%= link_to('home page', homepage_posts_path) %></b> for seasonal, holiday, or family closures before planning a trip.</center>
     </div>
     <div class="panel-body">
     <center><%= simple_format(@about_u.hours) %></center>
@@ -22,7 +22,7 @@
 <p>
   <center><%= image_tag(@about_u.about_us_image(:banner), class: "img-responsive img-rounded" )%></center>
 </p>
-<div class="container panel panel-default">
+<div class="panel panel-default">
   <div class="panel-heading">
     <center><strong>About Us:</strong></center>
   </div>
@@ -30,7 +30,7 @@
     <%= simple_format(@about_u.body) %>
   </div>
 </div>
-<div class="container panel panel-default">
+<div class="panel panel-default">
   <div class="panel-heading">
     <center><strong>Contact Us:</strong></center>
   </div>

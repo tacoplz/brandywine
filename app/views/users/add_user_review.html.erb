@@ -12,7 +12,7 @@
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :user_review, 'Review:' %><br>
-    <%= f.text_field :user_review, class: 'form-control' %>
+    <%= f.text_field :user_review, class: 'form-control', style: "width: 80%;" %>
   </div>
   <div class="actions">
     <%= f.submit "Submit", class: 'btn' %>

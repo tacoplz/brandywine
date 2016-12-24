@@ -1,8 +1,9 @@
 <div class="container">
-<h1>Editing Homepage Post</h1>
+<h1>Make An Announcement</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @homepage_post %> |
-<%= link_to 'Back', homepage_posts_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Cancel', homepage_posts_path %>
+<% end %>
 </div>

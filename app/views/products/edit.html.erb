@@ -1,10 +1,10 @@
 <div class="container">
-<h1>Editing Product</h1>
+<h1>Editing Furniture Item</h1>
 
 <%= render 'form' %>
 
 <% if session[:role_id] %>
   <%#= link_to 'Show', @product, class: 'btn' %>
-  <%#= link_to 'Back', products_path, class: 'btn' %>
+  <%= link_to 'Cancel', products_path %>
 <% end %>
 </div>

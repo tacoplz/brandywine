@@ -8,10 +8,13 @@
   <% end %>
   <%= form_for(:password_reset, url: password_resets_path) do |f| %>
     <%= f.label :email %>
-    <%= f.email_field :email, class: 'form-control' %><br>
+    <%= f.email_field :email, style: "width: 80%;", class: 'form-control' %><br>
 
-    <%= f.submit "Submit", class: "btn" %>
+    <%= f.submit "Submit", class: "btn", style: "margin-right: 20%;" %>
   <% end %>
+  <br><br><br><br>
+  <h7>Password reset links are only active for 2 hours.</h7><br>
+  <h7>If your password reset link has expired, please restart the reset process by entering the email associated with your account in the field above.</h7>
 
 </div>
 </div>

@@ -1,8 +1,9 @@
 <div class="container">
-<h1>Editing Role</h1>
+<h1>Editing User Role</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @role %> |
-<%= link_to 'Back', roles_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Cancel', roles_path %>
+<% end %>
 </div>

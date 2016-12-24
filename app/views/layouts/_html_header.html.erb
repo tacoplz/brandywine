@@ -6,7 +6,7 @@
     <%= button_to 'Control Panel', admin_path, method: :get, class: 'btn btn-secondary active' %></div>
   <% elsif session[:user_id] %>
     <div><%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary active' %>
-      <%= button_to "#{User.find(session[:user_id]).first_name.capitalize}'s Profile", user_path(session[:user_id]), method: :get, class: 'btn btn-secondary active' %></div>
+      <%= button_to "#{User.find(session[:user_id]).first_name.capitalize}'s Profile", user_path(session[:user_id]), method: :get, class: 'btn btn-secondary active' %><%= image_tag(User.find(session[:user_id]).user_image(:thumb), class: "img-circle pull-right", style: "width: 30px; margin-right: 10px;") %></div>
   <% else %>
     <div><%= button_to 'Sign Up', new_user_path, method: :get, class: 'btn btn-secondary active' %>
     <%= button_to 'Login', login_path, method: :get, class: 'btn btn-secondary active' %></div>

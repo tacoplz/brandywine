@@ -4,26 +4,19 @@
       <center><b><p id="notice"><%= notice %></p></b></center>
     </div>
   <% end %>
+  <% if @about_us.all == 0 %>
+    <%= link_to 'New About Us', new_about_u_path %>
+  <% end %>
+<h1>About Us</h1>
 
-<h1>About Us Index</h1>
-
-    <tbody>
     <% @about_us.each do |about_u| %>
-      <tr>
-        <td><%= image_tag(about_u.about_us_image(:thumb), class="img-responsive img-responsive") %></td>
-        <td><%= about_u.body %></td>
-        <td><%= about_u.phone_number %></td>
-        <td><%= about_u.email %></td>
-        <td><%= link_to 'Show', about_u %></td>
-        <td><%= link_to 'Edit', edit_about_u_path(about_u) %></td>
-        <td><%#= link_to 'Destroy', about_u, method: :delete, data: { confirm: 'Destroying this "About Us" entry will cause serious damage to the web page and will require contacting the developer to fix. Are you sure?' } %></td>
-      </tr>
+        <%= image_tag(about_u.about_us_image(:thumb), class: "img-thumbnail img-responsive img-responsive") %><br>
+        <%= about_u.body %><br>
+        Phone: <%= about_u.phone_number %><br>
+        Email: <%= about_u.email %><br>
+        <%= link_to 'Edit', edit_about_u_path(about_u) %>
+        <%#= link_to 'Destroy', about_u, method: :delete, data: { confirm: 'Destroying this "About Us" entry will cause serious damage to the web page and will require contacting the developer to fix. Are you sure?' } %>
     <% end %>
-  </tbody>
-</table>
 
 <br>
-<% if @about_us.all == 0 %>
-<%= link_to 'New About Us', new_about_u_path %>
-<% end %>
 </div>

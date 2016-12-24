@@ -1,5 +1,10 @@
 <div class="container">
-<br><center><b><p id="notice"><%= notice %></p></b></center>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
+  <br>
 
   <%#= the location for the jumbotron photo is /app/assets/images/jumbotron-bg
   the link is mentioned in the code in bootstrap.css %>
@@ -11,29 +16,28 @@
   </div></center>
 </div>
 <center><table>
-
-  <tbody>
+  <tr>
+  <% if session[:user_role_id] %>
+    <td><%= button_to 'New Announcement', new_homepage_post_path, class: 'btn btn-secondary', style: "margin-right: 20%;" %></td>
+  <% end %>
+  </tr>
     <% @homepage_posts.each do |homepage_post| %>
       <tr>
-        <td><h3><%= link_to homepage_post.post_title, homepage_post %></h3></td>
+        <td><h3><u><%=homepage_post.post_title%></u></h3></td>
         <td><h5><%= homepage_post.created_at.strftime("%B %d, %Y") %></h5></td>
       </tr>
       <tr>
         <td><%= homepage_post.post_text %></td>
-        <td><%= homepage_post.post_img_url %></td>
+        <td><%= homepage_post.post_img_url %>
       </tr>
-      <tr>
         <% if session[:user_role_id] %>
-          <td><%= link_to 'Edit', edit_homepage_post_path(homepage_post), class: 'btn btn-secondary active' %></td>
-          <td><%= link_to 'Delete', homepage_post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary active' %></td>
+          <tr>
+          <td>&emsp;<%= button_to 'Delete', homepage_post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary active' %><%= button_to 'Edit', edit_homepage_post_path(homepage_post), method: :get, class: 'btn btn-secondary active' %></td>
+          </tr>
         <% end %>
-      </tr>
     <% end %>
   </tbody>
 </table></center>
 
 <br>
-<% if session[:user_role_id] %>
-  <%= link_to 'New Announcement', new_homepage_post_path, class: 'btn btn-secondary active' %>
-<% end %>
 </div>

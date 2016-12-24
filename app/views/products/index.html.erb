@@ -1,17 +1,22 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 <h2>Browse Furniture</h2>
 
 <% if session[:user_role_id] %>
-  <%= button_to 'New Product', new_product_path, method: :get %>
+  <br>
+  <%= button_to 'New Product', new_product_path, method: :get, class: "btn" %>
 <% end %>
 
   <tbody>
     <% @products.each do |product| %>
       <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
         <br><center><%= link_to image_tag(product.image(:small), class: "img-thumbnail img-responsive img-rounded"), product%>
-        <%= button_to product.title, product, method: :get %></center><br>
+        <%= link_to product.title, product %></center><br>
         <div class='container'>
         Style: <%= product.furniture_style %><br>
         <%#= product.room_for_furniture %>
@@ -22,23 +27,23 @@
         </div>
       <center>
         <% if session[:user_role_id]%>
-          <%= button_to 'Edit', edit_product_path(product), method: :get %><br>
-          <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+          <%= button_to 'Edit', edit_product_path(product), method: :get, class: "btn" %><br>
         <% elsif session[:user_id] %>
             <%# cart = Cart.find_by(id: session[:cart_id]) %>
             <%# if Cart.find_by(user_id: session[:user_id]) %>
           <% cart = Cart.find_by(user_id: session[:user_id]) %>
           <% if LineItem.find_by(cart_id: cart.id, product_id: product.id) %>
-            <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(user_id: session[:user_id])), method: :get %>
+            <%= button_to 'Item in List', cart_path(Cart.find_by(user_id: session[:user_id])), method: :get, class: "btn" %>
           <% else %>
-            <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart.id, product_id: product.id) %>
+            <%= button_to "+ My List", line_items_path(cart_id: cart.id, product_id: product.id), class: "btn" %>
           <% end %></center>
         <% elsif session[:cart_id] %>
           <% cart = Cart.find_by(id: session[:cart_id])%>
           <% if LineItem.find_by(cart_id: cart.id, product_id: product.id) %>
-            <%= button_to 'Item In My Furniture List', cart_path(Cart.find_by(id: session[:cart_id])), method: :get %>
+            <%= button_to 'Item in List', cart_path(Cart.find_by(id: session[:cart_id])), method: :get, class: "btn" %>
           <% else %>
-            <%= button_to "Add to My Furniture List", line_items_path(cart_id: cart.id, product_id: product.id) %>
+            <%= button_to "+ My List", line_items_path(cart_id: cart.id, product_id: product.id), class: "btn" %>
           <% end %></center>
         <% end %>
 

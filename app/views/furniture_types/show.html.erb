@@ -1,5 +1,9 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 <p>
   <%# if you want to see the image url %>
@@ -8,20 +12,21 @@
 </p>
 
 <p>
-  <strong>furniture room:</strong>
+  <strong>Furniture Room:</strong>
   <%= @furniture_type.furniture_room_for_class %>
 </p>
 
 <p>
-  <strong>furniture room id:</strong>
+  <strong>Furniture Room ID:</strong>
   <%= @furniture_type.furniture_room_id %>
 </p>
 
 <p>
-  <strong>furniture class:</strong>
+  <strong>Furniture Type:</strong>
   <%= @furniture_type.furniture_class %>
 </p>
 
-<%= link_to 'Edit', edit_furniture_type_path(@furniture_type) %> |
-<%= link_to 'Back', furniture_types_path %>
+<% if session[:user_role_id] %>
+  <%= button_to 'Edit', edit_furniture_type_path(@furniture_type), method: :get, class: "btn" %>
+<% end %>
 </div>

@@ -14,17 +14,13 @@
 
   <div class="field">
     <%= f.label :post_title %><br>
-    <%= f.text_field :post_title %>
+    <%= f.text_field :post_title, style: "width: 80%;", class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :post_text %><br>
-    <%= f.text_area :post_text %>
+    <%= f.text_area :post_text, rows: 10, style: "width: 80%;", class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :post_img_url %><br>
-    <%= f.text_field :post_img_url %>
-  </div>
-  <div class="actions">
+  <div class="actions", align="right", style="padding-right: 20%;">
     <%= f.submit %>
   </div>
 <% end %>

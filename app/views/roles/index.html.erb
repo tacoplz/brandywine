@@ -1,29 +1,35 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 <h1>Listing Roles</h1>
 
 <table>
   <thead>
-    <tr>
       <th>Role name</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
     <% @roles.each do |role| %>
-      <tr>
+        <tr>
         <td><%= role.role_name %></td>
-        <td><%= link_to 'Show', role %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+        <% if session[:user_role_id] %>
+          <tr>
+          <td><%= button_to 'Edit', edit_role_path(role), method: :get, class: "btn", style: "margin-right: 20%; margin: 1px;" %></td>
+          <td><%= button_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: "margin-right: 20%; margin: 1px;" %></td>
+        </tr>
+        <% end %>
+      <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Role', new_role_path %>
+<% if session[:user_role_id] %>
+  <%= button_to 'New Role', new_role_path, method: :get, class: "btn", style: "margin-right: 20%;" %>
+<% end %>
 </div>

@@ -5,12 +5,11 @@
     </div>
   <% end %>
 
-<div class="container">
   <% if session[:user_role_id] %>
   <br>
-    <%= button_to 'New Blog', new_blog_path, method: :get, class: "btn" %>
+    <%= button_to 'New Blog', new_blog_path, method: :get, class: "btn" %><br><br>
   <% end %>
-</div>
+
 <% @blogs.each do |blog| %>
     <p>
       <h3><%=link_to blog.title, blog_path(:id => blog.id) %></h3>

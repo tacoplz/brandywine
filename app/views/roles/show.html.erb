@@ -1,11 +1,15 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 
 <p>
   <strong>Role name:</strong>
   <%= @role.role_name %>
 </p>
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<% if session[:user_role_id] %>
+<%= button_to 'Edit', edit_role_path(@role), method: :get, class: "btn", style: "margin-right: 20%;" %>
 </div>

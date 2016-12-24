@@ -16,12 +16,12 @@
     <%= hidden_field_tag :email, @user.email %>
 
     <%= f.label :password, "New Password:" %>
-    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.password_field :password, style: "width: 80%;", class: 'form-control' %>
 
     <%= f.label :password_confirmation, "Confirm New Password:" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+    <%= f.password_field :password_confirmation, style: "width: 80%;", class: 'form-control' %><br>
 
-    <%= f.submit "Update Password", class: "btn" %>
+    <%= f.submit "Update Password", class: "btn", style: "margin-right: 20%;" %>
   <% end %>
 </div>
 </div>

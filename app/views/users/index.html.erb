@@ -1,12 +1,16 @@
 <div class="container">
 <h1>Listing Users</h1>
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <div class="bg-success">
+    <center><b><p id="notice"><%= notice %></p></b></center>
+  </div>
 <% end %>
-
 <div class="adminbutton" >
-<%= link_to 'Create User', new_user_path, class: 'btn' %>
-<%#= link_to 'Back', users_path, class: 'btn' %>
+  <% if session[:user_role_id] %>
+    <%= button_to 'Create User', new_user_path, method: :get, class: 'btn' %>
+    <%#= link_to 'Back', users_path, class: 'btn' %>
+  <% end %>
+
 </div>
 
 <div>

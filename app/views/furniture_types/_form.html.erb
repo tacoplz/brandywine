@@ -13,10 +13,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :furniture_room_for_class %><br>
+    <%= f.label ":furniture_room_for_class", 'Furniture Room:' %><br>
     <%#= f.text_field :furniture_room_for_class %>
+    <div class="form-control" style="width: 80%;">
     <%= f.select :furniture_room_for_class, FurnitureType.roomtypes,
-                      :prompt => 'Select a room'%>
+                      :prompt => 'Select a room' %>
+    </div>
 
     <%# try to set :furniture_room_id as a hidden field using the :room-id of selected room %>
     <%#= f.hidden_field :furniture_room_id, :value=>params[:roomid] %>
@@ -27,12 +29,12 @@
 
   <div class="field">
     <%= f.label :furniture_type_image, 'Furniture Type Image:' %><br>
-    <%= f.file_field :furniture_type_image %>
+    <%= f.file_field :furniture_type_image, class: "form-control", style: "width: 80%;" %>
   </div>
 
   <div class="field">
-    <%= f.label :furniture_class %><br>
-    <%= f.text_field :furniture_class %>
+    <%= f.label :furniture_class, 'Furniture Type' %><br>
+    <%= f.text_field :furniture_class, class: "form-control", style: "width: 80%;"  %>
   </div>
   <div class="actions">
     <%= f.submit %>

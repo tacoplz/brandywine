@@ -1,24 +1,23 @@
+<div class="container">
 <% if notice %>
   <div class="bg-success">
     <center><b><p id="notice"><%= notice %></p></b></center>
   </div>
 <% end %>
+<% if session[:user_role_id] %>
+  <br>
+  <%= button_to 'New Furniture stain', new_furniture_stain_path, method: :get, class: "btn" %>
+<% end %>
+<h1>Furniture Stains</h1>
 
-<h1>Listing Furniture Stains</h1>
-
-  <tbody>
     <% @furniture_stains.each do |furniture_stain| %>
-      <tr>
-        <td><%= furniture_stain.stain_type %></td>
-        <td><%= link_to 'Show', furniture_stain %></td>
-        <td><%= link_to 'Edit', edit_furniture_stain_path(furniture_stain) %></td>
-        <td><%= link_to 'Destroy', furniture_stain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class = "panel panel-default item col-xs-6 col-md-4 col-lg-2 class-pad">
+        <center><b><%= furniture_stain.stain_type %></b></center><br>
+      <% if session[:user_role_id] %>
+        <%= button_to 'Destroy', furniture_stain, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+        <%= button_to 'Edit', edit_furniture_stain_path(furniture_stain), method: :get, class: "btn" %>
+      <% end %>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Furniture stain', new_furniture_stain_path %>
 </div>

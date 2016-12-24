@@ -1,11 +1,15 @@
 <div class="container">
-<br><center><b><p id="notice"><%= notice %></p></b></center>
+  <% if notice %>
+    <div class="bg-success">
+      <center><b><p id="notice"><%= notice %></p></b></center>
+    </div>
+  <% end %>
 <% if session[:update_email] %>
   <h1>Update Email Address</h1>
   <%= form_for(@user) do |f| %>
     <div class="field">
       <%= f.label :email, 'Email:' %><br>
-      <%= f.text_field :email, class: 'form-control' %>
+      <%= f.text_field :email, class: 'form-control', style: "width: 80%;" %>
     </div>
     <div class="actions">
       <%= f.submit "Submit", class: 'btn' %>

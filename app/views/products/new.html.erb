@@ -1,7 +1,8 @@
 <div class="container">
-<h1>New Product</h1>
+<h1>New Furniture Item</h1>
 
 <%= render 'form' %>
-
-<%#= link_to 'Back', products_path %>
+<% if session[:user_role_id] %>
+  <%= link_to 'Cancel', products_path %>
+<% end %>
 </div>
