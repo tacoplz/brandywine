@@ -5,7 +5,7 @@ class HomepagePostsController < ApplicationController
   # GET /homepage_posts
   # GET /homepage_posts.json
   def index
-    @homepage_posts = HomepagePost.all
+    @homepage_posts = HomepagePost.order(:created_at).reverse
   end
 
   # GET /homepage_posts/1
