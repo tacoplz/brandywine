@@ -1,7 +1,7 @@
 class HomepagePostsController < ApplicationController
   skip_before_action :authorize, only: [:index, :show]
   before_action :set_homepage_post, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /homepage_posts
   # GET /homepage_posts.json
   def index
@@ -29,7 +29,7 @@ class HomepagePostsController < ApplicationController
 
     respond_to do |format|
       if @homepage_post.save
-        format.html { redirect_to @homepage_post, notice: 'Homepage post was successfully created.' }
+        format.html { redirect_to homepage_posts_path, notice: 'Homepage post was successfully created.' }
         format.json { render :show, status: :created, location: @homepage_post }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class HomepagePostsController < ApplicationController
   def update
     respond_to do |format|
       if @homepage_post.update(homepage_post_params)
-        format.html { redirect_to @homepage_post, notice: 'Homepage post was successfully updated.' }
+        format.html { redirect_to homepage_posts_path, notice: 'Homepage post was successfully updated.' }
         format.json { render :show, status: :ok, location: @homepage_post }
       else
         format.html { render :edit }
