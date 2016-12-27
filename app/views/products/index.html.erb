@@ -4,13 +4,11 @@
       <center><b><p id="notice"><%= notice %></p></b></center>
     </div>
   <% end %>
-
+  <% if session[:user_role_id] %>
+    <br>
+    <%= button_to 'New Product', new_product_path, method: :get, class: "btn" %>
+  <% end %>
 <h2>Browse Furniture</h2>
-
-<% if session[:user_role_id] %>
-  <br>
-  <%= button_to 'New Product', new_product_path, method: :get, class: "btn" %>
-<% end %>
 
   <tbody>
     <% @products.each do |product| %>
@@ -27,7 +25,7 @@
         </div>
       <center>
         <% if session[:user_role_id]%>
-          <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+          <%= button_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
           <%= button_to 'Edit', edit_product_path(product), method: :get, class: "btn" %><br>
         <% elsif session[:user_id] %>
             <%# cart = Cart.find_by(id: session[:cart_id]) %>
