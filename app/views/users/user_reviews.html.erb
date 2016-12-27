@@ -8,7 +8,7 @@
 <h1>Customer Reviews</h1>
 <% if session[:user_id] %>
   <% if User.find(session[:user_id]).user_review = false %>
-    <%= link_to 'Add Review', add_user_review_path(:id => session[:user_id]), class: 'btn btn-default active', style: "margin-right: 85%;" %><br><br><br>
+    <%= link_to 'Add Review', add_user_review_path(:id => session[:user_id]), class: 'btn btn-default active', style: "margin-right: 20%;" %><br><br><br>
   <% else %>
     <%= link_to 'Edit My Review', add_user_review_path(:id => session[:user_id]), class: 'btn btn-default active', style: "margin-right: 85%;" %><br><br><br>
   <% end %>
