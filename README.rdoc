@@ -1,28 +1,28 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Website URL: thebrandywinefurniture.net
 
-Things you may want to cover:
+A custom content management system designed for a furniture store. Allows for simple admin portal make announcements, upload products, edit the about page, manage admin/users, and view user furniture lists.
+
+Standard users can add reviews and maintain furniture lists.
+
+The admin can review user furniture lists to help the user find their desired furniture or create a custom piece just for them.
+
 
 * Ruby version
+  2.3.0p0
+* Rails version
+  4.2.6
+  
+* Gem dependencies
+  Paperclip is required for image uploads.
+  Bootstrap is required for UX/UI.
 
-* System dependencies
+* Database
+  PostgreSQL
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Deployment Information
+  Configured for use with Amazon Web Services.
+  Deployed to EC2 Linux instance.
+  Emails sent using Amazon Simple Email Service
+  Bounce/Complaint Notifications handled via Amazon Simple Notification Service
